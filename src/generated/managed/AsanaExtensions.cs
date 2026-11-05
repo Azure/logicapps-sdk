@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     public class CreateProjectV2Input
     {
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateProjectV2InputDataType Data { get; set; }
+        public CreateProjectV2InputDataType Data { get; set; } = new CreateProjectV2InputDataType();
     }
 
     public class CreateProjectV2InputDataType
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     public class CreateTaskV2Input
     {
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTaskV2InputDataType Data { get; set; }
+        public CreateTaskV2InputDataType Data { get; set; } = new CreateTaskV2InputDataType();
     }
 
     public class CreateTaskV2InputDataType

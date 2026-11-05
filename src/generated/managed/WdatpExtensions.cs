@@ -1130,7 +1130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
 
     public class LiveResponseCommand
     {
-        [JsonProperty("type")]
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public LiveResponseCommandTypeType Type { get; set; }
 
         [JsonProperty("params")]
@@ -1148,7 +1148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wdatp
     public class LiveResponseCommandParamsTypeItem
     {
         [JsonProperty("key")]
-        public LiveResponseCommandParamsTypeItemKeyType Key { get; set; }
+        public LiveResponseCommandParamsTypeItemKeyType? Key { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }

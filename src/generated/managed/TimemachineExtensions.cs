@@ -2126,11 +2126,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class QuestionOptionInput
     {
-        [JsonProperty("text")]
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 
         [JsonProperty("isCorrect")]
-        public bool IsCorrect { get; set; }
+        public bool? IsCorrect { get; set; }
     }
 
     public class ReorderTopicQuizQuestionsInput
@@ -3161,19 +3161,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timemachine
 
     public class ModuleInput
     {
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        [JsonProperty("topics")]
+        [JsonProperty("topics", DefaultValueHandling = DefaultValueHandling.Include)]
         public TopicInput[] Topics { get; set; }
     }
 
     public class TopicInput
     {
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("description")]

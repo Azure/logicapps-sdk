@@ -72,14 +72,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushtodisplay
 
     public class DisplayMessageBlock
     {
-        [JsonProperty("text")]
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
 
         [JsonProperty("size")]
-        public DisplayMessageBlockTextSizeType TextSize { get; set; }
+        public DisplayMessageBlockTextSizeType? TextSize { get; set; }
 
         [JsonProperty("weight")]
-        public DisplayMessageBlockFontWeightType FontWeight { get; set; }
+        public DisplayMessageBlockFontWeightType? FontWeight { get; set; }
 
         [JsonProperty("color")]
         public string TextColor { get; set; }

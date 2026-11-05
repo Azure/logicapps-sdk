@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
     public class ProjectCreateInput
     {
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ProjectCreateInputProjectType Project { get; set; }
+        public ProjectCreateInputProjectType Project { get; set; } = new ProjectCreateInputProjectType();
 
         [JsonProperty("documents")]
         public ProjectCreateInputDocumentsTypeItem[] Documents { get; set; }

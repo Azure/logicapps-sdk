@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<AssortmentValueDTO[], ApiConnectionActionConfiguration> AssortmentValueGETGetAll(Expression<Func<string>> customerid, Expression<Func<statusInput>> status = null, Expression<Func<sourceInput>> source = null, Expression<Func<string>> type = null, Expression<Func<string>> category = null, Expression<Func<string>> id = null, Expression<Func<string>> productId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<AssortmentValueDTO[], ApiConnectionActionConfiguration> AssortmentValueGETGetAll(Expression<Func<string>> customerid, Expression<Func<statusInput2>> status = null, Expression<Func<sourceInput>> source = null, Expression<Func<string>> type = null, Expression<Func<string>> category = null, Expression<Func<string>> id = null, Expression<Func<string>> productId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_customerid = WorkflowExpression.Compile(customerid, nameof(customerid), required: true);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<CustomerDTO[], ApiConnectionActionConfiguration> CustomersGETGetAll(Expression<Func<statusInput>> status = null, Expression<Func<string>> search = null, Expression<Func<string>> name = null, Expression<Func<string>> salesmanId = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<CustomerDTO[], ApiConnectionActionConfiguration> CustomersGETGetAll(Expression<Func<statusInput3>> status = null, Expression<Func<string>> search = null, Expression<Func<string>> name = null, Expression<Func<string>> salesmanId = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
@@ -1123,9 +1123,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
+        Draft,
         Active,
-        Inactive,
-        StopOrder,
+        Archived,
         [EnumMember(Value = "ignore")]
         Ignore
     }
@@ -1501,6 +1501,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum statusInput2
+    {
+        Inactive,
+        Active
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sourceInput
     {
         [EnumMember(Value = "manual")]
@@ -1682,6 +1689,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         [JsonProperty("address")]
         public JToken Address { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum statusInput3
+    {
+        Active,
+        Inactive,
+        StopOrder,
+        [EnumMember(Value = "ignore")]
+        Ignore
     }
 
     public class InventoryLevelDTO

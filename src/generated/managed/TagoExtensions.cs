@@ -1826,7 +1826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
     public class DataTriggerInput
     {
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DataTriggerInputConfigType Config { get; set; }
+        public DataTriggerInputConfigType Config { get; set; } = new DataTriggerInputConfigType();
     }
 
     public class DataTriggerInputConfigType

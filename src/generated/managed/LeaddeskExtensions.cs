@@ -511,13 +511,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
     public class CreateAgentInput
     {
         [JsonProperty("account", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAgentInputAccountType Account { get; set; }
+        public CreateAgentInputAccountType Account { get; set; } = new CreateAgentInputAccountType();
 
         [JsonProperty("contact_information", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateAgentInputContactInformationType ContactInformation { get; set; }
 
-        [JsonProperty("employment")]
-        public CreateAgentInputEmploymentType Employment { get; set; }
+        [JsonProperty("employment", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateAgentInputEmploymentType Employment { get; set; } = new CreateAgentInputEmploymentType();
     }
 
     public class CreateAgentInputAccountType
@@ -628,7 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public CreateCallbackInputContactType Contact { get; set; }
 
         [JsonProperty("properties", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCallbackInputPropertiesType Properties { get; set; }
+        public CreateCallbackInputPropertiesType Properties { get; set; } = new CreateCallbackInputPropertiesType();
 
         [JsonProperty("return_callback_id", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool ReturnCallbackId { get; set; } = true;

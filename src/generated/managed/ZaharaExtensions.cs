@@ -236,13 +236,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
     public class LineItemAddIntegrationModel
     {
         public string CostCode { get; set; }
-        public double Quantity { get; set; }
-        public double Price { get; set; }
+        public double? Quantity { get; set; }
+        public double? Price { get; set; }
         public string LineDescription { get; set; }
         public string NominalCode { get; set; }
         public string TaxCode { get; set; }
-        public double TaxValue { get; set; }
-        public double DiscountPercentage { get; set; }
+        public double? TaxValue { get; set; }
+        public double? DiscountPercentage { get; set; }
         public string ProductCode { get; set; }
         public string ProjectCode { get; set; }
     }

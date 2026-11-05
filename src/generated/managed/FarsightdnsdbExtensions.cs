@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
-        public IBodyWorkflowAction<RDataResults[], ApiConnectionActionConfiguration> RDATA(Expression<Func<typeInput>> type, Expression<Func<string>> value, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
+        public IBodyWorkflowAction<RDataResults[], ApiConnectionActionConfiguration> RDATA(Expression<Func<typeInput2>> type, Expression<Func<string>> value, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
-        public IBodyWorkflowAction<RDataResults[], ApiConnectionActionConfiguration> RDATARRTYPE(Expression<Func<typeInput>> type, Expression<Func<string>> value, Expression<Func<string>> rrtype, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
+        public IBodyWorkflowAction<RDataResults[], ApiConnectionActionConfiguration> RDATARRTYPE(Expression<Func<typeInput3>> type, Expression<Func<string>> value, Expression<Func<string>> rrtype, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
@@ -306,8 +306,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
     {
         [EnumMember(Value = "name")]
         Name,
-        [EnumMember(Value = "ip")]
-        Ip,
         [EnumMember(Value = "raw")]
         Raw
     }
@@ -337,6 +335,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
 
         [JsonProperty("rdata")]
         public string[] Rdata { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum typeInput2
+    {
+        [EnumMember(Value = "name")]
+        Name,
+        [EnumMember(Value = "ip")]
+        Ip,
+        [EnumMember(Value = "raw")]
+        Raw
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum typeInput3
+    {
+        [EnumMember(Value = "name")]
+        Name,
+        [EnumMember(Value = "ip")]
+        Ip,
+        [EnumMember(Value = "raw")]
+        Raw
     }
 
     public class FlexResults

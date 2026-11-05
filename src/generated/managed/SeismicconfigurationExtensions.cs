@@ -250,11 +250,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicconfiguration
 
     public class SeismicContentManagerContentPropertyTeamSiteInfo
     {
-        [JsonProperty("teamSiteId")]
+        [JsonProperty("teamSiteId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TeamsiteId { get; set; }
 
         [JsonProperty("isRequired")]
-        public bool IsARequiredProperty { get; set; }
+        public bool? IsARequiredProperty { get; set; }
     }
 
     public class SeismicPrivacyManagementGdprEmailSettingResponse

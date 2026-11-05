@@ -758,7 +758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         public CreateEnvelopeInputDocumentsTypeItemTypeType? Type { get; set; }
 
         [JsonProperty("base")]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1429,7 +1429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Annatureip
         public UseTemplateInputDocumentsTypeItemGroupId2Type? GroupId2 { get; set; }
 
         [JsonProperty("base")]
-        public string FileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

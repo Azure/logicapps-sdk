@@ -700,26 +700,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class Milestone
     {
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
-        [JsonProperty("date")]
+        [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Date { get; set; }
     }
 
     public class Holiday
     {
-        [JsonProperty("date")]
+        [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Date { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("type")]
-        public HolidayTypeType Type { get; set; }
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public HolidayTypeType? Type { get; set; } = HolidayTypeType.Federal;
 
-        [JsonProperty("observance")]
-        public HolidayObservanceType Observance { get; set; }
+        [JsonProperty("observance", DefaultValueHandling = DefaultValueHandling.Include)]
+        public HolidayObservanceType? Observance { get; set; } = HolidayObservanceType.FullDay;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1147,8 +1147,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         [JsonProperty("timeZones", DefaultValueHandling = DefaultValueHandling.Include)]
         public TimeZoneEnum[] TimeZones { get; set; }
 
-        [JsonProperty("workingHours")]
-        public WorkingHours WorkingHours { get; set; }
+        [JsonProperty("workingHours", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WorkingHours WorkingHours { get; set; } = new WorkingHours();
 
         [JsonProperty("includeHolidays", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IncludeHolidays { get; set; } = false;
@@ -1156,14 +1156,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class WorkingHours
     {
-        [JsonProperty("startTime")]
-        public string StartTime { get; set; }
+        [JsonProperty("startTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string StartTime { get; set; } = "09:00";
 
-        [JsonProperty("endTime")]
-        public string EndTime { get; set; }
+        [JsonProperty("endTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EndTime { get; set; } = "17:00";
 
-        [JsonProperty("workingDays")]
-        public WorkingHoursWorkingDaysTypeItem[] WorkingDays { get; set; }
+        [JsonProperty("workingDays", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WorkingHoursWorkingDaysTypeItem[] WorkingDays { get; set; } = new WorkingHoursWorkingDaysTypeItem[]
+        {
+            (WorkingHoursWorkingDaysTypeItem)0,
+            (WorkingHoursWorkingDaysTypeItem)1,
+            (WorkingHoursWorkingDaysTypeItem)2,
+            (WorkingHoursWorkingDaysTypeItem)3,
+            (WorkingHoursWorkingDaysTypeItem)4
+        };
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1291,7 +1298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
     public class CalculateMeetingTimesInput
     {
         [JsonProperty("participants", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ParticipantLocalTime[] Participants { get; set; }
+        public ParticipantLocalTime2[] Participants { get; set; }
 
         [JsonProperty("durationMinutes", DefaultValueHandling = DefaultValueHandling.Include)]
         public int DurationMinutes { get; set; }
@@ -1305,11 +1312,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         [JsonProperty("dateRange")]
         public DateRange DateRange { get; set; }
 
-        [JsonProperty("workingHours")]
-        public WorkingHours WorkingHours { get; set; }
+        [JsonProperty("workingHours", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WorkingHours WorkingHours { get; set; } = new WorkingHours();
 
         [JsonProperty("preferredTimes")]
         public TimeSlot[] PreferredTimes { get; set; }
+    }
+
+    public class ParticipantLocalTime2
+    {
+        [JsonProperty("participantName")]
+        public string ParticipantName { get; set; }
+
+        [JsonProperty("localDateTime")]
+        public string LocalDateTime { get; set; }
+
+        [JsonProperty("timeZone")]
+        public TimeZoneEnum? TimeZone { get; set; }
+
+        [JsonProperty("isWithinWorkingHours")]
+        public bool? IsWithinWorkingHours { get; set; }
+
+        [JsonProperty("conflictLevel")]
+        public ParticipantLocalTimeConflictLevelType? ConflictLevel { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1358,19 +1383,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class DateRange
     {
-        [JsonProperty("startDate")]
+        [JsonProperty("startDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDate { get; set; }
 
-        [JsonProperty("endDate")]
+        [JsonProperty("endDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EndDate { get; set; }
     }
 
     public class TimeSlot
     {
-        [JsonProperty("startTime")]
+        [JsonProperty("startTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartTime { get; set; }
 
-        [JsonProperty("endTime")]
+        [JsonProperty("endTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EndTime { get; set; }
 
         [JsonProperty("description")]
@@ -1452,20 +1477,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
 
     public class DstCalculation
     {
-        [JsonProperty("calculationId")]
+        [JsonProperty("calculationId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CalculationId { get; set; }
 
-        [JsonProperty("timeZone")]
+        [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
         public DstCalculationTimeZoneType TimeZone { get; set; }
 
-        [JsonProperty("startDateTime")]
+        [JsonProperty("startDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string StartDateTime { get; set; }
 
-        [JsonProperty("endDateTime")]
+        [JsonProperty("endDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EndDateTime { get; set; }
 
         [JsonProperty("expectedResult")]
-        public DurationBreakdown ExpectedResult { get; set; }
+        public DurationBreakdown2 ExpectedResult { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1683,6 +1708,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         IndianMaldives,
         [EnumMember(Value = "Indian/Mauritius")]
         IndianMauritius
+    }
+
+    public class DurationBreakdown2
+    {
+        [JsonProperty("totalDays")]
+        public int? TotalDays { get; set; }
+
+        [JsonProperty("totalHours")]
+        public int? TotalHours { get; set; }
+
+        [JsonProperty("totalMinutes")]
+        public int? TotalMinutes { get; set; }
+
+        [JsonProperty("totalSeconds")]
+        public int? TotalSeconds { get; set; }
+
+        [JsonProperty("years")]
+        public int? Years { get; set; }
+
+        [JsonProperty("months")]
+        public int? Months { get; set; }
+
+        [JsonProperty("days")]
+        public int? Days { get; set; }
+
+        [JsonProperty("hours")]
+        public int? Hours { get; set; }
+
+        [JsonProperty("minutes")]
+        public int? Minutes { get; set; }
+
+        [JsonProperty("seconds")]
+        public int? Seconds { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

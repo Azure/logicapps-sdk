@@ -774,16 +774,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
     public class SeismicLibraryCommentingAnnotation
     {
         [JsonProperty("type")]
-        public SeismicLibraryCommentingAnnotationType Type { get; set; }
+        public SeismicLibraryCommentingAnnotationType? Type { get; set; }
 
         [JsonProperty("page")]
-        public int Page { get; set; }
+        public int? Page { get; set; }
 
         [JsonProperty("color")]
         public string Color { get; set; }
 
         [JsonProperty("points")]
-        public SeismicPublicIntegrationApiOriginApiClientModelsContentManagerPointServiceModel[] Points { get; set; }
+        public SeismicPublicIntegrationApiOriginApiClientModelsContentManagerPointServiceModel2[] Points { get; set; }
+    }
+
+    public class SeismicPublicIntegrationApiOriginApiClientModelsContentManagerPointServiceModel2
+    {
+        [JsonProperty("x")]
+        public double? X { get; set; }
+
+        [JsonProperty("y")]
+        public double? Y { get; set; }
     }
 
     public class SeismicWorkspaceCommentsWorkspaceReplyCommentResponse

@@ -1276,26 +1276,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class Party
     {
-        [JsonProperty("firstName")]
+        [JsonProperty("firstName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FirstName { get; set; }
 
-        [JsonProperty("lastName")]
+        [JsonProperty("lastName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LastName { get; set; }
 
-        [JsonProperty("emailId")]
+        [JsonProperty("emailId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmailAddress { get; set; }
 
-        [JsonProperty("permission")]
+        [JsonProperty("permission", DefaultValueHandling = DefaultValueHandling.Include)]
         public Permissions Permission { get; set; }
 
-        [JsonProperty("sequence")]
+        [JsonProperty("sequence", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Sequence { get; set; }
 
         [JsonProperty("signerAuthLevel")]
-        public SignerAuthLevels SignerAuthLevel { get; set; }
+        public SignerAuthLevels? SignerAuthLevel { get; set; }
 
         [JsonProperty("isPlaceholder")]
-        public bool IsPlaceholder { get; set; }
+        public bool? IsPlaceholder { get; set; }
 
         [JsonProperty("partyRole")]
         public string RecipientRole { get; set; }
@@ -1304,7 +1304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string AllowNameChange { get; set; }
 
         [JsonProperty("workflowSequence")]
-        public int WorkflowSequence { get; set; }
+        public int? WorkflowSequence { get; set; }
 
         [JsonProperty("hostEmailId")]
         public string HostEmailId { get; set; }
@@ -1313,13 +1313,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
         public string AccessCode { get; set; }
 
         [JsonProperty("partyIsEmailGroup")]
-        public bool PartyIsEmailGroup { get; set; }
+        public bool? PartyIsEmailGroup { get; set; }
 
         [JsonProperty("emailGroupId")]
-        public int EmailGroupId { get; set; }
+        public int? EmailGroupId { get; set; }
 
         [JsonProperty("allowSingleSignerInBulk")]
-        public bool SingleSignerBulk { get; set; }
+        public bool? SingleSignerBulk { get; set; }
 
         [JsonProperty("dialingCode")]
         public string DialingCode { get; set; }
@@ -1361,22 +1361,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class DependentField
     {
-        [JsonProperty("dependentFields")]
+        [JsonProperty("dependentFields", DefaultValueHandling = DefaultValueHandling.Include)]
         public DependentField1[] DependentFields { get; set; }
     }
 
     public class DependentField1
     {
-        [JsonProperty("dependentFieldName")]
+        [JsonProperty("dependentFieldName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DependentFieldName { get; set; }
 
-        [JsonProperty("parentFieldName")]
+        [JsonProperty("parentFieldName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ParentFieldName { get; set; }
 
-        [JsonProperty("parentFieldValue")]
+        [JsonProperty("parentFieldValue", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ParentFieldValue { get; set; }
 
-        [JsonProperty("options")]
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Options { get; set; }
     }
 
@@ -2505,13 +2505,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foxitesign
 
     public class TemplateParty
     {
-        [JsonProperty("permission")]
+        [JsonProperty("permission", DefaultValueHandling = DefaultValueHandling.Include)]
         public Permissions Permission { get; set; }
 
-        [JsonProperty("sequence")]
+        [JsonProperty("sequence", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Sequence { get; set; }
 
-        [JsonProperty("partyRole")]
+        [JsonProperty("partyRole", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RecipientRole { get; set; }
     }
 

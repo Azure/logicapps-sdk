@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
     public class SeismicSearchSearchOptions
     {
         [JsonProperty("pageSize")]
-        public int PageSize { get; set; }
+        public int? PageSize { get; set; }
 
         [JsonProperty("searchFields")]
         public SeismicSearchSearchOptionsSearchFieldsTypeItem[] SearchFields { get; set; }
@@ -512,11 +512,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         public string Field { get; set; }
 
         [JsonProperty("order")]
-        public SeismicSearchSortConstraintOrderType Order { get; set; }
+        public SeismicSearchSortConstraintDirection? Order { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SeismicSearchSortConstraintOrderType
+    public enum SeismicSearchSortConstraintDirection
     {
         Asc,
         Desc

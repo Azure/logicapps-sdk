@@ -1265,7 +1265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ResultListResponse, ApiConnectionActionConfiguration> SearchWHOIS(Expression<Func<string>> query, Expression<Func<fieldInput>> field)
+        public IBodyWorkflowAction<ResultListResponse, ApiConnectionActionConfiguration> SearchWHOIS(Expression<Func<string>> query, Expression<Func<fieldInput2>> field)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: true);
@@ -2279,16 +2279,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string Id { get; set; }
 
         [JsonProperty("counts")]
-        public OrganizationCountsType Counts { get; set; }
+        public OrganizationInfoCountsType Counts { get; set; }
 
         [JsonProperty("freebies")]
-        public OrganizationFreebiesType Freebies { get; set; }
+        public OrganizationInfoFreebiesType Freebies { get; set; }
 
         [JsonProperty("profile")]
-        public OrganizationProfileType Profile { get; set; }
+        public OrganizationInfoProfileType Profile { get; set; }
 
         [JsonProperty("limits")]
-        public OrganizationLimitsType Limits { get; set; }
+        public OrganizationInfoLimitsType Limits { get; set; }
 
         [JsonProperty("quotaInterval")]
         public string QuotaInterval { get; set; }
@@ -2318,7 +2318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public JToken EventCodeExpiration { get; set; }
     }
 
-    public class OrganizationCountsType
+    public class OrganizationInfoCountsType
     {
         [JsonProperty("keyword_monitors")]
         public int KeywordMonitors { get; set; }
@@ -2339,7 +2339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public int ProjectsPublic { get; set; }
     }
 
-    public class OrganizationFreebiesType
+    public class OrganizationInfoFreebiesType
     {
         [JsonProperty("search_api")]
         public int SearchApi { get; set; }
@@ -2348,7 +2348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public int SearchWeb { get; set; }
     }
 
-    public class OrganizationProfileType
+    public class OrganizationInfoProfileType
     {
         [JsonProperty("analysis")]
         public string Analysis { get; set; }
@@ -2357,7 +2357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string Workflow { get; set; }
     }
 
-    public class OrganizationLimitsType
+    public class OrganizationInfoLimitsType
     {
         [JsonProperty("search_api")]
         public int SearchApi { get; set; }
@@ -2507,7 +2507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public bool Active { get; set; }
 
         [JsonProperty("configuration")]
-        public SourceConfigurationType Configuration { get; set; }
+        public SourceInfoConfigurationType Configuration { get; set; }
 
         [JsonProperty("type")]
         public string[] Type { get; set; }
@@ -2531,7 +2531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public bool Auth { get; set; }
 
         [JsonProperty("authMethod")]
-        public SourceAuthMethodType AuthMethod { get; set; }
+        public SourceInfoAuthMethodType AuthMethod { get; set; }
 
         [JsonProperty("source")]
         public string Source { get; set; }
@@ -2540,7 +2540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public JToken OrgConfiguration { get; set; }
     }
 
-    public class SourceConfigurationType
+    public class SourceInfoConfigurationType
     {
         [JsonProperty("settings")]
         public JToken Settings { get; set; }
@@ -2555,7 +2555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string Token { get; set; }
     }
 
-    public class SourceAuthMethodType
+    public class SourceInfoAuthMethodType
     {
         [JsonProperty("apiKey")]
         public string ApiKey { get; set; }
@@ -3616,20 +3616,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fieldInput
     {
-        [EnumMember(Value = "email")]
-        Email,
-        [EnumMember(Value = "domain")]
-        Domain,
+        [EnumMember(Value = "issuerSurname")]
+        IssuerSurname,
+        [EnumMember(Value = "subjectOrganizationName")]
+        SubjectOrganizationName,
+        [EnumMember(Value = "issuerCountry")]
+        IssuerCountry,
+        [EnumMember(Value = "issuerOrganizationUnitName")]
+        IssuerOrganizationUnitName,
+        [EnumMember(Value = "fingerprint")]
+        Fingerprint,
+        [EnumMember(Value = "subjectOrganizationUnitName")]
+        SubjectOrganizationUnitName,
+        [EnumMember(Value = "serialNumber")]
+        SerialNumber,
+        [EnumMember(Value = "subjectEmailAddress")]
+        SubjectEmailAddress,
+        [EnumMember(Value = "subjectCountry")]
+        SubjectCountry,
+        [EnumMember(Value = "issuerGivenName")]
+        IssuerGivenName,
+        [EnumMember(Value = "subjectCommonName")]
+        SubjectCommonName,
+        [EnumMember(Value = "issuerCommonName")]
+        IssuerCommonName,
+        [EnumMember(Value = "issuerStateOrProvinceName")]
+        IssuerStateOrProvinceName,
+        [EnumMember(Value = "issuerProvince")]
+        IssuerProvince,
+        [EnumMember(Value = "subjectStateOrProvinceName")]
+        SubjectStateOrProvinceName,
+        [EnumMember(Value = "sha1")]
+        Sha1,
+        [EnumMember(Value = "subjectStreetAddress")]
+        SubjectStreetAddress,
+        [EnumMember(Value = "subjectSerialNumber")]
+        SubjectSerialNumber,
+        [EnumMember(Value = "issuerOrganizationName")]
+        IssuerOrganizationName,
+        [EnumMember(Value = "subjectSurname")]
+        SubjectSurname,
+        [EnumMember(Value = "subjectLocalityName")]
+        SubjectLocalityName,
+        [EnumMember(Value = "issuerStreetAddress")]
+        IssuerStreetAddress,
+        [EnumMember(Value = "issuerLocalityName")]
+        IssuerLocalityName,
+        [EnumMember(Value = "subjectGivenName")]
+        SubjectGivenName,
+        [EnumMember(Value = "subjectProvince")]
+        SubjectProvince,
+        [EnumMember(Value = "issuerSerialNumber")]
+        IssuerSerialNumber,
+        [EnumMember(Value = "issuerEmailAddress")]
+        IssuerEmailAddress,
         [EnumMember(Value = "name")]
         Name,
-        [EnumMember(Value = "organization")]
-        Organization,
-        [EnumMember(Value = "address")]
-        Address,
-        [EnumMember(Value = "phone")]
-        Phone,
-        [EnumMember(Value = "nameserver")]
-        Nameserver
+        [EnumMember(Value = "issuerAlternativeName")]
+        IssuerAlternativeName,
+        [EnumMember(Value = "subjectAlternativeName")]
+        SubjectAlternativeName
     }
 
     public class SSLSearchKeywordResponse
@@ -4220,6 +4266,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
 
         [JsonProperty("rawText")]
         public string RawText { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum fieldInput2
+    {
+        [EnumMember(Value = "email")]
+        Email,
+        [EnumMember(Value = "domain")]
+        Domain,
+        [EnumMember(Value = "name")]
+        Name,
+        [EnumMember(Value = "organization")]
+        Organization,
+        [EnumMember(Value = "address")]
+        Address,
+        [EnumMember(Value = "phone")]
+        Phone,
+        [EnumMember(Value = "nameserver")]
+        Nameserver
     }
 
     public class EnrichmentBulkResponse

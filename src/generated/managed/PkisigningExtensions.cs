@@ -1082,7 +1082,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         };
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhooksCreateWebhookInputConfigType Config { get; set; }
+        public WebhooksCreateWebhookInputConfigType Config { get; set; } = new WebhooksCreateWebhookInputConfigType();
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool Active { get; set; } = true;

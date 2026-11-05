@@ -499,7 +499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         public string Subscribers { get; set; }
 
         [JsonProperty("actionWrapper")]
-        public JToken ActionWrapper { get; set; }
+        public JToken ActionId { get; set; }
     }
 
     public class PostReactionResponse

@@ -524,7 +524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
     public class CreateWebhookInput
     {
         [JsonProperty("webhookSettings", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateWebhookInputWebhookSettingsType WebhookSettings { get; set; }
+        public CreateWebhookInputWebhookSettingsType WebhookSettings { get; set; } = new CreateWebhookInputWebhookSettingsType();
     }
 
     public class CreateWebhookInputWebhookSettingsType
@@ -552,7 +552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
     public class CreateActionLogWebhookInput
     {
         [JsonProperty("webhookSettings", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateActionLogWebhookInputWebhookSettingsType WebhookSettings { get; set; }
+        public CreateActionLogWebhookInputWebhookSettingsType WebhookSettings { get; set; } = new CreateActionLogWebhookInputWebhookSettingsType();
     }
 
     public class CreateActionLogWebhookInputWebhookSettingsType

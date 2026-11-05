@@ -213,7 +213,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thesmsworksip
     public class ScheduleMessageInputMetadataType
     {
         [JsonProperty("schema")]
-        public JToken Schema { get; set; }
+        public MetaData Schema { get; set; }
+    }
+
+    public class MetaData
+    {
+        [JsonProperty("key")]
+        public string Key { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
     }
 }
 

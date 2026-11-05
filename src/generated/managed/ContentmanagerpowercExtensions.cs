@@ -1532,12 +1532,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
-        public AccessControlList AccessControlList { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public AccessControlList AccessControlList { get; set; } = new AccessControlList();
     }
 
     public class AccessControlList
     {
-        public string FunctionEnum { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FunctionEnum { get; set; } = "RecordAccess";
         public FunctionProfiles FunctionProfiles { get; set; }
     }
 
@@ -1561,7 +1564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
     public class AccessLocationsItem
     {
         [JsonProperty("Uri")]
-        public int UniqueId { get; set; }
+        public int? UniqueId { get; set; }
     }
 
     public class ViewRecord
@@ -1604,21 +1607,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contentmanagerpowerc
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
-        public AccessControlList AccessControlList { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public AccessControlList AccessControlList { get; set; } = new AccessControlList();
     }
 
     public class SetAccessControlInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
-        public AccessControlList AccessControlList { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public AccessControlList AccessControlList { get; set; } = new AccessControlList();
     }
 
     public class InheritAccessControlInput
     {
         [JsonProperty("Uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public int UniqueIdentifier { get; set; }
-        public AccessControlList AccessControlList { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public AccessControlList AccessControlList { get; set; } = new AccessControlList();
     }
 }
 

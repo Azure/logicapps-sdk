@@ -838,10 +838,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string Gender { get; set; }
 
         [JsonProperty("email")]
-        public EmailInfo[] Email { get; set; }
+        public EmailInfo2[] Email { get; set; }
 
         [JsonProperty("phone")]
-        public Phone[] Phone { get; set; }
+        public Phone2[] Phone { get; set; }
 
         [JsonProperty("linkedInProfileId")]
         public string LinkedInProfileId { get; set; }
@@ -913,7 +913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public ContactModel[] ContactIds { get; set; }
 
         [JsonProperty("customFields")]
-        public CustomField[] CustomFields { get; set; }
+        public CustomField2[] CustomFields { get; set; }
 
         [JsonProperty("enumEntityTypes")]
         public EntityTypeNames? EnumEntityTypes { get; set; }
@@ -937,13 +937,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public AddressType? EnumAddressTypes { get; set; }
     }
 
+    public class EmailInfo2
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("favourite")]
+        public bool? Favourite { get; set; }
+
+        [JsonProperty("feeSynergy")]
+        public bool? FeeSynergy { get; set; }
+    }
+
+    public class Phone2
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("number")]
+        public string Number { get; set; }
+
+        [JsonProperty("favourite")]
+        public bool? Favourite { get; set; }
+
+        [JsonProperty("feeSynergy")]
+        public bool? FeeSynergy { get; set; }
+    }
+
     public class ContactModel
     {
         [JsonProperty("contactId")]
-        public int ContactId { get; set; }
+        public int? ContactId { get; set; }
 
         [JsonProperty("contactType")]
         public string ContactType { get; set; }
+    }
+
+    public class CustomField2
+    {
+        [JsonProperty("id")]
+        public int? Id { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1220,10 +1259,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string Gender { get; set; }
 
         [JsonProperty("email")]
-        public EmailInfo[] Email { get; set; }
+        public EmailInfo2[] Email { get; set; }
 
         [JsonProperty("phone")]
-        public Phone[] Phone { get; set; }
+        public Phone2[] Phone { get; set; }
 
         [JsonProperty("linkedInProfileId")]
         public string LinkedInProfileId { get; set; }
@@ -1295,7 +1334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public ContactModel[] ContactIds { get; set; }
 
         [JsonProperty("customFields")]
-        public CustomField[] CustomFields { get; set; }
+        public CustomField2[] CustomFields { get; set; }
 
         [JsonProperty("enumEntityTypes")]
         public EntityTypeNames? EnumEntityTypes { get; set; }
@@ -1340,10 +1379,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
     public class GroupClient
     {
         [JsonProperty("clientId")]
-        public int ClientId { get; set; }
+        public int? ClientId { get; set; }
 
         [JsonProperty("isDebitorClient")]
-        public bool IsDebitorClient { get; set; }
+        public bool? IsDebitorClient { get; set; }
 
         [JsonProperty("relationIds")]
         public int[] RelationIds { get; set; }
@@ -1517,10 +1556,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string Gender { get; set; }
 
         [JsonProperty("phone")]
-        public Phone[] Phone { get; set; }
+        public Phone2[] Phone { get; set; }
 
         [JsonProperty("email")]
-        public EmailInfo[] Email { get; set; }
+        public EmailInfo2[] Email { get; set; }
 
         [JsonProperty("companyName")]
         public string CompanyName { get; set; }
@@ -1547,7 +1586,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public Address[] Addresses { get; set; }
 
         [JsonProperty("customFields")]
-        public CustomField[] CustomFields { get; set; }
+        public CustomField2[] CustomFields { get; set; }
 
         [JsonProperty("enumAddressTypes")]
         public AddressType? EnumAddressTypes { get; set; }
@@ -2027,7 +2066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public int? StatusId { get; set; }
 
         [JsonProperty("customFields")]
-        public CustomField[] CustomFields { get; set; }
+        public CustomField2[] CustomFields { get; set; }
 
         [JsonProperty("enumJobCategoryTypes")]
         public JobCategory? EnumJobCategoryTypes { get; set; }
@@ -2153,7 +2192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public int? StatusId { get; set; }
 
         [JsonProperty("customFields")]
-        public CustomField[] CustomFields { get; set; }
+        public CustomField2[] CustomFields { get; set; }
 
         [JsonProperty("enumJobCategoryTypes")]
         public JobCategory? EnumJobCategoryTypes { get; set; }

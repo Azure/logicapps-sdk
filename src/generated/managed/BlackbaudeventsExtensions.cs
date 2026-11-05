@@ -1012,7 +1012,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string Name { get; set; }
 
         [JsonProperty("sequence")]
-        public int Sequence { get; set; }
+        public int? Sequence { get; set; }
     }
 
     public class EventApiApiCollectionOfParticipantListEntry

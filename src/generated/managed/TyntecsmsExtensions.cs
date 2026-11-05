@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
         internal string Channel { get; set; } = "sms";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendSMSv3InputContentType Content { get; set; }
+        public SendSMSv3InputContentType Content { get; set; } = new SendSMSv3InputContentType();
     }
 
     public class SendSMSv3InputContentType

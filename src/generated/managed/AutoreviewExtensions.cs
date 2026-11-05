@@ -559,7 +559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public POSTJsonInputFlowPropertiesType FlowProperties { get; set; }
 
         [JsonProperty("configs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public POSTJsonInputConfigsType Configs { get; set; }
+        public POSTJsonInputConfigsType Configs { get; set; } = new POSTJsonInputConfigsType();
     }
 
     public class POSTJsonInputFlowPropertiesType
@@ -619,7 +619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public POSTDiagramInputPropertiesType Properties { get; set; }
 
         [JsonProperty("configs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public POSTDiagramInputConfigType Config { get; set; }
+        public POSTDiagramInputConfigType Config { get; set; } = new POSTDiagramInputConfigType();
     }
 
     public class POSTDiagramInputPropertiesType
@@ -674,7 +674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public POSTFileV2InputFlowPropertiesType FlowProperties { get; set; }
 
         [JsonProperty("configs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public POSTFileV2InputConfigType Config { get; set; }
+        public POSTFileV2InputConfigType Config { get; set; } = new POSTFileV2InputConfigType();
     }
 
     public class POSTFileV2InputFlowPropertiesType

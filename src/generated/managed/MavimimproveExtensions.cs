@@ -1507,10 +1507,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldId { get; set; }
 
         [JsonProperty("setOrder")]
-        public int SetOrder { get; set; }
+        public int? SetOrder { get; set; }
 
         [JsonProperty("order")]
-        public int Order { get; set; }
+        public int? Order { get; set; }
 
         [JsonProperty("topicId")]
         public string TopicId { get; set; }
@@ -1522,13 +1522,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType FieldValueType { get; set; }
+        public FieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
-        public bool Required { get; set; }
+        public bool? Required { get; set; }
 
         [JsonProperty("readonly")]
-        public bool Readonly { get; set; }
+        public bool? Readonly { get; set; }
 
         [JsonProperty("usage")]
         public string Usage { get; set; }
@@ -1555,10 +1555,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldId { get; set; }
 
         [JsonProperty("setOrder")]
-        public int SetOrder { get; set; }
+        public int? SetOrder { get; set; }
 
         [JsonProperty("order")]
-        public int Order { get; set; }
+        public int? Order { get; set; }
 
         [JsonProperty("topicId")]
         public string TopicId { get; set; }
@@ -1570,13 +1570,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType FieldValueType { get; set; }
+        public FieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
-        public bool Required { get; set; }
+        public bool? Required { get; set; }
 
         [JsonProperty("readonly")]
-        public bool Readonly { get; set; }
+        public bool? Readonly { get; set; }
 
         [JsonProperty("usage")]
         public string Usage { get; set; }
@@ -1603,10 +1603,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldId { get; set; }
 
         [JsonProperty("setOrder")]
-        public int SetOrder { get; set; }
+        public int? SetOrder { get; set; }
 
         [JsonProperty("order")]
-        public int Order { get; set; }
+        public int? Order { get; set; }
 
         [JsonProperty("topicId")]
         public string TopicId { get; set; }
@@ -1618,13 +1618,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType FieldValueType { get; set; }
+        public FieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
-        public bool Required { get; set; }
+        public bool? Required { get; set; }
 
         [JsonProperty("readonly")]
-        public bool Readonly { get; set; }
+        public bool? Readonly { get; set; }
 
         [JsonProperty("usage")]
         public string Usage { get; set; }
@@ -1639,7 +1639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string OpenLocation { get; set; }
 
         [JsonProperty("data")]
-        public int Data { get; set; }
+        public int? Data { get; set; }
     }
 
     public class MultiNumberField
@@ -1651,10 +1651,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldId { get; set; }
 
         [JsonProperty("setOrder")]
-        public int SetOrder { get; set; }
+        public int? SetOrder { get; set; }
 
         [JsonProperty("order")]
-        public int Order { get; set; }
+        public int? Order { get; set; }
 
         [JsonProperty("topicId")]
         public string TopicId { get; set; }
@@ -1666,13 +1666,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType FieldValueType { get; set; }
+        public FieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
-        public bool Required { get; set; }
+        public bool? Required { get; set; }
 
         [JsonProperty("readonly")]
-        public bool Readonly { get; set; }
+        public bool? Readonly { get; set; }
 
         [JsonProperty("usage")]
         public string Usage { get; set; }
@@ -1699,10 +1699,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldId { get; set; }
 
         [JsonProperty("setOrder")]
-        public int SetOrder { get; set; }
+        public int? SetOrder { get; set; }
 
         [JsonProperty("order")]
-        public int Order { get; set; }
+        public int? Order { get; set; }
 
         [JsonProperty("topicId")]
         public string TopicId { get; set; }
@@ -1714,13 +1714,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType FieldValueType { get; set; }
+        public FieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
-        public bool Required { get; set; }
+        public bool? Required { get; set; }
 
         [JsonProperty("readonly")]
-        public bool Readonly { get; set; }
+        public bool? Readonly { get; set; }
 
         [JsonProperty("usage")]
         public string Usage { get; set; }
@@ -1735,7 +1735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string OpenLocation { get; set; }
 
         [JsonProperty("data")]
-        public bool Data { get; set; }
+        public bool? Data { get; set; }
     }
 
     public class SingleDecimalField
@@ -1747,10 +1747,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldId { get; set; }
 
         [JsonProperty("setOrder")]
-        public int SetOrder { get; set; }
+        public int? SetOrder { get; set; }
 
         [JsonProperty("order")]
-        public int Order { get; set; }
+        public int? Order { get; set; }
 
         [JsonProperty("topicId")]
         public string TopicId { get; set; }
@@ -1762,13 +1762,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType FieldValueType { get; set; }
+        public FieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
-        public bool Required { get; set; }
+        public bool? Required { get; set; }
 
         [JsonProperty("readonly")]
-        public bool Readonly { get; set; }
+        public bool? Readonly { get; set; }
 
         [JsonProperty("usage")]
         public string Usage { get; set; }
@@ -1783,7 +1783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string OpenLocation { get; set; }
 
         [JsonProperty("data")]
-        public double Data { get; set; }
+        public double? Data { get; set; }
     }
 
     public class MultiDecimalField
@@ -1795,10 +1795,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldId { get; set; }
 
         [JsonProperty("setOrder")]
-        public int SetOrder { get; set; }
+        public int? SetOrder { get; set; }
 
         [JsonProperty("order")]
-        public int Order { get; set; }
+        public int? Order { get; set; }
 
         [JsonProperty("topicId")]
         public string TopicId { get; set; }
@@ -1810,13 +1810,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType FieldValueType { get; set; }
+        public FieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
-        public bool Required { get; set; }
+        public bool? Required { get; set; }
 
         [JsonProperty("readonly")]
-        public bool Readonly { get; set; }
+        public bool? Readonly { get; set; }
 
         [JsonProperty("usage")]
         public string Usage { get; set; }
@@ -1843,10 +1843,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldId { get; set; }
 
         [JsonProperty("setOrder")]
-        public int SetOrder { get; set; }
+        public int? SetOrder { get; set; }
 
         [JsonProperty("order")]
-        public int Order { get; set; }
+        public int? Order { get; set; }
 
         [JsonProperty("topicId")]
         public string TopicId { get; set; }
@@ -1858,13 +1858,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType FieldValueType { get; set; }
+        public FieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
-        public bool Required { get; set; }
+        public bool? Required { get; set; }
 
         [JsonProperty("readonly")]
-        public bool Readonly { get; set; }
+        public bool? Readonly { get; set; }
 
         [JsonProperty("usage")]
         public string Usage { get; set; }
@@ -1891,10 +1891,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldId { get; set; }
 
         [JsonProperty("setOrder")]
-        public int SetOrder { get; set; }
+        public int? SetOrder { get; set; }
 
         [JsonProperty("order")]
-        public int Order { get; set; }
+        public int? Order { get; set; }
 
         [JsonProperty("topicId")]
         public string TopicId { get; set; }
@@ -1906,13 +1906,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType FieldValueType { get; set; }
+        public FieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
-        public bool Required { get; set; }
+        public bool? Required { get; set; }
 
         [JsonProperty("readonly")]
-        public bool Readonly { get; set; }
+        public bool? Readonly { get; set; }
 
         [JsonProperty("usage")]
         public string Usage { get; set; }
@@ -1939,10 +1939,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldId { get; set; }
 
         [JsonProperty("setOrder")]
-        public int SetOrder { get; set; }
+        public int? SetOrder { get; set; }
 
         [JsonProperty("order")]
-        public int Order { get; set; }
+        public int? Order { get; set; }
 
         [JsonProperty("topicId")]
         public string TopicId { get; set; }
@@ -1954,13 +1954,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType FieldValueType { get; set; }
+        public FieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
-        public bool Required { get; set; }
+        public bool? Required { get; set; }
 
         [JsonProperty("readonly")]
-        public bool Readonly { get; set; }
+        public bool? Readonly { get; set; }
 
         [JsonProperty("usage")]
         public string Usage { get; set; }
@@ -2026,10 +2026,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldId { get; set; }
 
         [JsonProperty("setOrder")]
-        public int SetOrder { get; set; }
+        public int? SetOrder { get; set; }
 
         [JsonProperty("order")]
-        public int Order { get; set; }
+        public int? Order { get; set; }
 
         [JsonProperty("topicId")]
         public string TopicId { get; set; }
@@ -2041,13 +2041,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType FieldValueType { get; set; }
+        public FieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
-        public bool Required { get; set; }
+        public bool? Required { get; set; }
 
         [JsonProperty("readonly")]
-        public bool Readonly { get; set; }
+        public bool? Readonly { get; set; }
 
         [JsonProperty("usage")]
         public string Usage { get; set; }
@@ -2074,10 +2074,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldId { get; set; }
 
         [JsonProperty("setOrder")]
-        public int SetOrder { get; set; }
+        public int? SetOrder { get; set; }
 
         [JsonProperty("order")]
-        public int Order { get; set; }
+        public int? Order { get; set; }
 
         [JsonProperty("topicId")]
         public string TopicId { get; set; }
@@ -2089,13 +2089,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string FieldName { get; set; }
 
         [JsonProperty("fieldValueType")]
-        public FieldType FieldValueType { get; set; }
+        public FieldType? FieldValueType { get; set; }
 
         [JsonProperty("required")]
-        public bool Required { get; set; }
+        public bool? Required { get; set; }
 
         [JsonProperty("readonly")]
-        public bool Readonly { get; set; }
+        public bool? Readonly { get; set; }
 
         [JsonProperty("usage")]
         public string Usage { get; set; }

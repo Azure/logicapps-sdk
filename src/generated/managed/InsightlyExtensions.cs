@@ -1253,7 +1253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public int? VisibleUserIDs { get; set; }
 
         [JsonProperty("CONTACTINFOS")]
-        public ContactInfo[] ContactInformation { get; set; }
+        public ContactInfo2[] ContactInformation { get; set; }
 
         [JsonProperty("TAGS")]
         public Tag[] Tag { get; set; }
@@ -1268,13 +1268,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         Team
     }
 
-    public class ContactInfo
+    public class ContactInfo2
     {
         [JsonProperty("CONTACT_INFO_ID")]
-        public int ContactInfoId { get; set; }
+        public int? ContactInfoId { get; set; }
 
         [JsonProperty("TYPE")]
-        public ContactInfoTypeType Type { get; set; }
+        public ContactInfoTypeType? Type { get; set; }
 
         [JsonProperty("SUBTYPE")]
         public string SubType { get; set; }
@@ -1319,7 +1319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public int? VisibleUserIDs { get; set; }
 
         [JsonProperty("CONTACTINFOS")]
-        public ContactInfo[] ContactInformation { get; set; }
+        public ContactInfo2[] ContactInformation { get; set; }
 
         [JsonProperty("TAGS")]
         public Tag[] Tag { get; set; }
@@ -1463,6 +1463,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public string AddressCountry { get; set; }
     }
 
+    public class ContactInfo
+    {
+        [JsonProperty("CONTACT_INFO_ID")]
+        public int ContactInfoId { get; set; }
+
+        [JsonProperty("TYPE")]
+        public ContactInfoTypeType Type { get; set; }
+
+        [JsonProperty("SUBTYPE")]
+        public string SubType { get; set; }
+
+        [JsonProperty("LABEL")]
+        public string Label { get; set; }
+
+        [JsonProperty("DETAIL")]
+        public string Detail { get; set; }
+    }
+
     public class AddOrganizationInput
     {
         [JsonProperty("ORGANISATION_NAME", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -1481,10 +1499,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         public int? VisibleUserIDs { get; set; }
 
         [JsonProperty("ADDRESSES")]
-        public Address[] OrganizationAddress { get; set; }
+        public Address2[] OrganizationAddress { get; set; }
 
         [JsonProperty("CONTACTINFOS")]
-        public ContactInfo[] ContactInformation { get; set; }
+        public ContactInfo2[] ContactInformation { get; set; }
 
         [JsonProperty("TAGS")]
         public Tag[] Tags { get; set; }
@@ -1497,6 +1515,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Insightly
         Individuals,
         Owner,
         Team
+    }
+
+    public class Address2
+    {
+        [JsonProperty("ADDRESS_ID")]
+        public int? AddressId { get; set; }
+
+        [JsonProperty("ADDRESS_TYPE")]
+        public string AddressType { get; set; }
+
+        [JsonProperty("STREET")]
+        public string AddressStreet { get; set; }
+
+        [JsonProperty("CITY")]
+        public string AddressCity { get; set; }
+
+        [JsonProperty("STATE")]
+        public string AddressState { get; set; }
+
+        [JsonProperty("POSTCODE")]
+        public string AddressPostcode { get; set; }
+
+        [JsonProperty("COUNTRY")]
+        public string AddressCountry { get; set; }
     }
 
     public class ListEventsResponse

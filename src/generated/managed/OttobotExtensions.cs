@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
 
     public class AdaptiveCard
     {
-        [JsonProperty("$schema")]
+        [JsonProperty("$schema", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AdaptiveCardSchema { get; set; }
 
         [JsonProperty("actions")]
@@ -99,10 +99,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
         [JsonProperty("body")]
         public JToken[] AdaptiveCardBody { get; set; }
 
-        [JsonProperty("type")]
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AdaptiveCardType { get; set; }
 
-        [JsonProperty("version")]
+        [JsonProperty("version", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AdaptiveCardVersion { get; set; }
     }
 }

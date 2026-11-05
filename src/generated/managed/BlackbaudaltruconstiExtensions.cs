@@ -2980,7 +2980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
 
     public class ConmgNewConstituentInteractionParticipant
     {
-        [JsonProperty("constituent_id")]
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstitId { get; set; }
     }
 
@@ -3088,7 +3088,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
         [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonProperty("constituent_id")]
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ConstituentId { get; set; }
     }
 

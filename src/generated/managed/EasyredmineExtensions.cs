@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
     public class CreateProjectInput
     {
         [JsonProperty("project", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateProjectInputProjectType Project { get; set; }
+        public CreateProjectInputProjectType Project { get; set; } = new CreateProjectInputProjectType();
     }
 
     public class CreateProjectInputProjectType

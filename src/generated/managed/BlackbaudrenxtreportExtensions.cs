@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtreport
         public int ReportType { get; set; }
 
         [JsonProperty("execution_parameters", DefaultValueHandling = DefaultValueHandling.Include)]
-        public StartReportExecutionJobInputExecutionParametersType ExecutionParameters { get; set; }
+        public StartReportExecutionJobInputExecutionParametersType ExecutionParameters { get; set; } = new StartReportExecutionJobInputExecutionParametersType();
     }
 
     public class StartReportExecutionJobInputExecutionParametersType

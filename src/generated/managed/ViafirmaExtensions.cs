@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
         public string GroupCode { get; set; }
 
         [JsonProperty("workflow", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendSignRequestInputWorkflowType Workflow { get; set; }
+        public SendSignRequestInputWorkflowType Workflow { get; set; } = new SendSignRequestInputWorkflowType();
 
         [JsonProperty("notification", DefaultValueHandling = DefaultValueHandling.Include)]
         public SendSignRequestInputNotificationType Notification { get; set; }
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
         public string GroupCode { get; set; }
 
         [JsonProperty("workflow", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSignRequestInputWorkflowType Workflow { get; set; }
+        public CreateSignRequestInputWorkflowType Workflow { get; set; } = new CreateSignRequestInputWorkflowType();
 
         [JsonProperty("document", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateSignRequestInputDocumentType Document { get; set; }

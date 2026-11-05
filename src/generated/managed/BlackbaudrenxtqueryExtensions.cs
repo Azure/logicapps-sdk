@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtquery
 
     public class QueryApiAskFieldInformation
     {
-        [JsonProperty("operator")]
+        [JsonProperty("operator", DefaultValueHandling = DefaultValueHandling.Include)]
         public QueryApiAskFieldInformationOperatorType Operator { get; set; }
 
         [JsonProperty("filter_values")]

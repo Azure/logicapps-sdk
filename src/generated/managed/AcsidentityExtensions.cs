@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         [JsonProperty("scopes", DefaultValueHandling = DefaultValueHandling.Include)]
         public TokenScopes[] TokenScopes { get; set; } = new TokenScopes[]
         {
-            (TokenScopes)0
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity.TokenScopes.Chat
         };
     }
 }

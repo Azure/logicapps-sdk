@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
-        public IBodyWorkflowAction<Reports[], ApiConnectionActionConfiguration> GetDomainReportData(Expression<Func<string>> domain, Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
+        public IBodyWorkflowAction<Reports[], ApiConnectionActionConfiguration> GetDomainReportData(Expression<Func<string>> domain, Expression<Func<reportNameInput2>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: true);
@@ -195,12 +195,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
     {
         [EnumMember(Value = "download")]
         Download,
+        [EnumMember(Value = "traffic-source")]
+        TrafficSource,
+        [EnumMember(Value = "device-model")]
+        DeviceModel,
         [EnumMember(Value = "domain")]
         Domain,
         [EnumMember(Value = "site")]
         Site,
         [EnumMember(Value = "second-level-domain")]
-        SecondLevelDomain
+        SecondLevelDomain,
+        [EnumMember(Value = "language")]
+        Language,
+        [EnumMember(Value = "os-browser")]
+        OSBrowser,
+        [EnumMember(Value = "windows-browser")]
+        WindowsBrowser,
+        [EnumMember(Value = "browser")]
+        Browser,
+        [EnumMember(Value = "windows-ie")]
+        WindowsIE,
+        [EnumMember(Value = "os")]
+        OS,
+        [EnumMember(Value = "windows")]
+        Windows,
+        [EnumMember(Value = "ie")]
+        IE,
+        [EnumMember(Value = "device")]
+        Device
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -360,6 +382,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         USRailroadRetirementBoard,
         [EnumMember(Value = "trade-development-agency")]
         USTradeAndDevelopmentAgency
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum reportNameInput2
+    {
+        [EnumMember(Value = "download")]
+        Download,
+        [EnumMember(Value = "domain")]
+        Domain,
+        [EnumMember(Value = "site")]
+        Site,
+        [EnumMember(Value = "second-level-domain")]
+        SecondLevelDomain
     }
 }
 

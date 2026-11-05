@@ -330,10 +330,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
 
     public class AssigneeInRequest
     {
-        [JsonProperty("ty")]
+        [JsonProperty("ty", DefaultValueHandling = DefaultValueHandling.Include)]
         public AssigneeInRequestTyType Ty { get; set; }
 
-        [JsonProperty("work_id")]
+        [JsonProperty("work_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkId { get; set; }
     }
 
@@ -348,10 +348,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
 
     public class WorkObjectInRequest
     {
-        [JsonProperty("w_wstype")]
+        [JsonProperty("w_wstype", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WWstype { get; set; }
 
-        [JsonProperty("w_id")]
+        [JsonProperty("w_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WId { get; set; }
     }
 

@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         public bool? AwaitingApproval { get; set; } = true;
 
         [JsonProperty("groups")]
-        public AgentGroupV2[] Groups { get; set; }
+        public AgentGroupV22[] Groups { get; set; }
 
         [JsonProperty("notifications")]
         public string[] Notifications { get; set; }
@@ -116,12 +116,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         NotAcceptingChats
     }
 
-    public class AgentGroupV2
+    public class AgentGroupV22
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int GroupId { get; set; }
 
-        [JsonProperty("priority")]
+        [JsonProperty("priority", DefaultValueHandling = DefaultValueHandling.Include)]
         public AgentGroupV2PriorityType Priority { get; set; }
     }
 
@@ -152,22 +152,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         [JsonProperty("timezone")]
         public string TimeZone { get; set; }
 
-        [JsonProperty("schedule")]
+        [JsonProperty("schedule", DefaultValueHandling = DefaultValueHandling.Include)]
         public WorkScheduleEntryV2[] Schedule { get; set; }
     }
 
     public class WorkScheduleEntryV2
     {
-        [JsonProperty("day")]
+        [JsonProperty("day", DefaultValueHandling = DefaultValueHandling.Include)]
         public WorkScheduleEntryV2DayType Day { get; set; }
 
-        [JsonProperty("enabled")]
+        [JsonProperty("enabled", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Enabled { get; set; }
 
-        [JsonProperty("start")]
+        [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Start { get; set; }
 
-        [JsonProperty("end")]
+        [JsonProperty("end", DefaultValueHandling = DefaultValueHandling.Include)]
         public string End { get; set; }
     }
 
@@ -230,6 +230,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
 
         [JsonProperty("groups")]
         public AgentGroupV2[] Groups { get; set; }
+    }
+
+    public class AgentGroupV2
+    {
+        [JsonProperty("id")]
+        public int GroupId { get; set; }
+
+        [JsonProperty("priority")]
+        public AgentGroupV2PriorityType Priority { get; set; }
     }
 }
 

@@ -258,8 +258,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
         public CommandPostInputInputsType Inputs { get; set; }
 
-        [JsonProperty("options")]
-        public CommandPostInputOptionsType Options { get; set; }
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CommandPostInputOptionsType Options { get; set; } = new CommandPostInputOptionsType();
     }
 
     public class CommandPostInputInputsType
@@ -355,10 +355,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
     public class KeepWritingPostInput
     {
         [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public KeepWritingPostInputInputsType Inputs { get; set; }
+        public KeepWritingPostInputInputsType Inputs { get; set; } = new KeepWritingPostInputInputsType();
 
-        [JsonProperty("options")]
-        public KeepWritingPostInputOptionsType Options { get; set; }
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public KeepWritingPostInputOptionsType Options { get; set; } = new KeepWritingPostInputOptionsType();
     }
 
     public class KeepWritingPostInputInputsType
@@ -549,8 +549,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [JsonProperty("inputs")]
         public JToken Inputs { get; set; }
 
-        [JsonProperty("options")]
-        public TemplatePostInputOptionsType Options { get; set; }
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public TemplatePostInputOptionsType Options { get; set; } = new TemplatePostInputOptionsType();
     }
 
     public class TemplatePostInputOptionsType
@@ -717,8 +717,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [JsonProperty("metadata")]
         public JToken Metadata { get; set; }
 
-        [JsonProperty("settings")]
-        public KnowledgePostInputSettingsType Settings { get; set; }
+        [JsonProperty("settings", DefaultValueHandling = DefaultValueHandling.Include)]
+        public KnowledgePostInputSettingsType Settings { get; set; } = new KnowledgePostInputSettingsType();
 
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -981,8 +981,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [JsonProperty("metadata")]
         public JToken Metadata { get; set; }
 
-        [JsonProperty("settings")]
-        public TonePostInputSettingsType Settings { get; set; }
+        [JsonProperty("settings", DefaultValueHandling = DefaultValueHandling.Include)]
+        public TonePostInputSettingsType Settings { get; set; } = new TonePostInputSettingsType();
 
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }

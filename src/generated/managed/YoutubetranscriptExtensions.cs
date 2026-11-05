@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
     public class GetTranscriptInput
     {
         [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RequestContext Context { get; set; }
+        public RequestContext RequestContext { get; set; } = new RequestContext();
 
         [JsonProperty("externalVideoId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string YouTubeVideoId { get; set; }
@@ -105,17 +105,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
 
     public class RequestContext
     {
-        [JsonProperty("client")]
-        public ClientInfo Client { get; set; }
+        [JsonProperty("client", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ClientInfo ClientInformation { get; set; } = new ClientInfo();
     }
 
     public class ClientInfo
     {
-        [JsonProperty("clientName")]
-        public string ClientName { get; set; }
+        [JsonProperty("clientName", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ClientName { get; set; } = "WEB";
 
-        [JsonProperty("clientVersion")]
-        public string ClientVersion { get; set; }
+        [JsonProperty("clientVersion", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ClientVersion { get; set; } = "2.20250923.08.00";
     }
 }
 

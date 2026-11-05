@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesEventsEventDTO[], ApiConnectionActionConfiguration> EventGetAll(Expression<Func<string>> id = null, Expression<Func<statusInput>> status = null, Expression<Func<eventStatusInput>> eventStatus = null, Expression<Func<string>> startDate = null, Expression<Func<string>> assignedToId = null, Expression<Func<string>> relatedToId = null, Expression<Func<string>> sortDate = null, Expression<Func<string>> parentId = null, Expression<Func<string>> eventResultId = null, Expression<Func<string>> priorityId = null, Expression<Func<string>> search = null, Expression<Func<string>> lastModifiedBy = null, Expression<Func<string>> createdBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<TaskApiFeaturesEventsEventDTO[], ApiConnectionActionConfiguration> EventGetAll(Expression<Func<string>> id = null, Expression<Func<statusInput2>> status = null, Expression<Func<eventStatusInput>> eventStatus = null, Expression<Func<string>> startDate = null, Expression<Func<string>> assignedToId = null, Expression<Func<string>> relatedToId = null, Expression<Func<string>> sortDate = null, Expression<Func<string>> parentId = null, Expression<Func<string>> eventResultId = null, Expression<Func<string>> priorityId = null, Expression<Func<string>> search = null, Expression<Func<string>> lastModifiedBy = null, Expression<Func<string>> createdBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
@@ -1606,6 +1606,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum statusInput2
+    {
+        Scheduled,
+        Completed,
+        Rescheduled,
+        Canceled
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum eventStatusInput
     {
         Scheduled,
@@ -2344,7 +2353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string LeadStatusId { get; set; }
 
         [JsonProperty("name")]
-        public SalesPipelineApiDTOsNameDTO Name { get; set; }
+        public SalesPipelineApiDTOsNameDTO2 Name { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -2356,10 +2365,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string MobilePhone { get; set; }
 
         [JsonProperty("otherEmail")]
-        public SalesPipelineApiDTOsEmailDTO[] OtherEmail { get; set; }
+        public SalesPipelineApiDTOsEmailDTO2[] OtherEmail { get; set; }
 
         [JsonProperty("otherPhone")]
-        public SalesPipelineApiDTOsPhoneDTO[] OtherPhone { get; set; }
+        public SalesPipelineApiDTOsPhoneDTO2[] OtherPhone { get; set; }
 
         [JsonProperty("callOptOut")]
         public bool? CallOptOut { get; set; }
@@ -2416,6 +2425,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public JToken ExtraFields { get; set; }
     }
 
+    public class SalesPipelineApiDTOsNameDTO2
+    {
+        [JsonProperty("firstName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FirstName { get; set; }
+
+        [JsonProperty("lastName")]
+        public string LastName { get; set; }
+
+        [JsonProperty("middleName")]
+        public string MiddleName { get; set; }
+
+        [JsonProperty("salutationId")]
+        public string SalutationId { get; set; }
+
+        [JsonProperty("suffix")]
+        public string Suffix { get; set; }
+    }
+
+    public class SalesPipelineApiDTOsEmailDTO2
+    {
+        [JsonProperty("emailAddress")]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("type")]
+        public SalesPipelineApiModelsEnumsEmailType? Type { get; set; }
+
+        [JsonProperty("optOut")]
+        public bool? OptOut { get; set; }
+    }
+
+    public class SalesPipelineApiDTOsPhoneDTO2
+    {
+        [JsonProperty("phoneNumber")]
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("type")]
+        public SalesPipelineApiModelsEnumsPhoneType? Type { get; set; }
+
+        [JsonProperty("optOut")]
+        public bool? OptOut { get; set; }
+    }
+
     public class LeadUpdateInput
     {
         [JsonProperty("jobTitle")]
@@ -2425,7 +2476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string LeadStatusId { get; set; }
 
         [JsonProperty("name")]
-        public SalesPipelineApiDTOsNameDTO Name { get; set; }
+        public SalesPipelineApiDTOsNameDTO2 Name { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -2437,10 +2488,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string MobilePhone { get; set; }
 
         [JsonProperty("otherEmail")]
-        public SalesPipelineApiDTOsEmailDTO[] OtherEmail { get; set; }
+        public SalesPipelineApiDTOsEmailDTO2[] OtherEmail { get; set; }
 
         [JsonProperty("otherPhone")]
-        public SalesPipelineApiDTOsPhoneDTO[] OtherPhone { get; set; }
+        public SalesPipelineApiDTOsPhoneDTO2[] OtherPhone { get; set; }
 
         [JsonProperty("callOptOut")]
         public bool? CallOptOut { get; set; }
@@ -3646,10 +3697,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public bool? EmailOptOut { get; set; }
 
         [JsonProperty("otherEmail")]
-        public CustomerApiFeaturesContactsEmailDTO[] OtherEmail { get; set; }
+        public CustomerApiFeaturesContactsEmailDTO2[] OtherEmail { get; set; }
 
         [JsonProperty("otherPhone")]
-        public CustomerApiFeaturesContactsPhoneDTO[] OtherPhone { get; set; }
+        public CustomerApiFeaturesContactsPhoneDTO2[] OtherPhone { get; set; }
 
         [JsonProperty("jobTitle")]
         public string JobTitle { get; set; }
@@ -3703,6 +3754,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string[] AssignedTeams { get; set; }
     }
 
+    public class CustomerApiFeaturesContactsEmailDTO2
+    {
+        [JsonProperty("emailAddress")]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("type")]
+        public CustomerApiFeaturesContactsEmailDTOTypeType? Type { get; set; }
+
+        [JsonProperty("optOut")]
+        public bool? OptOut { get; set; }
+    }
+
+    public class CustomerApiFeaturesContactsPhoneDTO2
+    {
+        [JsonProperty("phoneNumber")]
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("type")]
+        public CustomerApiFeaturesContactsPhoneDTOTypeType? Type { get; set; }
+
+        [JsonProperty("optOut")]
+        public bool? OptOut { get; set; }
+    }
+
     public class ContactCreateInput
     {
         [JsonProperty("id")]
@@ -3748,10 +3823,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public bool? EmailOptOut { get; set; }
 
         [JsonProperty("otherEmail")]
-        public CustomerApiFeaturesContactsEmailDTO[] OtherEmail { get; set; }
+        public CustomerApiFeaturesContactsEmailDTO2[] OtherEmail { get; set; }
 
         [JsonProperty("otherPhone")]
-        public CustomerApiFeaturesContactsPhoneDTO[] OtherPhone { get; set; }
+        public CustomerApiFeaturesContactsPhoneDTO2[] OtherPhone { get; set; }
 
         [JsonProperty("jobTitle")]
         public string JobTitle { get; set; }

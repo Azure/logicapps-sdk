@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
         internal int Id { get; set; } = 1;
 
         [JsonProperty("params", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EthGetBalanceInputParamsType Params { get; set; }
+        public EthGetBalanceInputParamsType Params { get; set; } = new EthGetBalanceInputParamsType();
     }
 
     public class EthGetBalanceInputParamsType

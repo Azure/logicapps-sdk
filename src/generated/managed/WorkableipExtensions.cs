@@ -960,8 +960,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [JsonProperty("event")]
         public string Event { get; set; }
 
-        [JsonProperty("args")]
-        public PostSubscriptionInputArgsType Args { get; set; }
+        [JsonProperty("args", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostSubscriptionInputArgsType Args { get; set; } = new PostSubscriptionInputArgsType();
     }
 
     public class PostSubscriptionInputArgsType

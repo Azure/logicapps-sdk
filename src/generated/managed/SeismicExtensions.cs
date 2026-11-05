@@ -569,8 +569,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
 
     public class GenerateAsyncInputOutputsTypeItem
     {
-        [JsonProperty("docxOptions")]
-        public GenerateAsyncInputOutputsTypeItemDocxOptionsType DocxOptions { get; set; }
+        [JsonProperty("docxOptions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GenerateAsyncInputOutputsTypeItemDocxOptionsType DocxOptions { get; set; } = new GenerateAsyncInputOutputsTypeItemDocxOptionsType();
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
         public GenerateAsyncInputOutputsTypeItemFormatType Format { get; set; }
@@ -578,11 +578,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("pdfOptions")]
-        public GenerateAsyncInputOutputsTypeItemPdfOptionsType PdfOptions { get; set; }
+        [JsonProperty("pdfOptions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GenerateAsyncInputOutputsTypeItemPdfOptionsType PdfOptions { get; set; } = new GenerateAsyncInputOutputsTypeItemPdfOptionsType();
 
-        [JsonProperty("pptxOptions")]
-        public GenerateAsyncInputOutputsTypeItemPptxOptionsType PptxOptions { get; set; }
+        [JsonProperty("pptxOptions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GenerateAsyncInputOutputsTypeItemPptxOptionsType PptxOptions { get; set; } = new GenerateAsyncInputOutputsTypeItemPptxOptionsType();
 
         [JsonProperty("xlsxOptions")]
         public GenerateAsyncInputOutputsTypeItemXlsxOptionsType XlsxOptions { get; set; }

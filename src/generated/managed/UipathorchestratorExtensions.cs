@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
     public class StartJobsInput
     {
         [JsonProperty("startInfo", DefaultValueHandling = DefaultValueHandling.Include)]
-        public StartJobsInputStartInfoType StartInfo { get; set; }
+        public StartJobsInputStartInfoType StartInfo { get; set; } = new StartJobsInputStartInfoType();
     }
 
     public class StartJobsInputStartInfoType
@@ -723,8 +723,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
 
     public class AddQueueItemInput
     {
-        [JsonProperty("itemData")]
-        public AddQueueItemInputItemDataType ItemData { get; set; }
+        [JsonProperty("itemData", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddQueueItemInputItemDataType ItemData { get; set; } = new AddQueueItemInputItemDataType();
     }
 
     public class AddQueueItemInputItemDataType

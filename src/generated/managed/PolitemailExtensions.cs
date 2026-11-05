@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         public string ContentType { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Data { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Data { get; set; }
 
         [JsonProperty("OwnerID")]
         public int? SelectOwner { get; set; }
@@ -442,7 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         public string Description { get; set; }
 
         [JsonProperty("BodyBinary", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string File { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
         public string Body { get; set; }
 
         [JsonProperty("OwnerID")]
@@ -515,7 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Politemail
         public string ContentType { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Data { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Data { get; set; }
 
         [JsonProperty("OwnerID")]
         public int? SelectOwner { get; set; }

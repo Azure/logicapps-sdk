@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
 
     public class TaskParameters
     {
-        [JsonProperty("Name")]
+        [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TaskName { get; set; }
 
         [JsonProperty("Notes")]

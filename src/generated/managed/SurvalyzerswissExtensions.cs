@@ -770,10 +770,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int MessageTemplateId { get; set; }
 
         [JsonProperty("textBlocks")]
-        public TextBlock[] TextBlocks { get; set; }
+        public TextBlock2[] TextBlocks { get; set; }
 
         [JsonProperty("members", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Member[] Members { get; set; }
+        public Member2[] Members { get; set; }
 
         [JsonProperty("scheduleDateTime")]
         public string ScheduleDateTime { get; set; }
@@ -808,7 +808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         WhatsApp
     }
 
-    public class TextBlock
+    public class TextBlock2
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -817,24 +817,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string Type { get; set; }
 
         [JsonProperty("text")]
-        public TranslationElement[] Text { get; set; }
+        public TranslationElement2[] Text { get; set; }
     }
 
-    public class TranslationElement
+    public class TranslationElement2
     {
-        [JsonProperty("languageCode")]
+        [JsonProperty("languageCode", DefaultValueHandling = DefaultValueHandling.Include)]
         public string LanguageCode { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class Member
+    public class Member2
     {
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
-        [JsonProperty("fields")]
+        [JsonProperty("fields", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Fields { get; set; }
 
         [JsonProperty("createdAt")]
@@ -850,10 +850,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string UpdatedBy { get; set; }
 
         [JsonProperty("interviews")]
-        public Interview[] Interviews { get; set; }
+        public Interview2[] Interviews { get; set; }
     }
 
-    public class Interview
+    public class Interview2
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -862,10 +862,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string State { get; set; }
 
         [JsonProperty("surveyId")]
-        public int SurveyId { get; set; }
+        public int? SurveyId { get; set; }
 
         [JsonProperty("surveyVersionId")]
-        public int SurveyVersionId { get; set; }
+        public int? SurveyVersionId { get; set; }
 
         [JsonProperty("surveyName")]
         public string SurveyName { get; set; }
@@ -886,10 +886,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string EndDate { get; set; }
 
         [JsonProperty("samplingProjectId")]
-        public int SamplingProjectId { get; set; }
+        public int? SamplingProjectId { get; set; }
 
         [JsonProperty("distributorId")]
-        public int DistributorId { get; set; }
+        public int? DistributorId { get; set; }
     }
 
     public class CreateArtifactResponse
@@ -940,7 +940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int PanelId { get; set; }
 
         [JsonProperty("members", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Member[] Members { get; set; }
+        public Member2[] Members { get; set; }
     }
 
     public class CreatePanelResponse
@@ -1014,79 +1014,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string Name { get; set; }
 
         [JsonProperty("surveyDefinition", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SurveyDefinition SurveyDefinition { get; set; }
+        public SurveyDefinition2 SurveyDefinition { get; set; }
 
         [JsonProperty("surveyConfiguration")]
-        public SurveyConfiguration SurveyConfiguration { get; set; }
+        public SurveyConfiguration2 SurveyConfiguration { get; set; }
     }
 
-    public class SurveyDefinition
+    public class SurveyDefinition2
     {
-        [JsonProperty("allowMultipleParticipation")]
+        [JsonProperty("allowMultipleParticipation", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool AllowMultipleParticipation { get; set; }
 
-        [JsonProperty("allowNavigateBack")]
+        [JsonProperty("allowNavigateBack", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool AllowNavigateBack { get; set; }
 
         [JsonProperty("allowSaveProgress")]
-        public bool AllowSaveProgress { get; set; }
+        public bool? AllowSaveProgress { get; set; }
 
-        [JsonProperty("randomizeSections")]
+        [JsonProperty("randomizeSections", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool RandomizeSections { get; set; }
 
         [JsonProperty("enableAutoScroll")]
-        public bool EnableAutoScroll { get; set; }
+        public bool? EnableAutoScroll { get; set; }
 
         [JsonProperty("enableCodeAccess")]
-        public bool EnableCodeAccess { get; set; }
+        public bool? EnableCodeAccess { get; set; }
 
         [JsonProperty("dataAccessControl")]
-        public DataAccessControl DataAccessControl { get; set; }
+        public DataAccessControl2 DataAccessControl { get; set; }
 
         [JsonProperty("associatedPanels")]
         public int[] AssociatedPanels { get; set; }
 
-        [JsonProperty("codeAccessMode")]
+        [JsonProperty("codeAccessMode", DefaultValueHandling = DefaultValueHandling.Include)]
         public CodeAccessMode CodeAccessMode { get; set; }
 
         [JsonProperty("enablePanelSync")]
-        public bool EnablePanelSync { get; set; }
+        public bool? EnablePanelSync { get; set; }
 
         [JsonProperty("panelSyncBehaviour")]
-        public PanelSyncBehaviour PanelSyncBehaviour { get; set; }
+        public PanelSyncBehaviour? PanelSyncBehaviour { get; set; }
 
         [JsonProperty("panelSyncs")]
         public PanelSyncElement[] PanelSyncs { get; set; }
 
-        [JsonProperty("defaultLanguage")]
+        [JsonProperty("defaultLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DefaultLanguage { get; set; }
 
         [JsonProperty("endDate")]
         public string EndDate { get; set; }
 
-        [JsonProperty("languages")]
+        [JsonProperty("languages", DefaultValueHandling = DefaultValueHandling.Include)]
         public string[] Languages { get; set; }
 
-        [JsonProperty("sections")]
-        public Section[] Sections { get; set; }
+        [JsonProperty("sections", DefaultValueHandling = DefaultValueHandling.Include)]
+        public Section2[] Sections { get; set; }
 
-        [JsonProperty("customVariables")]
-        public CustomVariable[] CustomVariables { get; set; }
+        [JsonProperty("customVariables", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CustomVariable2[] CustomVariables { get; set; }
 
-        [JsonProperty("surveyEndText")]
-        public TranslationElement[] SurveyEndText { get; set; }
+        [JsonProperty("surveyEndText", DefaultValueHandling = DefaultValueHandling.Include)]
+        public TranslationElement2[] SurveyEndText { get; set; }
 
         [JsonProperty("defaultTextOverrides")]
         public JToken DefaultTextOverrides { get; set; }
     }
 
-    public class DataAccessControl
+    public class DataAccessControl2
     {
         [JsonProperty("accessType")]
-        public AccessType AccessType { get; set; }
+        public AccessType? AccessType { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition[] Conditions { get; set; }
+        public Condition2[] Conditions { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1097,28 +1097,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         Public
     }
 
-    public class Condition
+    public class Condition2
     {
-        [JsonProperty("conjunction")]
+        [JsonProperty("conjunction", DefaultValueHandling = DefaultValueHandling.Include)]
         public Conjunction Conjunction { get; set; }
 
-        [JsonProperty("conditionType")]
+        [JsonProperty("conditionType", DefaultValueHandling = DefaultValueHandling.Include)]
         public ConditionType ConditionType { get; set; }
 
-        [JsonProperty("identifier")]
+        [JsonProperty("identifier", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Identifier { get; set; }
 
-        [JsonProperty("conditionOperator")]
+        [JsonProperty("conditionOperator", DefaultValueHandling = DefaultValueHandling.Include)]
         public ConditionOperator ConditionOperator { get; set; }
 
-        [JsonProperty("value")]
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
 
         [JsonProperty("variableType")]
-        public VariableType VariableType { get; set; }
+        public VariableType? VariableType { get; set; }
 
         [JsonProperty("jsonValue")]
-        public bool JsonValue { get; set; }
+        public bool? JsonValue { get; set; }
 
         [JsonProperty("jsonPath")]
         public string JsonPath { get; set; }
@@ -1216,154 +1216,154 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string PanelField { get; set; }
     }
 
-    public class Section
+    public class Section2
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
-        [JsonProperty("randomizePages")]
+        [JsonProperty("randomizePages", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool RandomizePages { get; set; }
 
-        [JsonProperty("excludeFromRandomization")]
+        [JsonProperty("excludeFromRandomization", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool ExcludeFromRandomization { get; set; }
 
-        [JsonProperty("elements")]
-        public SurveyElement[] Elements { get; set; }
+        [JsonProperty("elements", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SurveyElement2[] Elements { get; set; }
 
         [JsonProperty("condition")]
-        public ConditionDefinition Condition { get; set; }
+        public ConditionDefinition2 Condition { get; set; }
     }
 
-    public class SurveyElement
+    public class SurveyElement2
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
 
-        [JsonProperty("elementType")]
+        [JsonProperty("elementType", DefaultValueHandling = DefaultValueHandling.Include)]
         public ElementType ElementType { get; set; }
 
         [JsonProperty("code")]
         public string Code { get; set; }
 
         [JsonProperty("codeManuallyChanged")]
-        public bool CodeManuallyChanged { get; set; }
+        public bool? CodeManuallyChanged { get; set; }
 
         [JsonProperty("text")]
-        public TranslationElement[] Text { get; set; }
+        public TranslationElement2[] Text { get; set; }
 
         [JsonProperty("hintText")]
-        public TranslationElement[] HintText { get; set; }
+        public TranslationElement2[] HintText { get; set; }
 
         [JsonProperty("hasHintText")]
-        public bool HasHintText { get; set; }
+        public bool? HasHintText { get; set; }
 
         [JsonProperty("hasNotAvailableChoice")]
-        public bool HasNotAvailableChoice { get; set; }
+        public bool? HasNotAvailableChoice { get; set; }
 
         [JsonProperty("notAvailableChoiceText")]
-        public TranslationElement[] NotAvailableChoiceText { get; set; }
+        public TranslationElement2[] NotAvailableChoiceText { get; set; }
 
         [JsonProperty("forceResponse")]
-        public bool ForceResponse { get; set; }
+        public bool? ForceResponse { get; set; }
 
         [JsonProperty("choices")]
-        public Choice[] Choices { get; set; }
+        public Choice2[] Choices { get; set; }
 
         [JsonProperty("randomizeChoices")]
-        public bool RandomizeChoices { get; set; }
+        public bool? RandomizeChoices { get; set; }
 
         [JsonProperty("columnType")]
-        public ColumnType ColumnType { get; set; }
+        public ColumnType? ColumnType { get; set; }
 
         [JsonProperty("prompt")]
-        public TranslationElement[] Prompt { get; set; }
+        public TranslationElement2[] Prompt { get; set; }
 
         [JsonProperty("minValue")]
-        public int MinValue { get; set; }
+        public int? MinValue { get; set; }
 
         [JsonProperty("maxValue")]
-        public int MaxValue { get; set; }
+        public int? MaxValue { get; set; }
 
         [JsonProperty("showCenterLabel")]
-        public bool ShowCenterLabel { get; set; }
+        public bool? ShowCenterLabel { get; set; }
 
         [JsonProperty("leftLabel")]
-        public TranslationElement[] LeftLabel { get; set; }
+        public TranslationElement2[] LeftLabel { get; set; }
 
         [JsonProperty("centerLabel")]
-        public TranslationElement[] CenterLabel { get; set; }
+        public TranslationElement2[] CenterLabel { get; set; }
 
         [JsonProperty("rightLabel")]
-        public TranslationElement[] RightLabel { get; set; }
+        public TranslationElement2[] RightLabel { get; set; }
 
         [JsonProperty("showValue")]
-        public bool ShowValue { get; set; }
+        public bool? ShowValue { get; set; }
 
         [JsonProperty("maxDecimals")]
-        public int MaxDecimals { get; set; }
+        public int? MaxDecimals { get; set; }
 
         [JsonProperty("textFieldSize")]
-        public TextFieldSize TextFieldSize { get; set; }
+        public TextFieldSize? TextFieldSize { get; set; }
 
         [JsonProperty("autocomplete")]
-        public bool Autocomplete { get; set; }
+        public bool? Autocomplete { get; set; }
 
         [JsonProperty("autocompleteText")]
-        public TranslationElement[] AutocompleteText { get; set; }
+        public TranslationElement2[] AutocompleteText { get; set; }
 
         [JsonProperty("contentValidation")]
-        public ContentValidation ContentValidation { get; set; }
+        public ContentValidation2 ContentValidation { get; set; }
 
         [JsonProperty("hasPlaceholder")]
-        public bool HasPlaceholder { get; set; }
+        public bool? HasPlaceholder { get; set; }
 
         [JsonProperty("placeholder")]
-        public TranslationElement[] Placeholder { get; set; }
+        public TranslationElement2[] Placeholder { get; set; }
 
         [JsonProperty("isPassword")]
-        public bool IsPassword { get; set; }
+        public bool? IsPassword { get; set; }
 
         [JsonProperty("minMaxValidation")]
-        public bool MinMaxValidation { get; set; }
+        public bool? MinMaxValidation { get; set; }
 
         [JsonProperty("minimumCheckedChoices")]
-        public int MinimumCheckedChoices { get; set; }
+        public int? MinimumCheckedChoices { get; set; }
 
         [JsonProperty("maximumCheckedChoices")]
-        public int MaximumCheckedChoices { get; set; }
+        public int? MaximumCheckedChoices { get; set; }
 
         [JsonProperty("columnGroups")]
-        public ColumnGroup[] ColumnGroups { get; set; }
+        public ColumnGroup2[] ColumnGroups { get; set; }
 
         [JsonProperty("randomizeRows")]
-        public bool RandomizeRows { get; set; }
+        public bool? RandomizeRows { get; set; }
 
         [JsonProperty("rows")]
-        public MinMaxChoice[] Rows { get; set; }
+        public MinMaxChoice2[] Rows { get; set; }
 
         [JsonProperty("numberOfRanks")]
-        public int NumberOfRanks { get; set; }
+        public int? NumberOfRanks { get; set; }
 
         [JsonProperty("likeText")]
-        public TranslationElement[] LikeText { get; set; }
+        public TranslationElement2[] LikeText { get; set; }
 
         [JsonProperty("dislikeText")]
-        public TranslationElement[] DislikeText { get; set; }
+        public TranslationElement2[] DislikeText { get; set; }
 
         [JsonProperty("hasStartText")]
-        public bool HasStartText { get; set; }
+        public bool? HasStartText { get; set; }
 
         [JsonProperty("startText")]
-        public TranslationElement[] StartText { get; set; }
+        public TranslationElement2[] StartText { get; set; }
 
         [JsonProperty("enableMeasurement")]
-        public bool EnableMeasurement { get; set; }
+        public bool? EnableMeasurement { get; set; }
 
         [JsonProperty("showButtons")]
-        public bool ShowButtons { get; set; }
+        public bool? ShowButtons { get; set; }
 
         [JsonProperty("likeKey")]
         public string LikeKey { get; set; }
@@ -1375,7 +1375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string InterviewState { get; set; }
 
         [JsonProperty("action")]
-        public ActionElement Action { get; set; }
+        public ActionElement2 Action { get; set; }
 
         [JsonProperty("from")]
         public string From { get; set; }
@@ -1384,73 +1384,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string To { get; set; }
 
         [JsonProperty("subject")]
-        public TranslationElement[] Subject { get; set; }
+        public TranslationElement2[] Subject { get; set; }
 
         [JsonProperty("message")]
-        public TranslationElement[] Message { get; set; }
+        public TranslationElement2[] Message { get; set; }
 
         [JsonProperty("valueAssignmentType")]
-        public ValueAssignmentType ValueAssignmentType { get; set; }
+        public ValueAssignmentType? ValueAssignmentType { get; set; }
 
         [JsonProperty("variableName")]
         public string VariableName { get; set; }
 
         [JsonProperty("functionTerm")]
-        public TranslationElement[] FunctionTerm { get; set; }
+        public TranslationElement2[] FunctionTerm { get; set; }
 
         [JsonProperty("executionBehavior")]
-        public ExecutionBehavior ExecutionBehavior { get; set; }
+        public ExecutionBehavior? ExecutionBehavior { get; set; }
 
         [JsonProperty("apiCallMethod")]
-        public ApiCallMethod ApiCallMethod { get; set; }
+        public ApiCallMethod? ApiCallMethod { get; set; }
 
         [JsonProperty("url")]
-        public TranslationElement[] Url { get; set; }
+        public TranslationElement2[] Url { get; set; }
 
         [JsonProperty("headers")]
         public string Headers { get; set; }
 
         [JsonProperty("body")]
-        public TranslationElement[] Body { get; set; }
+        public TranslationElement2[] Body { get; set; }
 
         [JsonProperty("externalUri")]
         public string ExternalUri { get; set; }
 
         [JsonProperty("scriptType")]
-        public ScriptType ScriptType { get; set; }
+        public ScriptType? ScriptType { get; set; }
 
         [JsonProperty("content")]
         public string Content { get; set; }
 
         [JsonProperty("hasRatingLabels")]
-        public bool HasRatingLabels { get; set; }
+        public bool? HasRatingLabels { get; set; }
 
         [JsonProperty("leftRatingLabel")]
-        public TranslationElement[] LeftRatingLabel { get; set; }
+        public TranslationElement2[] LeftRatingLabel { get; set; }
 
         [JsonProperty("rightRatingLabel")]
-        public TranslationElement[] RightRatingLabel { get; set; }
+        public TranslationElement2[] RightRatingLabel { get; set; }
 
         [JsonProperty("condition")]
-        public ConditionDefinition Condition { get; set; }
+        public ConditionDefinition2 Condition { get; set; }
 
         [JsonProperty("evaluateAsJson")]
-        public bool EvaluateAsJson { get; set; }
+        public bool? EvaluateAsJson { get; set; }
 
         [JsonProperty("autocompleteListVariable")]
         public string AutocompleteListVariable { get; set; }
 
         [JsonProperty("arrangementMode")]
-        public ArrangementMode ArrangementMode { get; set; }
+        public ArrangementMode? ArrangementMode { get; set; }
 
         [JsonProperty("enableAnimation")]
-        public bool EnableAnimation { get; set; }
+        public bool? EnableAnimation { get; set; }
 
         [JsonProperty("useSmiley")]
-        public bool UseSmiley { get; set; }
+        public bool? UseSmiley { get; set; }
 
         [JsonProperty("hasPrompt")]
-        public bool HasPrompt { get; set; }
+        public bool? HasPrompt { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1481,51 +1481,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         Nps
     }
 
-    public class Choice
+    public class Choice2
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
 
-        [JsonProperty("code")]
+        [JsonProperty("code", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Code { get; set; }
 
         [JsonProperty("codeManuallyChanged")]
-        public bool CodeManuallyChanged { get; set; }
+        public bool? CodeManuallyChanged { get; set; }
 
-        [JsonProperty("text")]
-        public TranslationElement[] Text { get; set; }
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public TranslationElement2[] Text { get; set; }
 
-        [JsonProperty("allowTextEntry")]
+        [JsonProperty("allowTextEntry", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool AllowTextEntry { get; set; }
 
-        [JsonProperty("forceInput")]
+        [JsonProperty("forceInput", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool ForceInput { get; set; }
 
-        [JsonProperty("autocomplete")]
+        [JsonProperty("autocomplete", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Autocomplete { get; set; }
 
         [JsonProperty("autocompleteText")]
-        public TranslationElement[] AutocompleteText { get; set; }
+        public TranslationElement2[] AutocompleteText { get; set; }
 
-        [JsonProperty("exclusive")]
+        [JsonProperty("exclusive", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Exclusive { get; set; }
 
         [JsonProperty("excludeFromRandomization")]
-        public bool ExcludeFromRandomization { get; set; }
+        public bool? ExcludeFromRandomization { get; set; }
 
         [JsonProperty("contentValidation")]
-        public ContentValidation ContentValidation { get; set; }
+        public ContentValidation2 ContentValidation { get; set; }
 
         [JsonProperty("condition")]
-        public ConditionDefinition Condition { get; set; }
+        public ConditionDefinition2 Condition { get; set; }
 
         [JsonProperty("autocompleteListVariable")]
         public string AutocompleteListVariable { get; set; }
     }
 
-    public class ContentValidation
+    public class ContentValidation2
     {
-        [JsonProperty("validationType")]
+        [JsonProperty("validationType", DefaultValueHandling = DefaultValueHandling.Include)]
         public ContentValidationType ValidationType { get; set; }
 
         [JsonProperty("earliestDate")]
@@ -1535,16 +1535,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string LatestDate { get; set; }
 
         [JsonProperty("minValue")]
-        public double MinValue { get; set; }
+        public double? MinValue { get; set; }
 
         [JsonProperty("maxValue")]
-        public double MaxValue { get; set; }
+        public double? MaxValue { get; set; }
 
         [JsonProperty("decimalPlaces")]
-        public int DecimalPlaces { get; set; }
+        public int? DecimalPlaces { get; set; }
 
         [JsonProperty("disableThousandSeparator")]
-        public bool DisableThousandSeparator { get; set; }
+        public bool? DisableThousandSeparator { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1559,13 +1559,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         Real
     }
 
-    public class ConditionDefinition
+    public class ConditionDefinition2
     {
-        [JsonProperty("conditionAction")]
+        [JsonProperty("conditionAction", DefaultValueHandling = DefaultValueHandling.Include)]
         public ConditionAction ConditionAction { get; set; }
 
-        [JsonProperty("elements")]
-        public Condition[] Elements { get; set; }
+        [JsonProperty("elements", DefaultValueHandling = DefaultValueHandling.Include)]
+        public Condition2[] Elements { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1593,34 +1593,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         Large
     }
 
-    public class ColumnGroup
+    public class ColumnGroup2
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
 
-        [JsonProperty("text")]
-        public TranslationElement[] Text { get; set; }
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public TranslationElement2[] Text { get; set; }
 
-        [JsonProperty("hasNotAvailableChoice")]
+        [JsonProperty("hasNotAvailableChoice", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool HasNotAvailableChoice { get; set; }
 
         [JsonProperty("notAvailableChoiceText")]
-        public TranslationElement[] NotAvailableChoiceText { get; set; }
+        public TranslationElement2[] NotAvailableChoiceText { get; set; }
 
-        [JsonProperty("randomizeColumns")]
+        [JsonProperty("randomizeColumns", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool RandomizeColumns { get; set; }
 
         [JsonProperty("prompt")]
-        public TranslationElement[] Prompt { get; set; }
+        public TranslationElement2[] Prompt { get; set; }
 
-        [JsonProperty("choiceType")]
+        [JsonProperty("choiceType", DefaultValueHandling = DefaultValueHandling.Include)]
         public ChoiceType ChoiceType { get; set; }
 
-        [JsonProperty("choices")]
-        public Choice[] Choices { get; set; }
+        [JsonProperty("choices", DefaultValueHandling = DefaultValueHandling.Include)]
+        public Choice2[] Choices { get; set; }
 
         [JsonProperty("condition")]
-        public ConditionDefinition Condition { get; set; }
+        public ConditionDefinition2 Condition { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1634,40 +1634,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         StarScale
     }
 
-    public class MinMaxChoice
+    public class MinMaxChoice2
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
 
-        [JsonProperty("code")]
+        [JsonProperty("code", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Code { get; set; }
 
         [JsonProperty("codeManuallyChanged")]
-        public bool CodeManuallyChanged { get; set; }
+        public bool? CodeManuallyChanged { get; set; }
 
-        [JsonProperty("leftText")]
-        public TranslationElement[] LeftText { get; set; }
+        [JsonProperty("leftText", DefaultValueHandling = DefaultValueHandling.Include)]
+        public TranslationElement2[] LeftText { get; set; }
 
-        [JsonProperty("rightText")]
-        public TranslationElement[] RightText { get; set; }
+        [JsonProperty("rightText", DefaultValueHandling = DefaultValueHandling.Include)]
+        public TranslationElement2[] RightText { get; set; }
 
-        [JsonProperty("excludeFromRandomization")]
+        [JsonProperty("excludeFromRandomization", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool ExcludeFromRandomization { get; set; }
 
         [JsonProperty("condition")]
-        public ConditionDefinition Condition { get; set; }
+        public ConditionDefinition2 Condition { get; set; }
     }
 
-    public class ActionElement
+    public class ActionElement2
     {
-        [JsonProperty("actionType")]
+        [JsonProperty("actionType", DefaultValueHandling = DefaultValueHandling.Include)]
         public ActionType ActionType { get; set; }
 
         [JsonProperty("endOfSurveyText")]
-        public TranslationElement[] EndOfSurveyText { get; set; }
+        public TranslationElement2[] EndOfSurveyText { get; set; }
 
         [JsonProperty("forwardUrl")]
-        public TranslationElement[] ForwardUrl { get; set; }
+        public TranslationElement2[] ForwardUrl { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1722,37 +1722,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         Circular
     }
 
-    public class CustomVariable
+    public class CustomVariable2
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Id { get; set; }
 
-        [JsonProperty("variableName")]
+        [JsonProperty("variableName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string VariableName { get; set; }
 
-        [JsonProperty("variableType")]
+        [JsonProperty("variableType", DefaultValueHandling = DefaultValueHandling.Include)]
         public VariableType VariableType { get; set; }
     }
 
-    public class SurveyConfiguration
+    public class SurveyConfiguration2
     {
         [JsonProperty("designConfiguration")]
-        public DesignConfiguration DesignConfiguration { get; set; }
+        public DesignConfiguration2 DesignConfiguration { get; set; }
 
         [JsonProperty("anonymizingConfiguration")]
-        public AnonymizingConfiguration AnonymizingConfiguration { get; set; }
+        public AnonymizingConfiguration2 AnonymizingConfiguration { get; set; }
     }
 
-    public class DesignConfiguration
+    public class DesignConfiguration2
     {
         [JsonProperty("surveyDesignLayout")]
-        public int SurveyDesignLayout { get; set; }
+        public int? SurveyDesignLayout { get; set; }
 
         [JsonProperty("matrixSubQuestionSize")]
-        public MatrixSubQuestionSize MatrixSubQuestionSize { get; set; }
+        public MatrixSubQuestionSize? MatrixSubQuestionSize { get; set; }
 
         [JsonProperty("textBlocks")]
-        public TextBlock[] TextBlocks { get; set; }
+        public TextBlock2[] TextBlocks { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1764,18 +1764,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         Xl
     }
 
-    public class AnonymizingConfiguration
+    public class AnonymizingConfiguration2
     {
-        [JsonProperty("anonymizingMode")]
+        [JsonProperty("anonymizingMode", DefaultValueHandling = DefaultValueHandling.Include)]
         public AnonymizingMode AnonymizingMode { get; set; }
 
-        [JsonProperty("logIp")]
+        [JsonProperty("logIp", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool LogIp { get; set; }
 
-        [JsonProperty("logUserAgent")]
+        [JsonProperty("logUserAgent", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool LogUserAgent { get; set; }
 
-        [JsonProperty("logReferer")]
+        [JsonProperty("logReferer", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool LogReferer { get; set; }
     }
 
@@ -2029,10 +2029,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     public class SafeWaitHandle
     {
         [JsonProperty("isInvalid")]
-        public bool IsInvalid { get; set; }
+        public bool? IsInvalid { get; set; }
 
         [JsonProperty("isClosed")]
-        public bool IsClosed { get; set; }
+        public bool? IsClosed { get; set; }
     }
 
     public class ExecuteSendMailResponse
@@ -2053,7 +2053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int? MessageTemplateId { get; set; }
 
         [JsonProperty("textBlocks")]
-        public TextBlock[] TextBlocks { get; set; }
+        public TextBlock2[] TextBlocks { get; set; }
 
         [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Language { get; set; }
@@ -2169,13 +2169,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int MessageTemplateId { get; set; }
 
         [JsonProperty("textBlocks")]
-        public TextBlock[] TextBlocks { get; set; }
+        public TextBlock2[] TextBlocks { get; set; }
 
         [JsonProperty("scheduleDateTime")]
         public string ScheduleDateTime { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition[] Conditions { get; set; }
+        public Condition2[] Conditions { get; set; }
 
         [JsonProperty("channel")]
         public DistributionChannel? Channel { get; set; }
@@ -2303,7 +2303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public InvitationType? InvitationType { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition[] Conditions { get; set; }
+        public Condition2[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -2311,17 +2311,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
 
     public class Paging
     {
-        [JsonProperty("pageSize")]
+        [JsonProperty("pageSize", DefaultValueHandling = DefaultValueHandling.Include)]
         public int PageSize { get; set; }
 
-        [JsonProperty("page")]
+        [JsonProperty("page", DefaultValueHandling = DefaultValueHandling.Include)]
         public int Page { get; set; }
 
         [JsonProperty("orderField")]
         public string OrderField { get; set; }
 
         [JsonProperty("orderDirection")]
-        public OrderDirection OrderDirection { get; set; }
+        public OrderDirection? OrderDirection { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2398,6 +2398,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public ConditionDefinition[] Conditions { get; set; }
     }
 
+    public class ConditionDefinition
+    {
+        [JsonProperty("conditionAction")]
+        public ConditionAction ConditionAction { get; set; }
+
+        [JsonProperty("elements")]
+        public Condition[] Elements { get; set; }
+    }
+
+    public class Condition
+    {
+        [JsonProperty("conjunction")]
+        public Conjunction Conjunction { get; set; }
+
+        [JsonProperty("conditionType")]
+        public ConditionType ConditionType { get; set; }
+
+        [JsonProperty("identifier")]
+        public string Identifier { get; set; }
+
+        [JsonProperty("conditionOperator")]
+        public ConditionOperator ConditionOperator { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+
+        [JsonProperty("variableType")]
+        public VariableType VariableType { get; set; }
+
+        [JsonProperty("jsonValue")]
+        public bool JsonValue { get; set; }
+
+        [JsonProperty("jsonPath")]
+        public string JsonPath { get; set; }
+    }
+
     public class ReadDistributorListInput
     {
         [JsonProperty("surveyId")]
@@ -2407,7 +2443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int? PanelId { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition[] Conditions { get; set; }
+        public Condition2[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -2452,7 +2488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     public class ReadIncentiveListInput
     {
         [JsonProperty("conditions")]
-        public Condition[] Conditions { get; set; }
+        public Condition2[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -2506,7 +2542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     public class ReadIncentiveTransactionListInput
     {
         [JsonProperty("conditions")]
-        public Condition[] Conditions { get; set; }
+        public Condition2[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -2528,6 +2564,465 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
 
         [JsonProperty("errorCode")]
         public string ErrorCode { get; set; }
+    }
+
+    public class SurveyDefinition
+    {
+        [JsonProperty("allowMultipleParticipation")]
+        public bool AllowMultipleParticipation { get; set; }
+
+        [JsonProperty("allowNavigateBack")]
+        public bool AllowNavigateBack { get; set; }
+
+        [JsonProperty("allowSaveProgress")]
+        public bool AllowSaveProgress { get; set; }
+
+        [JsonProperty("randomizeSections")]
+        public bool RandomizeSections { get; set; }
+
+        [JsonProperty("enableAutoScroll")]
+        public bool EnableAutoScroll { get; set; }
+
+        [JsonProperty("enableCodeAccess")]
+        public bool EnableCodeAccess { get; set; }
+
+        [JsonProperty("dataAccessControl")]
+        public DataAccessControl DataAccessControl { get; set; }
+
+        [JsonProperty("associatedPanels")]
+        public int[] AssociatedPanels { get; set; }
+
+        [JsonProperty("codeAccessMode")]
+        public CodeAccessMode CodeAccessMode { get; set; }
+
+        [JsonProperty("enablePanelSync")]
+        public bool EnablePanelSync { get; set; }
+
+        [JsonProperty("panelSyncBehaviour")]
+        public PanelSyncBehaviour PanelSyncBehaviour { get; set; }
+
+        [JsonProperty("panelSyncs")]
+        public PanelSyncElement[] PanelSyncs { get; set; }
+
+        [JsonProperty("defaultLanguage")]
+        public string DefaultLanguage { get; set; }
+
+        [JsonProperty("endDate")]
+        public string EndDate { get; set; }
+
+        [JsonProperty("languages")]
+        public string[] Languages { get; set; }
+
+        [JsonProperty("sections")]
+        public Section[] Sections { get; set; }
+
+        [JsonProperty("customVariables")]
+        public CustomVariable[] CustomVariables { get; set; }
+
+        [JsonProperty("surveyEndText")]
+        public TranslationElement[] SurveyEndText { get; set; }
+
+        [JsonProperty("defaultTextOverrides")]
+        public JToken DefaultTextOverrides { get; set; }
+    }
+
+    public class DataAccessControl
+    {
+        [JsonProperty("accessType")]
+        public AccessType AccessType { get; set; }
+
+        [JsonProperty("conditions")]
+        public Condition[] Conditions { get; set; }
+    }
+
+    public class Section
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("randomizePages")]
+        public bool RandomizePages { get; set; }
+
+        [JsonProperty("excludeFromRandomization")]
+        public bool ExcludeFromRandomization { get; set; }
+
+        [JsonProperty("elements")]
+        public SurveyElement[] Elements { get; set; }
+
+        [JsonProperty("condition")]
+        public ConditionDefinition Condition { get; set; }
+    }
+
+    public class SurveyElement
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("elementType")]
+        public ElementType ElementType { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("codeManuallyChanged")]
+        public bool CodeManuallyChanged { get; set; }
+
+        [JsonProperty("text")]
+        public TranslationElement[] Text { get; set; }
+
+        [JsonProperty("hintText")]
+        public TranslationElement[] HintText { get; set; }
+
+        [JsonProperty("hasHintText")]
+        public bool HasHintText { get; set; }
+
+        [JsonProperty("hasNotAvailableChoice")]
+        public bool HasNotAvailableChoice { get; set; }
+
+        [JsonProperty("notAvailableChoiceText")]
+        public TranslationElement[] NotAvailableChoiceText { get; set; }
+
+        [JsonProperty("forceResponse")]
+        public bool ForceResponse { get; set; }
+
+        [JsonProperty("choices")]
+        public Choice[] Choices { get; set; }
+
+        [JsonProperty("randomizeChoices")]
+        public bool RandomizeChoices { get; set; }
+
+        [JsonProperty("columnType")]
+        public ColumnType ColumnType { get; set; }
+
+        [JsonProperty("prompt")]
+        public TranslationElement[] Prompt { get; set; }
+
+        [JsonProperty("minValue")]
+        public int MinValue { get; set; }
+
+        [JsonProperty("maxValue")]
+        public int MaxValue { get; set; }
+
+        [JsonProperty("showCenterLabel")]
+        public bool ShowCenterLabel { get; set; }
+
+        [JsonProperty("leftLabel")]
+        public TranslationElement[] LeftLabel { get; set; }
+
+        [JsonProperty("centerLabel")]
+        public TranslationElement[] CenterLabel { get; set; }
+
+        [JsonProperty("rightLabel")]
+        public TranslationElement[] RightLabel { get; set; }
+
+        [JsonProperty("showValue")]
+        public bool ShowValue { get; set; }
+
+        [JsonProperty("maxDecimals")]
+        public int MaxDecimals { get; set; }
+
+        [JsonProperty("textFieldSize")]
+        public TextFieldSize TextFieldSize { get; set; }
+
+        [JsonProperty("autocomplete")]
+        public bool Autocomplete { get; set; }
+
+        [JsonProperty("autocompleteText")]
+        public TranslationElement[] AutocompleteText { get; set; }
+
+        [JsonProperty("contentValidation")]
+        public ContentValidation ContentValidation { get; set; }
+
+        [JsonProperty("hasPlaceholder")]
+        public bool HasPlaceholder { get; set; }
+
+        [JsonProperty("placeholder")]
+        public TranslationElement[] Placeholder { get; set; }
+
+        [JsonProperty("isPassword")]
+        public bool IsPassword { get; set; }
+
+        [JsonProperty("minMaxValidation")]
+        public bool MinMaxValidation { get; set; }
+
+        [JsonProperty("minimumCheckedChoices")]
+        public int MinimumCheckedChoices { get; set; }
+
+        [JsonProperty("maximumCheckedChoices")]
+        public int MaximumCheckedChoices { get; set; }
+
+        [JsonProperty("columnGroups")]
+        public ColumnGroup[] ColumnGroups { get; set; }
+
+        [JsonProperty("randomizeRows")]
+        public bool RandomizeRows { get; set; }
+
+        [JsonProperty("rows")]
+        public MinMaxChoice[] Rows { get; set; }
+
+        [JsonProperty("numberOfRanks")]
+        public int NumberOfRanks { get; set; }
+
+        [JsonProperty("likeText")]
+        public TranslationElement[] LikeText { get; set; }
+
+        [JsonProperty("dislikeText")]
+        public TranslationElement[] DislikeText { get; set; }
+
+        [JsonProperty("hasStartText")]
+        public bool HasStartText { get; set; }
+
+        [JsonProperty("startText")]
+        public TranslationElement[] StartText { get; set; }
+
+        [JsonProperty("enableMeasurement")]
+        public bool EnableMeasurement { get; set; }
+
+        [JsonProperty("showButtons")]
+        public bool ShowButtons { get; set; }
+
+        [JsonProperty("likeKey")]
+        public string LikeKey { get; set; }
+
+        [JsonProperty("dislikeKey")]
+        public string DislikeKey { get; set; }
+
+        [JsonProperty("interviewState")]
+        public string InterviewState { get; set; }
+
+        [JsonProperty("action")]
+        public ActionElement Action { get; set; }
+
+        [JsonProperty("from")]
+        public string From { get; set; }
+
+        [JsonProperty("to")]
+        public string To { get; set; }
+
+        [JsonProperty("subject")]
+        public TranslationElement[] Subject { get; set; }
+
+        [JsonProperty("message")]
+        public TranslationElement[] Message { get; set; }
+
+        [JsonProperty("valueAssignmentType")]
+        public ValueAssignmentType ValueAssignmentType { get; set; }
+
+        [JsonProperty("variableName")]
+        public string VariableName { get; set; }
+
+        [JsonProperty("functionTerm")]
+        public TranslationElement[] FunctionTerm { get; set; }
+
+        [JsonProperty("executionBehavior")]
+        public ExecutionBehavior ExecutionBehavior { get; set; }
+
+        [JsonProperty("apiCallMethod")]
+        public ApiCallMethod ApiCallMethod { get; set; }
+
+        [JsonProperty("url")]
+        public TranslationElement[] Url { get; set; }
+
+        [JsonProperty("headers")]
+        public string Headers { get; set; }
+
+        [JsonProperty("body")]
+        public TranslationElement[] Body { get; set; }
+
+        [JsonProperty("externalUri")]
+        public string ExternalUri { get; set; }
+
+        [JsonProperty("scriptType")]
+        public ScriptType ScriptType { get; set; }
+
+        [JsonProperty("content")]
+        public string Content { get; set; }
+
+        [JsonProperty("hasRatingLabels")]
+        public bool HasRatingLabels { get; set; }
+
+        [JsonProperty("leftRatingLabel")]
+        public TranslationElement[] LeftRatingLabel { get; set; }
+
+        [JsonProperty("rightRatingLabel")]
+        public TranslationElement[] RightRatingLabel { get; set; }
+
+        [JsonProperty("condition")]
+        public ConditionDefinition Condition { get; set; }
+
+        [JsonProperty("evaluateAsJson")]
+        public bool EvaluateAsJson { get; set; }
+
+        [JsonProperty("autocompleteListVariable")]
+        public string AutocompleteListVariable { get; set; }
+
+        [JsonProperty("arrangementMode")]
+        public ArrangementMode ArrangementMode { get; set; }
+
+        [JsonProperty("enableAnimation")]
+        public bool EnableAnimation { get; set; }
+
+        [JsonProperty("useSmiley")]
+        public bool UseSmiley { get; set; }
+
+        [JsonProperty("hasPrompt")]
+        public bool HasPrompt { get; set; }
+    }
+
+    public class TranslationElement
+    {
+        [JsonProperty("languageCode")]
+        public string LanguageCode { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+    }
+
+    public class Choice
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("codeManuallyChanged")]
+        public bool CodeManuallyChanged { get; set; }
+
+        [JsonProperty("text")]
+        public TranslationElement[] Text { get; set; }
+
+        [JsonProperty("allowTextEntry")]
+        public bool AllowTextEntry { get; set; }
+
+        [JsonProperty("forceInput")]
+        public bool ForceInput { get; set; }
+
+        [JsonProperty("autocomplete")]
+        public bool Autocomplete { get; set; }
+
+        [JsonProperty("autocompleteText")]
+        public TranslationElement[] AutocompleteText { get; set; }
+
+        [JsonProperty("exclusive")]
+        public bool Exclusive { get; set; }
+
+        [JsonProperty("excludeFromRandomization")]
+        public bool ExcludeFromRandomization { get; set; }
+
+        [JsonProperty("contentValidation")]
+        public ContentValidation ContentValidation { get; set; }
+
+        [JsonProperty("condition")]
+        public ConditionDefinition Condition { get; set; }
+
+        [JsonProperty("autocompleteListVariable")]
+        public string AutocompleteListVariable { get; set; }
+    }
+
+    public class ContentValidation
+    {
+        [JsonProperty("validationType")]
+        public ContentValidationType ValidationType { get; set; }
+
+        [JsonProperty("earliestDate")]
+        public string EarliestDate { get; set; }
+
+        [JsonProperty("latestDate")]
+        public string LatestDate { get; set; }
+
+        [JsonProperty("minValue")]
+        public double MinValue { get; set; }
+
+        [JsonProperty("maxValue")]
+        public double MaxValue { get; set; }
+
+        [JsonProperty("decimalPlaces")]
+        public int DecimalPlaces { get; set; }
+
+        [JsonProperty("disableThousandSeparator")]
+        public bool DisableThousandSeparator { get; set; }
+    }
+
+    public class ColumnGroup
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("text")]
+        public TranslationElement[] Text { get; set; }
+
+        [JsonProperty("hasNotAvailableChoice")]
+        public bool HasNotAvailableChoice { get; set; }
+
+        [JsonProperty("notAvailableChoiceText")]
+        public TranslationElement[] NotAvailableChoiceText { get; set; }
+
+        [JsonProperty("randomizeColumns")]
+        public bool RandomizeColumns { get; set; }
+
+        [JsonProperty("prompt")]
+        public TranslationElement[] Prompt { get; set; }
+
+        [JsonProperty("choiceType")]
+        public ChoiceType ChoiceType { get; set; }
+
+        [JsonProperty("choices")]
+        public Choice[] Choices { get; set; }
+
+        [JsonProperty("condition")]
+        public ConditionDefinition Condition { get; set; }
+    }
+
+    public class MinMaxChoice
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("codeManuallyChanged")]
+        public bool CodeManuallyChanged { get; set; }
+
+        [JsonProperty("leftText")]
+        public TranslationElement[] LeftText { get; set; }
+
+        [JsonProperty("rightText")]
+        public TranslationElement[] RightText { get; set; }
+
+        [JsonProperty("excludeFromRandomization")]
+        public bool ExcludeFromRandomization { get; set; }
+
+        [JsonProperty("condition")]
+        public ConditionDefinition Condition { get; set; }
+    }
+
+    public class ActionElement
+    {
+        [JsonProperty("actionType")]
+        public ActionType ActionType { get; set; }
+
+        [JsonProperty("endOfSurveyText")]
+        public TranslationElement[] EndOfSurveyText { get; set; }
+
+        [JsonProperty("forwardUrl")]
+        public TranslationElement[] ForwardUrl { get; set; }
+    }
+
+    public class CustomVariable
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("variableName")]
+        public string VariableName { get; set; }
+
+        [JsonProperty("variableType")]
+        public VariableType VariableType { get; set; }
     }
 
     public class ReadInterviewInput
@@ -2629,7 +3124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool? LoadCodePlan { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition[] Conditions { get; set; }
+        public Condition2[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -2695,7 +3190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public bool? LoadCodePlan { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition[] Conditions { get; set; }
+        public Condition2[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -2719,6 +3214,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string ErrorCode { get; set; }
     }
 
+    public class Member
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("fields")]
+        public JToken Fields { get; set; }
+
+        [JsonProperty("createdAt")]
+        public string CreatedAt { get; set; }
+
+        [JsonProperty("createdBy")]
+        public string CreatedBy { get; set; }
+
+        [JsonProperty("updatedAt")]
+        public string UpdatedAt { get; set; }
+
+        [JsonProperty("updatedBy")]
+        public string UpdatedBy { get; set; }
+
+        [JsonProperty("interviews")]
+        public Interview[] Interviews { get; set; }
+    }
+
+    public class Interview
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("surveyId")]
+        public int SurveyId { get; set; }
+
+        [JsonProperty("surveyVersionId")]
+        public int SurveyVersionId { get; set; }
+
+        [JsonProperty("surveyName")]
+        public string SurveyName { get; set; }
+
+        [JsonProperty("surveyState")]
+        public string SurveyState { get; set; }
+
+        [JsonProperty("answersLink")]
+        public string AnswersLink { get; set; }
+
+        [JsonProperty("interviewLink")]
+        public string InterviewLink { get; set; }
+
+        [JsonProperty("startDate")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("endDate")]
+        public string EndDate { get; set; }
+
+        [JsonProperty("samplingProjectId")]
+        public int SamplingProjectId { get; set; }
+
+        [JsonProperty("distributorId")]
+        public int DistributorId { get; set; }
+    }
+
     public class ReadMemberListInput
     {
         [JsonProperty("tenant")]
@@ -2734,7 +3292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string[] FieldsToDownload { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition[] Conditions { get; set; }
+        public Condition2[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -2788,7 +3346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string Language { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition[] Conditions { get; set; }
+        public Condition2[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -2836,7 +3394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int? WorkspaceId { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition[] Conditions { get; set; }
+        public Condition2[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -3077,7 +3635,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int WorkspaceId { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition[] Conditions { get; set; }
+        public Condition2[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -3114,6 +3672,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
 
         [JsonProperty("errorCode")]
         public string ErrorCode { get; set; }
+    }
+
+    public class SurveyConfiguration
+    {
+        [JsonProperty("designConfiguration")]
+        public DesignConfiguration DesignConfiguration { get; set; }
+
+        [JsonProperty("anonymizingConfiguration")]
+        public AnonymizingConfiguration AnonymizingConfiguration { get; set; }
+    }
+
+    public class DesignConfiguration
+    {
+        [JsonProperty("surveyDesignLayout")]
+        public int SurveyDesignLayout { get; set; }
+
+        [JsonProperty("matrixSubQuestionSize")]
+        public MatrixSubQuestionSize MatrixSubQuestionSize { get; set; }
+
+        [JsonProperty("textBlocks")]
+        public TextBlock[] TextBlocks { get; set; }
+    }
+
+    public class TextBlock
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("text")]
+        public TranslationElement[] Text { get; set; }
+    }
+
+    public class AnonymizingConfiguration
+    {
+        [JsonProperty("anonymizingMode")]
+        public AnonymizingMode AnonymizingMode { get; set; }
+
+        [JsonProperty("logIp")]
+        public bool LogIp { get; set; }
+
+        [JsonProperty("logUserAgent")]
+        public bool LogUserAgent { get; set; }
+
+        [JsonProperty("logReferer")]
+        public bool LogReferer { get; set; }
     }
 
     public class ReadSurveyInput
@@ -3245,7 +3851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     public class ReadWorkspaceListInput
     {
         [JsonProperty("conditions")]
-        public Condition[] Conditions { get; set; }
+        public Condition2[] Conditions { get; set; }
 
         [JsonProperty("paging")]
         public Paging Paging { get; set; }
@@ -3296,13 +3902,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int MessageTemplateId { get; set; }
 
         [JsonProperty("textBlocks")]
-        public TextBlock[] TextBlocks { get; set; }
+        public TextBlock2[] TextBlocks { get; set; }
 
         [JsonProperty("scheduleDateTime")]
         public string ScheduleDateTime { get; set; }
 
         [JsonProperty("conditions")]
-        public Condition[] Conditions { get; set; }
+        public Condition2[] Conditions { get; set; }
 
         [JsonProperty("channel")]
         public DistributionChannel? Channel { get; set; }
@@ -3365,7 +3971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public int PanelId { get; set; }
 
         [JsonProperty("members", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Member[] Members { get; set; }
+        public Member2[] Members { get; set; }
     }
 
     public class WritePanelResponse
@@ -3401,13 +4007,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     public class PanelMemberField
     {
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("type")]
-        public PanelMemberFieldType Type { get; set; }
+        public PanelMemberFieldType? Type { get; set; }
 
         [JsonProperty("value")]
         public JToken Value { get; set; }
@@ -3450,10 +4056,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string SurveyName { get; set; }
 
         [JsonProperty("surveyDefinition", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SurveyDefinition SurveyDefinition { get; set; }
+        public SurveyDefinition2 SurveyDefinition { get; set; }
 
         [JsonProperty("surveyConfiguration")]
-        public SurveyConfiguration SurveyConfiguration { get; set; }
+        public SurveyConfiguration2 SurveyConfiguration { get; set; }
     }
 
     public class UpdateWebHookResponse
@@ -3518,10 +4124,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
 
     public class EmailItem
     {
-        [JsonProperty("email")]
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
-        [JsonProperty("optOutOperation")]
+        [JsonProperty("optOutOperation", DefaultValueHandling = DefaultValueHandling.Include)]
         public OptOutOperation OptOutOperation { get; set; }
     }
 
@@ -3534,10 +4140,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
 
     public class CellPhoneItem
     {
-        [JsonProperty("cellPhone")]
+        [JsonProperty("cellPhone", DefaultValueHandling = DefaultValueHandling.Include)]
         public int CellPhone { get; set; }
 
-        [JsonProperty("optOutOperation")]
+        [JsonProperty("optOutOperation", DefaultValueHandling = DefaultValueHandling.Include)]
         public OptOutOperation OptOutOperation { get; set; }
     }
 }

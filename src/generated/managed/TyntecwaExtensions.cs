@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTextInputContentType Content { get; set; }
+        public SendWhatsAppTextInputContentType Content { get; set; } = new SendWhatsAppTextInputContentType();
     }
 
     public class SendWhatsAppTextInputContentType
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppContactInputContentType Content { get; set; }
+        public SendWhatsAppContactInputContentType Content { get; set; } = new SendWhatsAppContactInputContentType();
     }
 
     public class SendWhatsAppContactInputContentType
@@ -519,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppLocationInputContentType Content { get; set; }
+        public SendWhatsAppLocationInputContentType Content { get; set; } = new SendWhatsAppLocationInputContentType();
     }
 
     public class SendWhatsAppLocationInputContentType
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppQuickReplyInputContentType Content { get; set; }
+        public SendWhatsAppQuickReplyInputContentType Content { get; set; } = new SendWhatsAppQuickReplyInputContentType();
     }
 
     public class SendWhatsAppQuickReplyInputContentType
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string ContentType { get; set; } = "interactive";
 
         [JsonProperty("interactive", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppQuickReplyInputContentTypeInteractiveType Interactive { get; set; }
+        public SendWhatsAppQuickReplyInputContentTypeInteractiveType Interactive { get; set; } = new SendWhatsAppQuickReplyInputContentTypeInteractiveType();
     }
 
     public class SendWhatsAppQuickReplyInputContentTypeInteractiveType
@@ -669,7 +669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppProductListInputContentType Content { get; set; }
+        public SendWhatsAppProductListInputContentType Content { get; set; } = new SendWhatsAppProductListInputContentType();
     }
 
     public class SendWhatsAppProductListInputContentType
@@ -678,7 +678,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string ContentType { get; set; } = "interactive";
 
         [JsonProperty("interactive", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppProductListInputContentTypeInteractiveType Interactive { get; set; }
+        public SendWhatsAppProductListInputContentTypeInteractiveType Interactive { get; set; } = new SendWhatsAppProductListInputContentTypeInteractiveType();
     }
 
     public class SendWhatsAppProductListInputContentTypeInteractiveType
@@ -774,7 +774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppProductInputContentType Content { get; set; }
+        public SendWhatsAppProductInputContentType Content { get; set; } = new SendWhatsAppProductInputContentType();
     }
 
     public class SendWhatsAppProductInputContentType
@@ -783,7 +783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string ContentType { get; set; } = "interactive";
 
         [JsonProperty("interactive", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppProductInputContentTypeInteractiveType Interactive { get; set; }
+        public SendWhatsAppProductInputContentTypeInteractiveType Interactive { get; set; } = new SendWhatsAppProductInputContentTypeInteractiveType();
     }
 
     public class SendWhatsAppProductInputContentTypeInteractiveType
@@ -867,7 +867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppListInputContentType Content { get; set; }
+        public SendWhatsAppListInputContentType Content { get; set; } = new SendWhatsAppListInputContentType();
     }
 
     public class SendWhatsAppListInputContentType
@@ -876,7 +876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string ContentType { get; set; } = "interactive";
 
         [JsonProperty("interactive", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppListInputContentTypeInteractiveType Interactive { get; set; }
+        public SendWhatsAppListInputContentTypeInteractiveType Interactive { get; set; } = new SendWhatsAppListInputContentTypeInteractiveType();
     }
 
     public class SendWhatsAppListInputContentTypeInteractiveType
@@ -981,7 +981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendsWhatsAppImageInputContentType Content { get; set; }
+        public SendsWhatsAppImageInputContentType Content { get; set; } = new SendsWhatsAppImageInputContentType();
     }
 
     public class SendsWhatsAppImageInputContentType
@@ -1023,7 +1023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppVideoInputContentType Content { get; set; }
+        public SendWhatsAppVideoInputContentType Content { get; set; } = new SendWhatsAppVideoInputContentType();
     }
 
     public class SendWhatsAppVideoInputContentType
@@ -1065,7 +1065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppDocumentInputContentType Content { get; set; }
+        public SendWhatsAppDocumentInputContentType Content { get; set; } = new SendWhatsAppDocumentInputContentType();
     }
 
     public class SendWhatsAppDocumentInputContentType
@@ -1110,7 +1110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppAudioInputContentType Content { get; set; }
+        public SendWhatsAppAudioInputContentType Content { get; set; } = new SendWhatsAppAudioInputContentType();
     }
 
     public class SendWhatsAppAudioInputContentType
@@ -1149,7 +1149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppStickerInputContentType Content { get; set; }
+        public SendWhatsAppStickerInputContentType Content { get; set; } = new SendWhatsAppStickerInputContentType();
     }
 
     public class SendWhatsAppStickerInputContentType
@@ -1188,7 +1188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateTextInputContentType Content { get; set; }
+        public SendWhatsAppTemplateTextInputContentType Content { get; set; } = new SendWhatsAppTemplateTextInputContentType();
     }
 
     public class SendWhatsAppTemplateTextInputContentType
@@ -1260,7 +1260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateLocationInputContentType Content { get; set; }
+        public SendWhatsAppTemplateLocationInputContentType Content { get; set; } = new SendWhatsAppTemplateLocationInputContentType();
     }
 
     public class SendWhatsAppTemplateLocationInputContentType
@@ -1347,7 +1347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateImageInputContentType Content { get; set; }
+        public SendWhatsAppTemplateImageInputContentType Content { get; set; } = new SendWhatsAppTemplateImageInputContentType();
     }
 
     public class SendWhatsAppTemplateImageInputContentType
@@ -1425,7 +1425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateDocumentInputContentType Content { get; set; }
+        public SendWhatsAppTemplateDocumentInputContentType Content { get; set; } = new SendWhatsAppTemplateDocumentInputContentType();
     }
 
     public class SendWhatsAppTemplateDocumentInputContentType
@@ -1581,7 +1581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateDynamicButtonInputContentType Content { get; set; }
+        public SendWhatsAppTemplateDynamicButtonInputContentType Content { get; set; } = new SendWhatsAppTemplateDynamicButtonInputContentType();
     }
 
     public class SendWhatsAppTemplateDynamicButtonInputContentType
@@ -1656,7 +1656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
         internal string Channel { get; set; } = "whatsapp";
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendWhatsAppTemplateQuickReplyInputContentType Content { get; set; }
+        public SendWhatsAppTemplateQuickReplyInputContentType Content { get; set; } = new SendWhatsAppTemplateQuickReplyInputContentType();
     }
 
     public class SendWhatsAppTemplateQuickReplyInputContentType

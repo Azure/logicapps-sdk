@@ -287,19 +287,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
 
     public class FromAddress
     {
-        [JsonProperty("from-detail")]
+        [JsonProperty("from-detail", DefaultValueHandling = DefaultValueHandling.Include)]
         public FromAddressAddressType Address { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
 
     public class FromAddressAddressType
     {
-        [JsonProperty("from-prefix")]
+        [JsonProperty("from-prefix", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Prefix { get; set; }
 
-        [JsonProperty("from-domain")]
+        [JsonProperty("from-domain", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Domain { get; set; }
     }
 
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
 
     public class EmailAddress
     {
-        [JsonProperty("address")]
+        [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Address { get; set; }
 
         [JsonProperty("name")]

@@ -489,8 +489,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [JsonProperty("states", DefaultValueHandling = DefaultValueHandling.Include)]
         public SetStatesInputStatesTypeItem[] States { get; set; }
 
-        [JsonProperty("defaults")]
-        public SetStatesInputDefaultsType Defaults { get; set; }
+        [JsonProperty("defaults", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SetStatesInputDefaultsType Defaults { get; set; } = new SetStatesInputDefaultsType();
     }
 
     public class SetStatesInputStatesTypeItem

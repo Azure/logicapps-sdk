@@ -358,8 +358,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
         public string IntroText { get; set; }
-        public Authentication[] Authentications { get; set; }
-        public Verification[] Verifications { get; set; }
+        public Authentication2[] Authentications { get; set; }
+        public Verification2[] Verifications { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SendSignRequest { get; set; } = true;
@@ -382,6 +382,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public string ReturnUrl { get; set; } = "https://signhost.com";
         public JToken Context { get; set; }
         public CreateInputSignersTypeItemActivitiesTypeItem[] Activities { get; set; }
+    }
+
+    public class Authentication2
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public AuthenticationTypeType Type { get; set; }
+        public string Number { get; set; }
+        public double? Bsn { get; set; }
+    }
+
+    public class Verification2
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public VerificationTypeType Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

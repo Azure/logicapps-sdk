@@ -657,7 +657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
     public class CreateOrganisationInput
     {
         [JsonProperty("party", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateOrganisationInputPartyType Party { get; set; }
+        public CreateOrganisationInputPartyType Party { get; set; } = new CreateOrganisationInputPartyType();
     }
 
     public class CreateOrganisationInputPartyType
@@ -798,8 +798,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
     public class UpdateOrganisationInput
     {
-        [JsonProperty("party")]
-        public UpdateOrganisationInputPartyType Party { get; set; }
+        [JsonProperty("party", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateOrganisationInputPartyType Party { get; set; } = new UpdateOrganisationInputPartyType();
     }
 
     public class UpdateOrganisationInputPartyType
@@ -1115,7 +1115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
     public class CompleteTaskInput
     {
         [JsonProperty("task", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CompleteTaskInputTaskObjectType TaskObject { get; set; }
+        public CompleteTaskInputTaskObjectType TaskObject { get; set; } = new CompleteTaskInputTaskObjectType();
     }
 
     public class CompleteTaskInputTaskObjectType
@@ -1250,7 +1250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
     public class CreatePersonV2Input
     {
         [JsonProperty("party", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePersonV2InputPartyType Party { get; set; }
+        public CreatePersonV2InputPartyType Party { get; set; } = new CreatePersonV2InputPartyType();
     }
 
     public class CreatePersonV2InputPartyType
@@ -1487,8 +1487,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
     public class UpdatePersonV2Input
     {
-        [JsonProperty("party")]
-        public UpdatePersonV2InputPartyType Party { get; set; }
+        [JsonProperty("party", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdatePersonV2InputPartyType Party { get; set; } = new UpdatePersonV2InputPartyType();
     }
 
     public class UpdatePersonV2InputPartyType

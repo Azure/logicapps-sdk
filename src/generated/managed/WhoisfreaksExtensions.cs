@@ -427,10 +427,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
-        [EnumMember(Value = "xml")]
-        Xml,
         [EnumMember(Value = "json")]
-        Json
+        Json,
+        [EnumMember(Value = "xml")]
+        Xml
     }
 
     public class BulkDomainAvailabilityLookupInput

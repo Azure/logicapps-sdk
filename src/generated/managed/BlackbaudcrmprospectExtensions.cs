@@ -537,13 +537,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class PrsmgNewUnplannedContactReportFundraiser
     {
-        [JsonProperty("fundraiser_id")]
+        [JsonProperty("fundraiser_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
 
     public class PrsmgNewUnplannedContactReportParticipant
     {
-        [JsonProperty("constituent_id")]
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
 
@@ -918,7 +918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class PrsmgNewMajorGivingPlanParticipant
     {
-        [JsonProperty("constituent_id")]
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
         [JsonProperty("plan_participant_role")]
@@ -927,7 +927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class PrsmgNewMajorGivingPlanSecondaryFundraiser
     {
-        [JsonProperty("fundraiser_id")]
+        [JsonProperty("fundraiser_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
         [JsonProperty("solicitor_role")]
@@ -1336,13 +1336,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class PrsmgNewMajorGivingPlanStepFundraiser
     {
-        [JsonProperty("fundraiser_id")]
+        [JsonProperty("fundraiser_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
 
     public class PrsmgNewMajorGivingPlanStepParticipant
     {
-        [JsonProperty("constituent_id")]
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
 
@@ -1481,7 +1481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class PrsmgNewStewardshipPlanSteward
     {
-        [JsonProperty("constituent_id")]
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
         [JsonProperty("role")]
@@ -1649,13 +1649,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
 
     public class PrsmgNewStewardshipPlanStepParticipant
     {
-        [JsonProperty("constituent_id")]
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
 
     public class PrsmgNewStewardshipPlanStepAssociatedPlan
     {
-        [JsonProperty("prospect_plan_id")]
+        [JsonProperty("prospect_plan_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlanId { get; set; }
     }
 

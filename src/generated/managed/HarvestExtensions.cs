@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
     public class CreateUserInput
     {
         [JsonProperty("user", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateUserInputUserType User { get; set; }
+        public CreateUserInputUserType User { get; set; } = new CreateUserInputUserType();
     }
 
     public class CreateUserInputUserType

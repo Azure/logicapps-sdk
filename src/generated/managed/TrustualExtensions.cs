@@ -115,19 +115,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
     public class CertifyFileInput
     {
         [JsonProperty("file_base_64", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileBase64 { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
-        [JsonProperty("language")]
-        public ZLanguage Language { get; set; }
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ZLanguage? CertificateLanguage { get; set; } = ZLanguage.En;
 
         [JsonProperty("offset")]
-        public double Offset { get; set; }
+        public double? TimeZoneOffset { get; set; }
 
         [JsonProperty("reference")]
         public string Reference { get; set; }
 
         [JsonProperty("sandbox")]
-        public bool Sandbox { get; set; }
+        public bool? SandboxMode { get; set; }
     }
 
     public class CertifyHashInput
@@ -135,17 +135,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
         [JsonProperty("hash", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Hash { get; set; }
 
-        [JsonProperty("language")]
-        public ZLanguage Language { get; set; }
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ZLanguage? CertificateLanguage { get; set; } = ZLanguage.En;
 
         [JsonProperty("offset")]
-        public double Offset { get; set; }
+        public double? TimeZoneOffset { get; set; }
 
         [JsonProperty("reference")]
         public string Reference { get; set; }
 
         [JsonProperty("sandbox")]
-        public bool Sandbox { get; set; }
+        public bool? SandboxMode { get; set; }
     }
 }
 

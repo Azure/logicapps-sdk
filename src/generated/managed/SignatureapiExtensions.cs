@@ -589,40 +589,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         internal bool DraftEnvelope { get; set; } = true;
 
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Title { get; set; }
+        public string EnvelopeTitle { get; set; }
 
         [JsonProperty("label")]
-        public string Label { get; set; }
+        public string EnvelopeLabel { get; set; }
 
         [JsonProperty("message")]
-        public string Message { get; set; }
+        public string EnvelopeMessage { get; set; }
 
         [JsonProperty("mode")]
-        public EnvelopeMode Mode { get; set; }
+        public EnvelopeMode? EnvelopeMode { get; set; }
 
         [JsonProperty("routing")]
-        public EnvelopeRouting Routing { get; set; }
+        public EnvelopeRouting? EnvelopeRouting { get; set; }
 
         [JsonProperty("language")]
         public string Language { get; set; }
 
         [JsonProperty("timezone")]
-        public string Timezone { get; set; }
+        public string TimeZone { get; set; }
 
         [JsonProperty("timestamp_format")]
         public string TimestampFormat { get; set; }
 
         [JsonProperty("attestation")]
-        public EnvelopeAttestation Attestation { get; set; }
+        public EnvelopeAttestation? EnvelopeAttestation { get; set; }
 
         [JsonProperty("sender")]
         public CreateEnvelopeInputSenderType Sender { get; set; }
 
         [JsonProperty("topics")]
-        public string[] Topics { get; set; }
+        public string[] EnvelopeTopics { get; set; }
 
         [JsonProperty("extra")]
-        public string Extra { get; set; }
+        public string ExtraProperties { get; set; }
     }
 
     public class CreateEnvelopeInputSenderType
@@ -706,49 +706,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
     public class AddDocumentInput
     {
         [JsonProperty("title")]
-        public string Title { get; set; }
+        public string DocumentTitle { get; set; }
 
         [JsonProperty("file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Format { get; set; }
+        internal string FileFormat { get; set; } = "pdf";
 
         [JsonProperty("extra")]
-        public string Extra { get; set; }
+        public string ExtraProperties { get; set; }
     }
 
     public class AddDocumentDocxInput
     {
         [JsonProperty("title")]
-        public string Title { get; set; }
+        public string DocumentTitle { get; set; }
 
         [JsonProperty("file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Format { get; set; }
+        internal string FileFormat { get; set; } = "docx";
 
         [JsonProperty("extra")]
-        public string Extra { get; set; }
+        public string ExtraProperties { get; set; }
     }
 
     public class AddTemplateInput
     {
         [JsonProperty("title")]
-        public string Title { get; set; }
+        public string DocumentTitle { get; set; }
 
         [JsonProperty("file_content", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent FileContent { get; set; }
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Format { get; set; }
+        internal string FileFormat { get; set; } = "docx";
 
         [JsonProperty("data")]
-        public string[] Data { get; set; }
+        public string[] TemplateData { get; set; }
 
         [JsonProperty("extra")]
-        public string Extra { get; set; }
+        public string ExtraProperties { get; set; }
     }
 
     public class AddTemplateDataInput
@@ -763,64 +763,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
     public class AddPlaceSignatureInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Type { get; set; }
+        internal string PlaceType { get; set; } = "signature";
 
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Key { get; set; }
+        public string PlaceKey { get; set; }
 
         [JsonProperty("recipient_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RecipientKey { get; set; }
 
         [JsonProperty("height")]
-        public double Height { get; set; }
+        public double? PlaceHeight { get; set; }
 
         [JsonProperty("page")]
-        public double Page { get; set; }
+        public double? PageNumber { get; set; }
 
         [JsonProperty("top")]
-        public double Top { get; set; }
+        public double? DistanceFromTop { get; set; }
 
         [JsonProperty("left")]
-        public double Left { get; set; }
+        public double? DistanceFromLeft { get; set; }
 
         [JsonProperty("extra")]
-        public string Extra { get; set; }
+        public string ExtraProperties { get; set; }
     }
 
     public class AddPlaceInitialsInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Type { get; set; }
+        internal string PlaceType { get; set; } = "initials";
 
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Key { get; set; }
+        public string PlaceKey { get; set; }
 
         [JsonProperty("recipient_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RecipientKey { get; set; }
 
         [JsonProperty("height")]
-        public double Height { get; set; }
+        public double? PlaceHeight { get; set; }
 
         [JsonProperty("page")]
-        public double Page { get; set; }
+        public double? PageNumber { get; set; }
 
         [JsonProperty("top")]
-        public double Top { get; set; }
+        public double? DistanceFromTop { get; set; }
 
         [JsonProperty("left")]
-        public double Left { get; set; }
+        public double? DistanceFromLeft { get; set; }
 
         [JsonProperty("extra")]
-        public string Extra { get; set; }
+        public string ExtraProperties { get; set; }
     }
 
     public class AddPlaceTextInputInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Type { get; set; }
+        internal string PlaceType { get; set; } = "text_input";
 
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Key { get; set; }
+        public string PlaceKey { get; set; }
 
         [JsonProperty("recipient_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RecipientKey { get; set; }
@@ -834,8 +834,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [JsonProperty("prompt")]
         public string Prompt { get; set; }
 
-        [JsonProperty("requirement")]
-        public PlaceRequirement Requirement { get; set; }
+        [JsonProperty("requirement", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PlaceRequirement? Requirement { get; set; } = PlaceRequirement.Required;
 
         [JsonProperty("format")]
         public string Format { get; set; }
@@ -844,16 +844,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string FormatMessage { get; set; }
 
         [JsonProperty("page")]
-        public double Page { get; set; }
+        public double? PageNumber { get; set; }
 
         [JsonProperty("top")]
-        public double Top { get; set; }
+        public double? DistanceFromTop { get; set; }
 
         [JsonProperty("left")]
-        public double Left { get; set; }
+        public double? DistanceFromLeft { get; set; }
 
         [JsonProperty("extra")]
-        public string Extra { get; set; }
+        public string ExtraProperties { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -868,40 +868,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
     public class AddPlaceTextInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Type { get; set; }
+        internal string PlaceType { get; set; } = "text";
 
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Key { get; set; }
+        public string PlaceKey { get; set; }
 
         [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
 
         [JsonProperty("font_size")]
-        public double FontSize { get; set; }
+        public double? FontSize { get; set; }
 
         [JsonProperty("font_color")]
         public string FontColor { get; set; }
 
         [JsonProperty("page")]
-        public double Page { get; set; }
+        public double? PageNumber { get; set; }
 
         [JsonProperty("top")]
-        public double Top { get; set; }
+        public double? DistanceFromTop { get; set; }
 
         [JsonProperty("left")]
-        public double Left { get; set; }
+        public double? DistanceFromLeft { get; set; }
 
         [JsonProperty("extra")]
-        public string Extra { get; set; }
+        public string ExtraProperties { get; set; }
     }
 
     public class AddPlaceRecipientCompletedDateInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Type { get; set; }
+        internal string PlaceType { get; set; } = "recipient_completed_date";
 
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Key { get; set; }
+        public string PlaceKey { get; set; }
 
         [JsonProperty("recipient_key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RecipientKey { get; set; }
@@ -910,40 +910,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string DateFormat { get; set; }
 
         [JsonProperty("page")]
-        public double Page { get; set; }
+        public double? PageNumber { get; set; }
 
         [JsonProperty("top")]
-        public double Top { get; set; }
+        public double? DistanceFromTop { get; set; }
 
         [JsonProperty("left")]
-        public double Left { get; set; }
+        public double? DistanceFromLeft { get; set; }
 
         [JsonProperty("extra")]
-        public string Extra { get; set; }
+        public string ExtraProperties { get; set; }
     }
 
     public class AddPlaceEnvelopeCompletedDateInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Type { get; set; }
+        internal string PlaceType { get; set; } = "envelope_completed_date";
 
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Key { get; set; }
+        public string PlaceKey { get; set; }
 
         [JsonProperty("date_format")]
         public string DateFormat { get; set; }
 
         [JsonProperty("page")]
-        public double Page { get; set; }
+        public double? PageNumber { get; set; }
 
         [JsonProperty("top")]
-        public double Top { get; set; }
+        public double? DistanceFromTop { get; set; }
 
         [JsonProperty("left")]
-        public double Left { get; set; }
+        public double? DistanceFromLeft { get; set; }
 
         [JsonProperty("extra")]
-        public string Extra { get; set; }
+        public string ExtraProperties { get; set; }
     }
 
     public class AddRecipientSignerOutput
@@ -988,25 +988,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
     public class AddRecipientInput
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Type { get; set; }
+        internal string RecipientType { get; set; } = "signer";
 
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Name { get; set; }
+        public string RecipientName { get; set; }
 
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Email { get; set; }
+        public string RecipientEmail { get; set; }
 
         [JsonProperty("key", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Key { get; set; }
+        public string RecipientKey { get; set; }
 
         [JsonProperty("ceremony_creation")]
-        public RecipientCeremonyCreation CeremonyCreation { get; set; }
+        public RecipientCeremonyCreation? RecipientCeremonyCreation { get; set; }
 
         [JsonProperty("delivery_type")]
-        public RecipientDeliveryType DeliveryType { get; set; }
+        public RecipientDeliveryType? RecipientDeliveryType { get; set; }
 
         [JsonProperty("extra")]
-        public string Extra { get; set; }
+        public string ExtraProperties { get; set; }
     }
 
     public class Recipient
@@ -1045,19 +1045,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
     public class CreateCeremonyEmailLinkInput
     {
         [JsonProperty("authentication", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCeremonyEmailLinkInputAuthenticationType Authentication { get; set; }
+        public CreateCeremonyEmailLinkInputAuthenticationType Authentication { get; set; } = new CreateCeremonyEmailLinkInputAuthenticationType();
 
         [JsonProperty("redirect_url")]
-        public string RedirectUrl { get; set; }
+        public string RedirectURL { get; set; }
 
         [JsonProperty("extra")]
-        public string Extra { get; set; }
+        public string ExtraProperties { get; set; }
     }
 
     public class CreateCeremonyEmailLinkInputAuthenticationType
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Type { get; set; }
+        internal string CeremonyType { get; set; } = "email_link";
     }
 
     public class CreateCeremonyCustomOutput
@@ -1069,25 +1069,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
     public class CreateCeremonyCustomInput
     {
         [JsonProperty("authentication", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCeremonyCustomInputAuthenticationType Authentication { get; set; }
+        public CreateCeremonyCustomInputAuthenticationType Authentication { get; set; } = new CreateCeremonyCustomInputAuthenticationType();
 
         [JsonProperty("redirect_url")]
-        public string RedirectUrl { get; set; }
+        public string RedirectURL { get; set; }
 
         [JsonProperty("extra")]
-        public string Extra { get; set; }
+        public string ExtraProperties { get; set; }
     }
 
     public class CreateCeremonyCustomInputAuthenticationType
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Type { get; set; }
+        internal string CeremonyType { get; set; } = "custom";
 
         [JsonProperty("provider", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Provider { get; set; }
+        public string AuthenticationProvider { get; set; }
 
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] Data { get; set; }
+        public string[] AuthenticationData { get; set; }
     }
 
     public class Deliverable

@@ -194,10 +194,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         public PhoneNumber Phones { get; set; }
 
         [JsonProperty("addresses")]
-        public Address[] Addresses { get; set; }
+        public Address2[] Addresses { get; set; }
 
         [JsonProperty("notes")]
         public string Notes { get; set; }
+    }
+
+    public class Address2
+    {
+        [JsonProperty("fullAddress")]
+        public string FullAddress { get; set; }
+
+        [JsonProperty("lat")]
+        public double? Lat { get; set; }
+
+        [JsonProperty("lng")]
+        public double? Lng { get; set; }
     }
 
     public class CreateContactInput
@@ -224,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         public PhoneNumber Phones { get; set; }
 
         [JsonProperty("addresses")]
-        public Address[] Addresses { get; set; }
+        public Address2[] Addresses { get; set; }
 
         [JsonProperty("notes")]
         public string Notes { get; set; }

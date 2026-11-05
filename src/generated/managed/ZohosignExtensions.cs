@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohosign
     public class UpdateDocumentInput
     {
         [JsonProperty("requests", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateDocumentInputRequestsType Requests { get; set; }
+        public UpdateDocumentInputRequestsType Requests { get; set; } = new UpdateDocumentInputRequestsType();
     }
 
     public class UpdateDocumentInputRequestsType

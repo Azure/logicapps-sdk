@@ -481,19 +481,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class LocalizedInternalContentCreation
     {
-        [JsonProperty("language")]
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
         public LanguageBehavior Language { get; set; }
 
-        [JsonProperty("isDefault")]
+        [JsonProperty("isDefault", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsDefault { get; set; }
 
-        [JsonProperty("title")]
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
-        [JsonProperty("summary")]
+        [JsonProperty("summary", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Summary { get; set; }
 
-        [JsonProperty("description")]
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; }
 
         [JsonProperty("mediaIds")]
@@ -747,16 +747,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class LocalizedExternalContentCreation
     {
-        [JsonProperty("language")]
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
         public LanguageBehavior Language { get; set; }
 
-        [JsonProperty("isDefault")]
+        [JsonProperty("isDefault", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsDefault { get; set; }
 
-        [JsonProperty("title")]
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
-        [JsonProperty("description")]
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Description { get; set; }
 
         [JsonProperty("proposedCommentForSharing")]
@@ -895,13 +895,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class LocalizedBaseCtaContentCreation
     {
-        [JsonProperty("language")]
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
         public LanguageBehavior Language { get; set; }
 
-        [JsonProperty("isDefault")]
+        [JsonProperty("isDefault", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsDefault { get; set; }
 
-        [JsonProperty("title")]
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
         [JsonProperty("summary")]
@@ -1267,22 +1267,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
 
     public class LocalizedCtaEventContentCreation
     {
-        [JsonProperty("language")]
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
         public LanguageBehavior Language { get; set; }
 
-        [JsonProperty("isDefault")]
+        [JsonProperty("isDefault", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsDefault { get; set; }
 
         [JsonProperty("headerText")]
         public string HeaderText { get; set; }
 
-        [JsonProperty("title")]
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
         [JsonProperty("summary")]
         public string Summary { get; set; }
 
-        [JsonProperty("buttonText")]
+        [JsonProperty("buttonText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ButtonText { get; set; }
 
         [JsonProperty("mediaId")]

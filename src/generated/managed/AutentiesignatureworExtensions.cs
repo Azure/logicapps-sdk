@@ -664,7 +664,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         public string CallbackAdapterId { get; set; } = "CALLBACK_ADAPTER:API_V2";
 
         [JsonProperty("callbackParameters", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DocumentChangeInputCallbackParametersType CallbackParameters { get; set; }
+        public DocumentChangeInputCallbackParametersType CallbackParameters { get; set; } = new DocumentChangeInputCallbackParametersType();
     }
 
     public class DocumentChangeInputCallbackParametersType

@@ -616,10 +616,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
 
     public class Variable
     {
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
-        [JsonProperty("value")]
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
     }
 
@@ -800,16 +800,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
     public class Properties
     {
         [JsonProperty("assignUserToken")]
-        public bool AssignUserToken { get; set; }
+        public bool? AssignUserToken { get; set; }
 
         [JsonProperty("excludeFiles")]
-        public bool ExcludeFiles { get; set; }
+        public bool? ExcludeFiles { get; set; }
 
         [JsonProperty("keepData")]
-        public bool KeepData { get; set; }
+        public bool? KeepData { get; set; }
 
         [JsonProperty("usersAndRoles")]
-        public bool UsersAndRoles { get; set; }
+        public bool? UsersAndRoles { get; set; }
     }
 
     public class GetAppTablesResponseItem
@@ -1182,12 +1182,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
     public class SummaryField1
     {
         [JsonProperty("summaryFid")]
-        public double SummaryFid { get; set; }
+        public double? SummaryFid { get; set; }
 
         [JsonProperty("label")]
         public string Label { get; set; }
 
-        [JsonProperty("accumulationType")]
+        [JsonProperty("accumulationType", DefaultValueHandling = DefaultValueHandling.Include)]
         public AccumulationType AccumulationType { get; set; }
 
         [JsonProperty("where")]
@@ -1880,7 +1880,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public FieldType2 FieldType { get; set; }
 
         [JsonProperty("permissions")]
-        public Permission[] Permissions { get; set; }
+        public Permission2[] Permissions { get; set; }
 
         [JsonProperty("addToForms")]
         public bool? AddToForms { get; set; }
@@ -1901,64 +1901,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string Comments { get; set; }
 
         [JsonProperty("doesTotal")]
-        public bool DoesTotal { get; set; }
+        public bool? DoesTotal { get; set; }
 
         [JsonProperty("autoSave")]
-        public bool AutoSave { get; set; }
+        public bool? AutoSave { get; set; }
 
         [JsonProperty("defaultValueLuid")]
-        public int DefaultValueLuid { get; set; }
+        public int? DefaultValueLuid { get; set; }
 
         [JsonProperty("maxVersions")]
-        public int MaxVersions { get; set; }
+        public int? MaxVersions { get; set; }
 
         [JsonProperty("format")]
-        public int Format { get; set; }
+        public int? Format { get; set; }
 
         [JsonProperty("carryChoices")]
-        public bool CarryChoices { get; set; }
+        public bool? CarryChoices { get; set; }
 
         [JsonProperty("maxLength")]
-        public int MaxLength { get; set; }
+        public int? MaxLength { get; set; }
 
         [JsonProperty("linkText")]
         public string LinkText { get; set; }
 
         [JsonProperty("parentFieldId")]
-        public int ParentFieldId { get; set; }
+        public int? ParentFieldId { get; set; }
 
         [JsonProperty("displayTimezone")]
-        public bool DisplayTimezone { get; set; }
+        public bool? DisplayTimezone { get; set; }
 
         [JsonProperty("allowNewChoices")]
-        public bool AllowNewChoices { get; set; }
+        public bool? AllowNewChoices { get; set; }
 
         [JsonProperty("defaultToday")]
-        public bool DefaultToday { get; set; }
+        public bool? DefaultToday { get; set; }
 
         [JsonProperty("units")]
         public string Units { get; set; }
 
         [JsonProperty("sourceFieldId")]
-        public int SourceFieldId { get; set; }
+        public int? SourceFieldId { get; set; }
 
         [JsonProperty("doesAverage")]
-        public bool DoesAverage { get; set; }
+        public bool? DoesAverage { get; set; }
 
         [JsonProperty("formula")]
         public string Formula { get; set; }
 
         [JsonProperty("decimalPlaces")]
-        public int DecimalPlaces { get; set; }
+        public int? DecimalPlaces { get; set; }
 
         [JsonProperty("displayMonth")]
         public string DisplayMonth { get; set; }
 
         [JsonProperty("seeVersions")]
-        public bool SeeVersions { get; set; }
+        public bool? SeeVersions { get; set; }
 
         [JsonProperty("numLines")]
-        public int NumLines { get; set; }
+        public int? NumLines { get; set; }
 
         [JsonProperty("defaultKind")]
         public string DefaultKind { get; set; }
@@ -1973,16 +1973,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string CurrencySymbol { get; set; }
 
         [JsonProperty("targetFieldId")]
-        public int TargetFieldId { get; set; }
+        public int? TargetFieldId { get; set; }
 
         [JsonProperty("displayUser")]
         public string DisplayUser { get; set; }
 
         [JsonProperty("blankIsZero")]
-        public bool BlankIsZero { get; set; }
+        public bool? BlankIsZero { get; set; }
 
         [JsonProperty("exact")]
-        public bool Exact { get; set; }
+        public bool? Exact { get; set; }
 
         [JsonProperty("defaultDomain")]
         public string DefaultDomain { get; set; }
@@ -1991,10 +1991,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string DefaultValue { get; set; }
 
         [JsonProperty("abbreviate")]
-        public bool Abbreviate { get; set; }
+        public bool? Abbreviate { get; set; }
 
         [JsonProperty("numberFormat")]
-        public int NumberFormat { get; set; }
+        public int? NumberFormat { get; set; }
 
         [JsonProperty("targetTableName")]
         public string TargetTableName { get; set; }
@@ -2003,19 +2003,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string AppearsAs { get; set; }
 
         [JsonProperty("width")]
-        public int Width { get; set; }
+        public int? Width { get; set; }
 
         [JsonProperty("currencyFormat")]
-        public CurrencyFormat CurrencyFormat { get; set; }
+        public CurrencyFormat? CurrencyFormat { get; set; }
 
         [JsonProperty("displayImages")]
-        public bool DisplayImages { get; set; }
+        public bool? DisplayImages { get; set; }
 
         [JsonProperty("displayDayOfWeek")]
-        public bool DisplayDayOfWeek { get; set; }
+        public bool? DisplayDayOfWeek { get; set; }
 
         [JsonProperty("commaStart")]
-        public int CommaStart { get; set; }
+        public int? CommaStart { get; set; }
 
         [JsonProperty("choices")]
         public string[] Choices { get; set; }
@@ -2024,40 +2024,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string TargetTableId { get; set; }
 
         [JsonProperty("displayRelative")]
-        public bool DisplayRelative { get; set; }
+        public bool? DisplayRelative { get; set; }
 
         [JsonProperty("compositeFields")]
         public JToken[] CompositeFields { get; set; }
 
         [JsonProperty("displayTime")]
-        public bool DisplayTime { get; set; }
+        public bool? DisplayTime { get; set; }
 
         [JsonProperty("versionMode")]
-        public VersionMode VersionMode { get; set; }
+        public VersionMode? VersionMode { get; set; }
 
         [JsonProperty("snapFieldId")]
-        public int SnapFieldId { get; set; }
+        public int? SnapFieldId { get; set; }
 
         [JsonProperty("hours24")]
-        public bool Hours24 { get; set; }
+        public bool? Hours24 { get; set; }
 
         [JsonProperty("sortAlpha")]
-        public bool SortAlpha { get; set; }
+        public bool? SortAlpha { get; set; }
 
         [JsonProperty("sortAsGiven")]
-        public bool SortAsGiven { get; set; }
+        public bool? SortAsGiven { get; set; }
 
         [JsonProperty("hasExtension")]
-        public bool HasExtension { get; set; }
+        public bool? HasExtension { get; set; }
 
         [JsonProperty("useNewWindow")]
-        public bool UseNewWindow { get; set; }
+        public bool? UseNewWindow { get; set; }
 
         [JsonProperty("appendOnly")]
-        public bool AppendOnly { get; set; }
+        public bool? AppendOnly { get; set; }
 
         [JsonProperty("displayAsLink")]
-        public bool DisplayAsLink { get; set; }
+        public bool? DisplayAsLink { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2107,6 +2107,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         Phone,
         [EnumMember(Value = "file")]
         File
+    }
+
+    public class Permission2
+    {
+        [JsonProperty("role")]
+        public string Role { get; set; }
+
+        [JsonProperty("permissionType")]
+        public string PermissionType { get; set; }
+
+        [JsonProperty("roleId")]
+        public int? RoleId { get; set; }
     }
 
     public class GetFieldResponse
@@ -2229,7 +2241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public bool? Unique { get; set; }
 
         [JsonProperty("permissions")]
-        public Permission[] Permissions { get; set; }
+        public Permission2[] Permissions { get; set; }
 
         [JsonProperty("addToForms")]
         public bool? AddToForms { get; set; }
@@ -2250,73 +2262,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string Comments { get; set; }
 
         [JsonProperty("doesTotal")]
-        public bool DoesTotal { get; set; }
+        public bool? DoesTotal { get; set; }
 
         [JsonProperty("autoSave")]
-        public bool AutoSave { get; set; }
+        public bool? AutoSave { get; set; }
 
         [JsonProperty("defaultValueLuid")]
-        public int DefaultValueLuid { get; set; }
+        public int? DefaultValueLuid { get; set; }
 
         [JsonProperty("maxVersions")]
-        public int MaxVersions { get; set; }
+        public int? MaxVersions { get; set; }
 
         [JsonProperty("format")]
-        public int Format { get; set; }
+        public int? Format { get; set; }
 
         [JsonProperty("carryChoices")]
-        public bool CarryChoices { get; set; }
+        public bool? CarryChoices { get; set; }
 
         [JsonProperty("maxLength")]
-        public int MaxLength { get; set; }
+        public int? MaxLength { get; set; }
 
         [JsonProperty("linkText")]
         public string LinkText { get; set; }
 
         [JsonProperty("parentFieldId")]
-        public int ParentFieldId { get; set; }
+        public int? ParentFieldId { get; set; }
 
         [JsonProperty("displayTimezone")]
-        public bool DisplayTimezone { get; set; }
+        public bool? DisplayTimezone { get; set; }
 
         [JsonProperty("summaryTargetFieldId")]
-        public int SummaryTargetFieldId { get; set; }
+        public int? SummaryTargetFieldId { get; set; }
 
         [JsonProperty("allowNewChoices")]
-        public bool AllowNewChoices { get; set; }
+        public bool? AllowNewChoices { get; set; }
 
         [JsonProperty("defaultToday")]
-        public bool DefaultToday { get; set; }
+        public bool? DefaultToday { get; set; }
 
         [JsonProperty("units")]
         public string Units { get; set; }
 
         [JsonProperty("lookupTargetFieldId")]
-        public int LookupTargetFieldId { get; set; }
+        public int? LookupTargetFieldId { get; set; }
 
         [JsonProperty("summaryFunction")]
-        public SummaryFunction3 SummaryFunction { get; set; }
+        public SummaryFunction3? SummaryFunction { get; set; }
 
         [JsonProperty("sourceFieldId")]
-        public int SourceFieldId { get; set; }
+        public int? SourceFieldId { get; set; }
 
         [JsonProperty("doesAverage")]
-        public bool DoesAverage { get; set; }
+        public bool? DoesAverage { get; set; }
 
         [JsonProperty("formula")]
         public string Formula { get; set; }
 
         [JsonProperty("decimalPlaces")]
-        public int DecimalPlaces { get; set; }
+        public int? DecimalPlaces { get; set; }
 
         [JsonProperty("displayMonth")]
         public string DisplayMonth { get; set; }
 
         [JsonProperty("seeVersions")]
-        public bool SeeVersions { get; set; }
+        public bool? SeeVersions { get; set; }
 
         [JsonProperty("numLines")]
-        public int NumLines { get; set; }
+        public int? NumLines { get; set; }
 
         [JsonProperty("defaultKind")]
         public string DefaultKind { get; set; }
@@ -2334,16 +2346,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string SummaryQuery { get; set; }
 
         [JsonProperty("targetFieldId")]
-        public int TargetFieldId { get; set; }
+        public int? TargetFieldId { get; set; }
 
         [JsonProperty("displayUser")]
         public string DisplayUser { get; set; }
 
         [JsonProperty("blankIsZero")]
-        public bool BlankIsZero { get; set; }
+        public bool? BlankIsZero { get; set; }
 
         [JsonProperty("exact")]
-        public bool Exact { get; set; }
+        public bool? Exact { get; set; }
 
         [JsonProperty("defaultDomain")]
         public string DefaultDomain { get; set; }
@@ -2352,10 +2364,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string DefaultValue { get; set; }
 
         [JsonProperty("abbreviate")]
-        public bool Abbreviate { get; set; }
+        public bool? Abbreviate { get; set; }
 
         [JsonProperty("numberFormat")]
-        public int NumberFormat { get; set; }
+        public int? NumberFormat { get; set; }
 
         [JsonProperty("targetTableName")]
         public string TargetTableName { get; set; }
@@ -2364,22 +2376,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string AppearsAs { get; set; }
 
         [JsonProperty("width")]
-        public int Width { get; set; }
+        public int? Width { get; set; }
 
         [JsonProperty("currencyFormat")]
-        public CurrencyFormat CurrencyFormat { get; set; }
+        public CurrencyFormat? CurrencyFormat { get; set; }
 
         [JsonProperty("displayImages")]
-        public bool DisplayImages { get; set; }
+        public bool? DisplayImages { get; set; }
 
         [JsonProperty("displayDayOfWeek")]
-        public bool DisplayDayOfWeek { get; set; }
+        public bool? DisplayDayOfWeek { get; set; }
 
         [JsonProperty("summaryReferenceFieldId")]
-        public int SummaryReferenceFieldId { get; set; }
+        public int? SummaryReferenceFieldId { get; set; }
 
         [JsonProperty("commaStart")]
-        public int CommaStart { get; set; }
+        public int? CommaStart { get; set; }
 
         [JsonProperty("choices")]
         public string[] Choices { get; set; }
@@ -2388,7 +2400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string TargetTableId { get; set; }
 
         [JsonProperty("displayRelative")]
-        public bool DisplayRelative { get; set; }
+        public bool? DisplayRelative { get; set; }
 
         [JsonProperty("compositeFields")]
         public JToken[] CompositeFields { get; set; }
@@ -2397,37 +2409,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
         public string SummaryTableId { get; set; }
 
         [JsonProperty("displayTime")]
-        public bool DisplayTime { get; set; }
+        public bool? DisplayTime { get; set; }
 
         [JsonProperty("versionMode")]
-        public VersionMode VersionMode { get; set; }
+        public VersionMode? VersionMode { get; set; }
 
         [JsonProperty("snapFieldId")]
-        public int SnapFieldId { get; set; }
+        public int? SnapFieldId { get; set; }
 
         [JsonProperty("hours24")]
-        public bool Hours24 { get; set; }
+        public bool? Hours24 { get; set; }
 
         [JsonProperty("sortAlpha")]
-        public bool SortAlpha { get; set; }
+        public bool? SortAlpha { get; set; }
 
         [JsonProperty("sortAsGiven")]
-        public bool SortAsGiven { get; set; }
+        public bool? SortAsGiven { get; set; }
 
         [JsonProperty("hasExtension")]
-        public bool HasExtension { get; set; }
+        public bool? HasExtension { get; set; }
 
         [JsonProperty("useNewWindow")]
-        public bool UseNewWindow { get; set; }
+        public bool? UseNewWindow { get; set; }
 
         [JsonProperty("appendOnly")]
-        public bool AppendOnly { get; set; }
+        public bool? AppendOnly { get; set; }
 
         [JsonProperty("displayAsLink")]
-        public bool DisplayAsLink { get; set; }
+        public bool? DisplayAsLink { get; set; }
 
         [JsonProperty("lookupReferenceFieldId")]
-        public int LookupReferenceFieldId { get; set; }
+        public int? LookupReferenceFieldId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2809,22 +2821,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickbaseip
     public class Options
     {
         [JsonProperty("skip")]
-        public int Skip { get; set; }
+        public int? Skip { get; set; }
 
         [JsonProperty("compareWithAppLocalTime")]
-        public bool CompareWithAppLocalTime { get; set; }
+        public bool? CompareWithAppLocalTime { get; set; }
 
         [JsonProperty("top")]
-        public int Top { get; set; }
+        public int? Top { get; set; }
     }
 
     public class GroupBy
     {
         [JsonProperty("fieldId")]
-        public int FieldId { get; set; }
+        public int? FieldId { get; set; }
 
         [JsonProperty("grouping")]
-        public Grouping Grouping { get; set; }
+        public Grouping? Grouping { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

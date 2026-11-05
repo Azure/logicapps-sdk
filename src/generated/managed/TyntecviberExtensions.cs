@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
         public string RateType { get; set; }
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendViberComplexV3InputContentType Content { get; set; }
+        public SendViberComplexV3InputContentType Content { get; set; } = new SendViberComplexV3InputContentType();
     }
 
     public class SendViberComplexV3InputContentType
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
         public string MessagePurpose { get; set; }
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendViberFileV3InputContentType Content { get; set; }
+        public SendViberFileV3InputContentType Content { get; set; } = new SendViberFileV3InputContentType();
     }
 
     public class SendViberFileV3InputContentType
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
         public string RateType { get; set; }
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendViberImageV3InputContentType Content { get; set; }
+        public SendViberImageV3InputContentType Content { get; set; } = new SendViberImageV3InputContentType();
     }
 
     public class SendViberImageV3InputContentType
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
         public string RateType { get; set; }
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SendViberTextV3InputContentType Content { get; set; }
+        public SendViberTextV3InputContentType Content { get; set; } = new SendViberTextV3InputContentType();
     }
 
     public class SendViberTextV3InputContentType

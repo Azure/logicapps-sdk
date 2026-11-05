@@ -640,7 +640,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SearchAddressFindResponse, ApiConnectionActionConfiguration> SearchAddressFind(Expression<Func<providerInput>> provider, Expression<Func<string>> query, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<SearchAddressFindResponse, ApiConnectionActionConfiguration> SearchAddressFind(Expression<Func<providerInput2>> provider, Expression<Func<string>> query, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
@@ -657,7 +657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SearchAddressRetrieveResponse, ApiConnectionActionConfiguration> SearchAddressRetrieve(Expression<Func<providerInput>> provider, Expression<Func<string>> id, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<SearchAddressRetrieveResponse, ApiConnectionActionConfiguration> SearchAddressRetrieve(Expression<Func<providerInput3>> provider, Expression<Func<string>> id, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -674,7 +674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressDeceasedResponse, ApiConnectionActionConfiguration> SuppressDeceased(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> countryIdentifier, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
+        public IBodyWorkflowAction<SuppressDeceasedResponse, ApiConnectionActionConfiguration> SuppressDeceased(Expression<Func<providerInput4>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> countryIdentifier, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: true);
@@ -714,7 +714,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressGoneAwayResponse, ApiConnectionActionConfiguration> SuppressGoneAway(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
+        public IBodyWorkflowAction<SuppressGoneAwayResponse, ApiConnectionActionConfiguration> SuppressGoneAway(Expression<Func<providerInput5>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: true);
@@ -754,7 +754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressRelocatedResponse, ApiConnectionActionConfiguration> SuppressRelocated(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
+        public IBodyWorkflowAction<SuppressRelocatedResponse, ApiConnectionActionConfiguration> SuppressRelocated(Expression<Func<providerInput6>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: true);
@@ -794,7 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressPhonePersonalResponse, ApiConnectionActionConfiguration> SuppressPhonePersonal(Expression<Func<providerInput>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<SuppressPhonePersonalResponse, ApiConnectionActionConfiguration> SuppressPhonePersonal(Expression<Func<providerInput7>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressPhoneCorporateResponse, ApiConnectionActionConfiguration> SuppressPhoneCorporate(Expression<Func<providerInput>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<SuppressPhoneCorporateResponse, ApiConnectionActionConfiguration> SuppressPhoneCorporate(Expression<Func<providerInput8>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
@@ -828,7 +828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<AuthenticateEmailGetResponse, ApiConnectionActionConfiguration> AuthenticateEmailGet(Expression<Func<providerInput>> provider, Expression<Func<string>> email)
+        public IBodyWorkflowAction<AuthenticateEmailGetResponse, ApiConnectionActionConfiguration> AuthenticateEmailGet(Expression<Func<providerInput9>> provider, Expression<Func<string>> email)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
@@ -843,7 +843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<AuthenticatePhoneGetResponse, ApiConnectionActionConfiguration> AuthenticatePhoneGet(Expression<Func<providerInput>> provider, Expression<Func<string>> phone, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<AuthenticatePhoneGetResponse, ApiConnectionActionConfiguration> AuthenticatePhoneGet(Expression<Func<providerInput10>> provider, Expression<Func<string>> phone, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: true);
@@ -2492,10 +2492,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     public enum providerInput
     {
         Default,
-        TextMagic,
         Loqate,
-        Fetchify,
-        AFD
+        Sagacity
     }
 
     public class SearchAddressFindResponse
@@ -2523,6 +2521,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
         [JsonProperty("additionalInfo")]
         public JToken AdditionalInfo { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum providerInput2
+    {
+        Default,
+        Loqate,
+        Fetchify,
+        GetAddressIO,
+        AFD
     }
 
     public class SearchAddressRetrieveResponse
@@ -2576,6 +2584,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public JToken AdditionalInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum providerInput3
+    {
+        Default,
+        Loqate,
+        Fetchify,
+        GetAddressIO,
+        AFD
+    }
+
     public class SuppressDeceasedResponse
     {
         [JsonProperty("status")]
@@ -2608,6 +2626,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         NotFound
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum providerInput4
+    {
+        Default,
+        Sagacity
+    }
+
     public class SuppressGoneAwayResponse
     {
         [JsonProperty("status")]
@@ -2638,6 +2663,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         Suppressed,
         Suspect,
         NotFound
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum providerInput5
+    {
+        Default,
+        Sagacity
     }
 
     public class SuppressRelocatedResponse
@@ -2708,6 +2740,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public string Postcode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum providerInput6
+    {
+        Default,
+        Sagacity
+    }
+
     public class SuppressPhonePersonalResponse
     {
         [JsonProperty("status")]
@@ -2729,6 +2768,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public JToken AdditionalInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum providerInput7
+    {
+        Default,
+        TPSChecker,
+        Sagacity
+    }
+
     public class SuppressPhoneCorporateResponse
     {
         [JsonProperty("status")]
@@ -2748,6 +2795,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
         [JsonProperty("additionalInfo")]
         public JToken AdditionalInfo { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum providerInput8
+    {
+        Default,
+        TPSChecker,
+        Sagacity
     }
 
     public class AuthenticateEmailGetResponse
@@ -2787,6 +2842,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
         [JsonProperty("additionalInfo")]
         public JToken AdditionalInfo { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum providerInput9
+    {
+        Default,
+        TextMagic,
+        Loqate,
+        Fetchify,
+        Gamalogic,
+        AFD,
+        Webbula
     }
 
     public class AuthenticatePhoneGetResponse
@@ -2832,6 +2899,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         Landline,
         VOIP,
         Unknown
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum providerInput10
+    {
+        Default,
+        TextMagic,
+        Loqate,
+        Fetchify,
+        AFD
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

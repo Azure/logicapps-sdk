@@ -208,13 +208,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Authbinder
 
     public class EventIngest
     {
-        [JsonProperty("tenantId")]
+        [JsonProperty("tenantId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TenantId { get; set; }
 
-        [JsonProperty("agentId")]
+        [JsonProperty("agentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AgentId { get; set; }
 
-        [JsonProperty("tool")]
+        [JsonProperty("tool", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Tool { get; set; }
 
         [JsonProperty("destination")]
@@ -224,16 +224,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Authbinder
         public string Action { get; set; }
 
         [JsonProperty("approved")]
-        public bool Approved { get; set; }
+        public bool? Approved { get; set; }
 
         [JsonProperty("success")]
-        public bool Success { get; set; }
+        public bool? Success { get; set; }
 
         [JsonProperty("userId")]
         public string UserId { get; set; }
 
         [JsonProperty("durationMs")]
-        public int DurationMs { get; set; }
+        public int? DurationMs { get; set; }
 
         [JsonProperty("timestamp")]
         public string Timestamp { get; set; }

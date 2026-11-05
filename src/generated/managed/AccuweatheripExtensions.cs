@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
-        public IBodyWorkflowAction<HourlyForcastsResponseItem[], ApiConnectionActionConfiguration> HourlyForcasts(Expression<Func<durationInput>> duration, Expression<Func<int>> locationKey, Expression<Func<string>> language = null, Expression<Func<bool>> details = null, Expression<Func<bool>> metric = null)
+        public IBodyWorkflowAction<HourlyForcastsResponseItem[], ApiConnectionActionConfiguration> HourlyForcasts(Expression<Func<durationInput2>> duration, Expression<Func<int>> locationKey, Expression<Func<string>> language = null, Expression<Func<bool>> details = null, Expression<Func<bool>> metric = null)
         {
             var __workflow_duration = WorkflowExpression.Compile(duration, nameof(duration), required: true);
             var __workflow_locationKey = WorkflowExpression.Compile(locationKey, nameof(locationKey), required: true);
@@ -1389,6 +1389,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         public double Value { get; set; }
         public string Unit { get; set; }
         public int UnitType { get; set; }
+    }
+
+    public enum durationInput2
+    {
+        _1 = 1,
+        _12 = 12,
+        _24 = 24,
+        _72 = 72,
+        _120 = 120
     }
 
     public class CurrentConditionsResponseItem

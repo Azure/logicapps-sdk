@@ -1312,8 +1312,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         [JsonProperty("cumulativeProgress", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? CumulativeProgress { get; set; } = false;
 
-        [JsonProperty("contentSettings")]
-        public CreateObjectiveInputContentSettingsType ContentSettings { get; set; }
+        [JsonProperty("contentSettings", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateObjectiveInputContentSettingsType ContentSettings { get; set; } = new CreateObjectiveInputContentSettingsType();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1415,10 +1415,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public int? ChannelId { get; set; }
 
         [JsonProperty("contentSettings", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateArticleInputContentSettingsType ContentSettings { get; set; }
+        public CreateArticleInputContentSettingsType ContentSettings { get; set; } = new CreateArticleInputContentSettingsType();
 
-        [JsonProperty("publicationDetails")]
-        public CreateArticleInputPublicationDetailsType PublicationDetails { get; set; }
+        [JsonProperty("publicationDetails", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateArticleInputPublicationDetailsType PublicationDetails { get; set; } = new CreateArticleInputPublicationDetailsType();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1505,8 +1505,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         [JsonProperty("audience")]
         public CreateAlertInputAudienceType Audience { get; set; }
 
-        [JsonProperty("communicationMethods")]
-        public CreateAlertInputCommunicationMethodsType CommunicationMethods { get; set; }
+        [JsonProperty("communicationMethods", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateAlertInputCommunicationMethodsType CommunicationMethods { get; set; } = new CreateAlertInputCommunicationMethodsType();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1592,8 +1592,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         [JsonProperty("taskIntervalId")]
         public int? TaskIntervalId { get; set; }
 
-        [JsonProperty("contentSettings")]
-        public CreateTaskInputContentSettingsType ContentSettings { get; set; }
+        [JsonProperty("contentSettings", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateTaskInputContentSettingsType ContentSettings { get; set; } = new CreateTaskInputContentSettingsType();
     }
 
     public class CreateTaskInputContentSettingsType

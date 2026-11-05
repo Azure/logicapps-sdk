@@ -676,7 +676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
     public class DeleteExpenseInput
     {
         [JsonProperty("expense", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DeleteExpenseInputExpenseType Expense { get; set; }
+        public DeleteExpenseInputExpenseType Expense { get; set; } = new DeleteExpenseInputExpenseType();
     }
 
     public class DeleteExpenseInputExpenseType

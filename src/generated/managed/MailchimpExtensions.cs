@@ -895,7 +895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string ListName { get; set; }
 
         [JsonProperty("contact", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Contact Contact { get; set; }
+        public Contact2 Contact { get; set; } = new Contact2();
 
         [JsonProperty("permission_reminder", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PermissionReminder { get; set; }
@@ -904,7 +904,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool? UseArchiveBar { get; set; }
 
         [JsonProperty("campaign_defaults", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CampaignDefaults CampaignDefaults { get; set; }
+        public CampaignDefaults2 CampaignDefaults { get; set; } = new CampaignDefaults2();
 
         [JsonProperty("notify_on_subscribe")]
         public string NotifyOnSubscribe { get; set; }
@@ -917,6 +917,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
         [JsonProperty("visibility")]
         public NewlistInputVisibilityType? Visibility { get; set; }
+    }
+
+    public class Contact2
+    {
+        [JsonProperty("company", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CompanyName { get; set; }
+
+        [JsonProperty("address1", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AddressLine1 { get; set; }
+
+        [JsonProperty("address2")]
+        public string AddressLine2 { get; set; }
+
+        [JsonProperty("city", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string City { get; set; }
+
+        [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string State { get; set; }
+
+        [JsonProperty("zip", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PostalCode { get; set; }
+
+        [JsonProperty("country", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CountryCode { get; set; } = "US";
+
+        [JsonProperty("phone", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PhoneNumber { get; set; }
+    }
+
+    public class CampaignDefaults2
+    {
+        [JsonProperty("from_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SenderSName { get; set; }
+
+        [JsonProperty("from_email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SenderSEmailAddress { get; set; }
+
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CampaignDefaultsLanguageType Language { get; set; } = CampaignDefaultsLanguageType.En;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -953,10 +995,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
 
     public class NewMemberInListRequest
     {
-        [JsonProperty("email_type")]
-        public NewMemberInListRequestEmailTypeType EmailType { get; set; }
+        [JsonProperty("email_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public NewMemberInListRequestEmailTypeType? EmailType { get; set; } = NewMemberInListRequestEmailTypeType.Html;
 
-        [JsonProperty("status")]
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
         public NewMemberInListRequestStatusType Status { get; set; }
 
         [JsonProperty("merge_fields")]
@@ -966,12 +1008,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string Language { get; set; }
 
         [JsonProperty("vip")]
-        public bool VIP { get; set; }
+        public bool? VIP { get; set; }
 
         [JsonProperty("location")]
-        public Location Location { get; set; }
+        public Location2 Location { get; set; }
 
-        [JsonProperty("email_address")]
+        [JsonProperty("email_address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmailAddress { get; set; }
     }
 
@@ -1010,13 +1052,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string LastName { get; set; }
     }
 
-    public class Location
+    public class Location2
     {
         [JsonProperty("latitude")]
-        public double Latitude { get; set; }
+        public double? Latitude { get; set; }
 
         [JsonProperty("longitude")]
-        public double Longitude { get; set; }
+        public double? Longitude { get; set; }
     }
 
     public class GetAllMembersResponseModel
@@ -1094,6 +1136,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public Link[] Links { get; set; }
     }
 
+    public class Location
+    {
+        [JsonProperty("latitude")]
+        public double Latitude { get; set; }
+
+        [JsonProperty("longitude")]
+        public double Longitude { get; set; }
+    }
+
     public class LastNote
     {
         [JsonProperty("note_id")]
@@ -1127,7 +1178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool? VIP { get; set; }
 
         [JsonProperty("location")]
-        public Location Location { get; set; }
+        public Location2 Location { get; set; }
 
         [JsonProperty("email_address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmailAddress { get; set; }
@@ -1165,19 +1216,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public NewcampaignV2InputCampaignTypeType CampaignType { get; set; }
 
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Recipient Recipients { get; set; }
+        public Recipient2 Recipients { get; set; }
 
         [JsonProperty("settings", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SettingsV2 Settings { get; set; }
+        public SettingsV22 Settings { get; set; }
 
         [JsonProperty("variate_settings")]
-        public VariateSettings VariateSettings { get; set; }
+        public VariateSettings2 VariateSettings { get; set; }
 
         [JsonProperty("tracking")]
-        public Tracking Tracking { get; set; }
+        public Tracking2 Tracking { get; set; }
 
         [JsonProperty("rss_opts")]
-        public RSSOpts RssOpts { get; set; }
+        public RSSOpts2 RssOpts { get; set; }
 
         [JsonProperty("social_card")]
         public SocialCard SocialCard { get; set; }
@@ -1200,6 +1251,201 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Variate
     }
 
+    public class Recipient2
+    {
+        [JsonProperty("list_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ListId { get; set; }
+
+        [JsonProperty("segment_opts")]
+        public SegmentOpts2 SegmentOpts { get; set; }
+    }
+
+    public class SegmentOpts2
+    {
+        [JsonProperty("saved_segment_id")]
+        public int? SavedSegmentId { get; set; }
+
+        [JsonProperty("match")]
+        public string MatchType { get; set; }
+    }
+
+    public class SettingsV22
+    {
+        [JsonProperty("subject_line", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CampaignSubjectLine { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("from_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FromName { get; set; }
+
+        [JsonProperty("reply_to", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReplyToAddress { get; set; }
+
+        [JsonProperty("use_conversation")]
+        public bool? Conversation { get; set; }
+
+        [JsonProperty("to_name")]
+        public string ToName { get; set; }
+
+        [JsonProperty("folder_id")]
+        public string FolderId { get; set; }
+
+        [JsonProperty("authenticate")]
+        public bool? Authentication { get; set; }
+
+        [JsonProperty("auto_footer")]
+        public bool? AutoFooter { get; set; }
+
+        [JsonProperty("inline_css")]
+        public bool? InlineCSS { get; set; }
+
+        [JsonProperty("auto_tweet")]
+        public bool? AutoTweet { get; set; }
+
+        [JsonProperty("auto_fb_post")]
+        public int[] AutoPostToFacebook { get; set; }
+
+        [JsonProperty("fb_comments")]
+        public bool? FacebookComments { get; set; }
+    }
+
+    public class VariateSettings2
+    {
+        [JsonProperty("winner_criteria")]
+        public string WinningCriteria { get; set; }
+
+        [JsonProperty("wait_time")]
+        public int? WaitTime { get; set; }
+
+        [JsonProperty("test_size")]
+        public int? TestSize { get; set; }
+
+        [JsonProperty("subject_lines")]
+        public string[] SubjectLines { get; set; }
+
+        [JsonProperty("send_times")]
+        public string[] SendTimes { get; set; }
+
+        [JsonProperty("from_names")]
+        public string[] FromNames { get; set; }
+
+        [JsonProperty("reply_to_addresses")]
+        public string[] ReplyToAddresses { get; set; }
+    }
+
+    public class Tracking2
+    {
+        [JsonProperty("opens")]
+        public bool? Opens { get; set; }
+
+        [JsonProperty("html_clicks")]
+        public bool? HTMLClickTracking { get; set; }
+
+        [JsonProperty("text_clicks")]
+        public bool? PlainTextClickTracking { get; set; }
+
+        [JsonProperty("goal_tracking")]
+        public bool? MailChimpGoalTracking { get; set; }
+
+        [JsonProperty("ecomm360")]
+        public bool? ECommerce360Tracking { get; set; }
+
+        [JsonProperty("google_analytics")]
+        public string GoogleAnalyticsTracking { get; set; }
+
+        [JsonProperty("clicktale")]
+        public string ClickTaleAnalyticsTracking { get; set; }
+
+        [JsonProperty("salesforce")]
+        public Salesforce2 Salesforce { get; set; }
+
+        [JsonProperty("highrise")]
+        public Highrise2 Highrise { get; set; }
+
+        [JsonProperty("capsule")]
+        public Capsule2 Capsule { get; set; }
+    }
+
+    public class Salesforce2
+    {
+        [JsonProperty("campaign")]
+        public bool? SalesforceCampaign { get; set; }
+
+        [JsonProperty("notes")]
+        public bool? SalesforceNote { get; set; }
+    }
+
+    public class Highrise2
+    {
+        [JsonProperty("campaign")]
+        public bool? HighriseCampaign { get; set; }
+
+        [JsonProperty("notes")]
+        public bool? HighriseNote { get; set; }
+    }
+
+    public class Capsule2
+    {
+        [JsonProperty("notes")]
+        public bool? CapsuleNote { get; set; }
+    }
+
+    public class RSSOpts2
+    {
+        [JsonProperty("feed_url")]
+        public string FeedURL { get; set; }
+
+        [JsonProperty("frequency")]
+        public RSSOptsFrequencyType? Frequency { get; set; }
+
+        [JsonProperty("constrain_rss_img")]
+        public string ConstrainRSSImages { get; set; }
+
+        [JsonProperty("schedule")]
+        public Schedule2 Schedule { get; set; }
+    }
+
+    public class Schedule2
+    {
+        [JsonProperty("hour")]
+        public int? SendingHour { get; set; }
+
+        [JsonProperty("daily_send")]
+        public DailySend2 DailySend { get; set; }
+
+        [JsonProperty("weekly_send_day")]
+        public ScheduleWeeklySendingDayType? WeeklySendingDay { get; set; }
+
+        [JsonProperty("monthly_send_date")]
+        public double? MonthlySendingDay { get; set; }
+    }
+
+    public class DailySend2
+    {
+        [JsonProperty("sunday")]
+        public bool? Sunday { get; set; }
+
+        [JsonProperty("monday")]
+        public bool? Monday { get; set; }
+
+        [JsonProperty("tuesday")]
+        public bool? Tuesday { get; set; }
+
+        [JsonProperty("wednesday")]
+        public bool? Wednesday { get; set; }
+
+        [JsonProperty("thursday")]
+        public bool? Thursday { get; set; }
+
+        [JsonProperty("friday")]
+        public bool? Friday { get; set; }
+
+        [JsonProperty("saturday")]
+        public bool? Saturday { get; set; }
+    }
+
     public class UpdatememberV2Input
     {
         [JsonProperty("email_type", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -1218,7 +1464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool? VIP { get; set; }
 
         [JsonProperty("location")]
-        public Location Location { get; set; }
+        public Location2 Location { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

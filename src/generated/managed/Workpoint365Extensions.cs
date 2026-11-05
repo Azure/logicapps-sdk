@@ -1344,7 +1344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint365
     public class DocumentDigitalSignatureCompleteDocumentInTransactionInput
     {
         [JsonProperty("SignedPdfBytes")]
-        public string SignedPDFBytes { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SignedPDFBytes { get; set; }
 
         [JsonProperty("TransactionID")]
         public string TransactionId { get; set; }

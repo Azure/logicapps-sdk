@@ -450,44 +450,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CompanyName { get; set; }
         public string Department { get; set; }
         public string Email { get; set; }
-        public int EmployeesCount { get; set; }
+        public int? EmployeesCount { get; set; }
         public string Fax { get; set; }
         public string FirstContactEn { get; set; }
         public string ICQ { get; set; }
         public string IdentificationNumber { get; set; }
         public string ImportanceEn { get; set; }
         public string LineOfBusiness { get; set; }
-        public bool MailingListOther { get; set; }
+        public bool? MailingListOther { get; set; }
         public string Mobile { get; set; }
         public string MobileNormalized { get; set; }
         public string MSN { get; set; }
         public string Note { get; set; }
         public string Phone { get; set; }
         public string PhoneNormalized { get; set; }
-        public bool Purchaser { get; set; }
-        public double Reversal { get; set; }
+        public bool? Purchaser { get; set; }
+        public double? Reversal { get; set; }
         public string Skype { get; set; }
-        public bool Suppliers { get; set; }
+        public bool? Suppliers { get; set; }
         public string VATNumber { get; set; }
         public string WebPage { get; set; }
-        public double AdditionalDiscount { get; set; }
+        public double? AdditionalDiscount { get; set; }
 
         [JsonProperty("ID")]
-        public int Id { get; set; }
-        public bool Competitor { get; set; }
+        public int? Id { get; set; }
+        public bool? Competitor { get; set; }
         public string SalePriceGuid { get; set; }
-        public bool NotificationByEmail { get; set; }
+        public bool? NotificationByEmail { get; set; }
         public string NotificationBy { get; set; }
         public string LastActivity { get; set; }
         public string NextStep { get; set; }
-        public bool EmailOptOut { get; set; }
+        public bool? EmailOptOut { get; set; }
         public string TypeEn { get; set; }
         public string StateEn { get; set; }
         public string PrevStateEn { get; set; }
         public string Picture { get; set; }
-        public int PictureWidth { get; set; }
-        public int PictureHeight { get; set; }
-        public bool IsPrivate { get; set; }
+        public int? PictureWidth { get; set; }
+        public int? PictureHeight { get; set; }
+        public bool? IsPrivate { get; set; }
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
         public string ItemGUID { get; set; }
-        public int ItemVersion { get; set; }
+        public int? ItemVersion { get; set; }
     }
 
     public class SaveContactInput
@@ -560,10 +560,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string Department { get; set; }
         public string Title { get; set; }
         public string WebPage { get; set; }
-        public bool DoNotSendNewsletter { get; set; }
+        public bool? DoNotSendNewsletter { get; set; }
         public string ProfilePicture { get; set; }
-        public int ProfilePictureWidth { get; set; }
-        public int ProfilePictureHeight { get; set; }
+        public int? ProfilePictureWidth { get; set; }
+        public int? ProfilePictureHeight { get; set; }
         public string LastActivity { get; set; }
         public string NextStep { get; set; }
         public string TypeEn { get; set; }
@@ -572,7 +572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
         [JsonProperty("Companies_CompanyGuid")]
         public string CompaniesCompanyGuid { get; set; }
-        public bool IsPrivate { get; set; }
+        public bool? IsPrivate { get; set; }
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
         public string ItemGUID { get; set; }
-        public int ItemVersion { get; set; }
+        public int? ItemVersion { get; set; }
     }
 
     public class SaveJournalInput
@@ -611,13 +611,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string Note { get; set; }
         public string PrevFieldValue { get; set; }
         public string TypeEn { get; set; }
-        public bool IsSystem { get; set; }
+        public bool? IsSystem { get; set; }
         public string Phone { get; set; }
         public string PhoneNormalized { get; set; }
-        public bool IsGdprRelevant { get; set; }
+        public bool? IsGdprRelevant { get; set; }
         public string Picture { get; set; }
-        public int PictureWidth { get; set; }
-        public int PictureHeight { get; set; }
+        public int? PictureWidth { get; set; }
+        public int? PictureHeight { get; set; }
         public string StateEn { get; set; }
         public string PrevStateEn { get; set; }
 
@@ -635,7 +635,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
         [JsonProperty("Marketing_MarketingGuid")]
         public string MarketingMarketingGuid { get; set; }
-        public bool IsPrivate { get; set; }
+        public bool? IsPrivate { get; set; }
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
@@ -644,7 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
         public string ItemGUID { get; set; }
-        public int ItemVersion { get; set; }
+        public int? ItemVersion { get; set; }
     }
 
     public class SaveLeadInput
@@ -669,16 +669,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string EstimatedEnd { get; set; }
 
         [JsonProperty("HID")]
-        public int HId { get; set; }
+        public int? HId { get; set; }
         public string LeadOriginEn { get; set; }
         public string Note { get; set; }
         public string Phone { get; set; }
         public string PhoneNormalized { get; set; }
         public string PrevStateEn { get; set; }
-        public double Price { get; set; }
+        public double? Price { get; set; }
         public string PriceChanged { get; set; }
-        public double PriceDefaultCurrency { get; set; }
-        public double Probability { get; set; }
+        public double? PriceDefaultCurrency { get; set; }
+        public double? Probability { get; set; }
         public string ReceiveDate { get; set; }
         public string StateEn { get; set; }
         public string Street { get; set; }
@@ -686,14 +686,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string Zip { get; set; }
         public string LastActivity { get; set; }
         public string NextStep { get; set; }
-        public double EstimatedValue { get; set; }
+        public double? EstimatedValue { get; set; }
         public string CountryEn { get; set; }
         public string State { get; set; }
         public string POBox { get; set; }
-        public bool EmailOptOut { get; set; }
+        public bool? EmailOptOut { get; set; }
         public string Picture { get; set; }
-        public int PictureWidth { get; set; }
-        public int PictureHeight { get; set; }
+        public int? PictureWidth { get; set; }
+        public int? PictureHeight { get; set; }
 
         [JsonProperty("Companies_CustomerGuid")]
         public string CompaniesCustomerGuid { get; set; }
@@ -703,7 +703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
         [JsonProperty("Marketing_MarketingGuid")]
         public string MarketingMarketingGuid { get; set; }
-        public bool IsPrivate { get; set; }
+        public bool? IsPrivate { get; set; }
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
@@ -712,7 +712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
         public string ItemGUID { get; set; }
-        public int ItemVersion { get; set; }
+        public int? ItemVersion { get; set; }
     }
 
     public class SaveProjectInput
@@ -730,44 +730,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
     public class EWayWcfServiceItemTypesGeneratedProjectTracked
     {
         public string Note { get; set; }
-        public double Price { get; set; }
+        public double? Price { get; set; }
         public string ProjectEnd { get; set; }
         public string ProjectName { get; set; }
         public string TypeEn { get; set; }
         public string StateEn { get; set; }
-        public double PeopleExpenses { get; set; }
+        public double? PeopleExpenses { get; set; }
         public string ProjectRealEnd { get; set; }
-        public double EstimatedPrice { get; set; }
+        public double? EstimatedPrice { get; set; }
 
         [JsonProperty("HID")]
-        public int HId { get; set; }
+        public int? HId { get; set; }
         public string ProjectOriginEn { get; set; }
         public string PaymentTypeEn { get; set; }
-        public double OtherExpenses { get; set; }
-        public double Margin { get; set; }
-        public double Profit { get; set; }
-        public int PaymentMaturity { get; set; }
+        public double? OtherExpenses { get; set; }
+        public double? Margin { get; set; }
+        public double? Profit { get; set; }
+        public int? PaymentMaturity { get; set; }
         public string InvoicePaymentDate { get; set; }
         public string InvoiceIssueDate { get; set; }
-        public double EstimatedMargin { get; set; }
-        public double EstimatedProfit { get; set; }
-        public double EstimatedPeopleExpenses { get; set; }
-        public double EstimatedOtherExpenses { get; set; }
-        public int LicensesCount { get; set; }
-        public double LicensePrice { get; set; }
+        public double? EstimatedMargin { get; set; }
+        public double? EstimatedProfit { get; set; }
+        public double? EstimatedPeopleExpenses { get; set; }
+        public double? EstimatedOtherExpenses { get; set; }
+        public int? LicensesCount { get; set; }
+        public double? LicensePrice { get; set; }
         public string PrevStateEn { get; set; }
-        public bool ShowInCaplan { get; set; }
+        public bool? ShowInCaplan { get; set; }
         public string ProjectStart { get; set; }
-        public int EstimatedWorkHours { get; set; }
-        public double TotalWorkHours { get; set; }
-        public double EstimatedPeopleExpensesDefaultCurrency { get; set; }
-        public double EstimatedOtherExpensesDefaultCurrency { get; set; }
-        public double EstimatedPriceDefaultCurrency { get; set; }
-        public double PeopleExpensesDefaultCurrency { get; set; }
-        public double OtherExpensesDefaultCurrency { get; set; }
-        public double PriceDefaultCurrency { get; set; }
-        public double ProfitDefaultCurrency { get; set; }
-        public double EstimatedProfitDefaultCurrency { get; set; }
+        public int? EstimatedWorkHours { get; set; }
+        public double? TotalWorkHours { get; set; }
+        public double? EstimatedPeopleExpensesDefaultCurrency { get; set; }
+        public double? EstimatedOtherExpensesDefaultCurrency { get; set; }
+        public double? EstimatedPriceDefaultCurrency { get; set; }
+        public double? PeopleExpensesDefaultCurrency { get; set; }
+        public double? OtherExpensesDefaultCurrency { get; set; }
+        public double? PriceDefaultCurrency { get; set; }
+        public double? ProfitDefaultCurrency { get; set; }
+        public double? EstimatedProfitDefaultCurrency { get; set; }
         public string CurrencyEn { get; set; }
         public string EstimatedPeopleExpensesChanged { get; set; }
         public string EstimatedOtherExpensesChanged { get; set; }
@@ -775,13 +775,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string EstimatedPriceChanged { get; set; }
         public string PriceChanged { get; set; }
         public string LicensePriceChanged { get; set; }
-        public double LicensePriceDefaultCurrency { get; set; }
+        public double? LicensePriceDefaultCurrency { get; set; }
         public string LastActivity { get; set; }
         public string NextStep { get; set; }
         public string PeopleExpensesChanged { get; set; }
         public string Picture { get; set; }
-        public int PictureWidth { get; set; }
-        public int PictureHeight { get; set; }
+        public int? PictureWidth { get; set; }
+        public int? PictureHeight { get; set; }
 
         [JsonProperty("Companies_CustomerGuid")]
         public string CompaniesCustomerGuid { get; set; }
@@ -797,7 +797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
         [JsonProperty("Users_SupervisorGuid")]
         public string UsersSupervisorGuid { get; set; }
-        public bool IsPrivate { get; set; }
+        public bool? IsPrivate { get; set; }
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
@@ -806,7 +806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
         public string ItemGUID { get; set; }
-        public int ItemVersion { get; set; }
+        public int? ItemVersion { get; set; }
     }
 
     public class EWayWcfServiceResponsesBooleanResponse
@@ -819,16 +819,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
     public class SaveRelationInput
     {
         [JsonProperty("transmitObject", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EWayWcfServiceItemTypesRelation TransmitObject { get; set; }
+        public EWayWcfServiceItemTypesRelation TransmitObject { get; set; } = new EWayWcfServiceItemTypesRelation();
     }
 
     public class EWayWcfServiceItemTypesRelation
     {
         public string ItemGUID1 { get; set; }
         public string ItemGUID2 { get; set; }
-        public EWayWcfServiceItemTypesRelationFolderName1Type FolderName1 { get; set; }
-        public EWayWcfServiceItemTypesRelationFolderName2Type FolderName2 { get; set; }
-        public string RelationType { get; set; }
+        public EWayWcfServiceItemTypesRelationFolderName1Type? FolderName1 { get; set; }
+        public EWayWcfServiceItemTypesRelationFolderName2Type? FolderName2 { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string RelationType { get; set; } = "GENERAL";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1010,24 +1012,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
     public class EWayWcfServiceItemTypesGeneratedTaskTracked
     {
         public string Body { get; set; }
-        public bool IsCompleted { get; set; }
+        public bool? IsCompleted { get; set; }
         public string DueDate { get; set; }
-        public double PercentCompleteDecimal { get; set; }
+        public double? PercentCompleteDecimal { get; set; }
         public string PrevStateEn { get; set; }
         public string StartDate { get; set; }
         public string StateEn { get; set; }
         public string Subject { get; set; }
         public string TypeEn { get; set; }
-        public int Level { get; set; }
+        public int? Level { get; set; }
         public string ImportanceEn { get; set; }
-        public double ActualWorkHours { get; set; }
-        public double EstimatedWorkHours { get; set; }
-        public bool IsReminderSet { get; set; }
+        public double? ActualWorkHours { get; set; }
+        public double? EstimatedWorkHours { get; set; }
+        public bool? IsReminderSet { get; set; }
         public string ReminderDate { get; set; }
         public string CompletedDate { get; set; }
         public string Picture { get; set; }
-        public int PictureWidth { get; set; }
-        public int PictureHeight { get; set; }
+        public int? PictureWidth { get; set; }
+        public int? PictureHeight { get; set; }
 
         [JsonProperty("Leads_TaskParentGuid")]
         public string LeadsTaskParentGuid { get; set; }
@@ -1055,7 +1057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
 
         [JsonProperty("Tasks_TaskOriginGuid")]
         public string TasksTaskOriginGuid { get; set; }
-        public bool IsPrivate { get; set; }
+        public bool? IsPrivate { get; set; }
         public string ItemCreated { get; set; }
         public string ItemChanged { get; set; }
         public string FileAs { get; set; }
@@ -1064,7 +1066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
         public string ItemGUID { get; set; }
-        public int ItemVersion { get; set; }
+        public int? ItemVersion { get; set; }
     }
 
     public class EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedCompany
@@ -1205,44 +1207,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CompanyName { get; set; }
         public string Department { get; set; }
         public string Email { get; set; }
-        public int EmployeesCount { get; set; }
+        public int? EmployeesCount { get; set; }
         public string Fax { get; set; }
         public string FirstContactEn { get; set; }
         public string ICQ { get; set; }
         public string IdentificationNumber { get; set; }
         public string ImportanceEn { get; set; }
         public string LineOfBusiness { get; set; }
-        public bool MailingListOther { get; set; }
+        public bool? MailingListOther { get; set; }
         public string Mobile { get; set; }
         public string MobileNormalized { get; set; }
         public string MSN { get; set; }
         public string Note { get; set; }
         public string Phone { get; set; }
         public string PhoneNormalized { get; set; }
-        public bool Purchaser { get; set; }
-        public double Reversal { get; set; }
+        public bool? Purchaser { get; set; }
+        public double? Reversal { get; set; }
         public string Skype { get; set; }
-        public bool Suppliers { get; set; }
+        public bool? Suppliers { get; set; }
         public string VATNumber { get; set; }
         public string WebPage { get; set; }
-        public double AdditionalDiscount { get; set; }
+        public double? AdditionalDiscount { get; set; }
 
         [JsonProperty("ID")]
-        public int Id { get; set; }
-        public bool Competitor { get; set; }
+        public int? Id { get; set; }
+        public bool? Competitor { get; set; }
         public string SalePriceGuid { get; set; }
-        public bool NotificationByEmail { get; set; }
+        public bool? NotificationByEmail { get; set; }
         public string NotificationBy { get; set; }
         public string LastActivity { get; set; }
         public string NextStep { get; set; }
-        public bool EmailOptOut { get; set; }
+        public bool? EmailOptOut { get; set; }
         public string TypeEn { get; set; }
         public string StateEn { get; set; }
         public string PrevStateEn { get; set; }
         public string Picture { get; set; }
-        public int PictureWidth { get; set; }
-        public int PictureHeight { get; set; }
-        public bool IsPrivate { get; set; }
+        public int? PictureWidth { get; set; }
+        public int? PictureHeight { get; set; }
+        public bool? IsPrivate { get; set; }
 
         [JsonProperty("Server_ItemCreated")]
         public string ServerItemCreated { get; set; }
@@ -1256,9 +1258,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
+        public EWayWcfServiceItemTypesInnerTypesBoundRelation2[] Relations { get; set; }
         public string ItemGUID { get; set; }
-        public int ItemVersion { get; set; }
+        public int? ItemVersion { get; set; }
+    }
+
+    public class EWayWcfServiceItemTypesInnerTypesBoundRelation2
+    {
+        public string ItemGUID { get; set; }
+        public string RelationDataGUID { get; set; }
+        public string RelationType { get; set; }
+        public string ForeignFolderName { get; set; }
+        public string ForeignItemGUID { get; set; }
+        public bool? DifferDirection { get; set; }
+        public string OwnerGUID { get; set; }
+        public string MainItemGUID { get; set; }
     }
 
     public class EWayWcfServiceItemTypesBoundRelationsFilter
@@ -1420,16 +1434,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string Department { get; set; }
         public string Title { get; set; }
         public string WebPage { get; set; }
-        public bool DoNotSendNewsletter { get; set; }
+        public bool? DoNotSendNewsletter { get; set; }
         public string ProfilePicture { get; set; }
-        public int ProfilePictureWidth { get; set; }
-        public int ProfilePictureHeight { get; set; }
+        public int? ProfilePictureWidth { get; set; }
+        public int? ProfilePictureHeight { get; set; }
         public string LastActivity { get; set; }
         public string NextStep { get; set; }
         public string TypeEn { get; set; }
         public string StateEn { get; set; }
         public string PrevStateEn { get; set; }
-        public bool IsPrivate { get; set; }
+        public bool? IsPrivate { get; set; }
 
         [JsonProperty("Server_ItemCreated")]
         public string ServerItemCreated { get; set; }
@@ -1443,9 +1457,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
+        public EWayWcfServiceItemTypesInnerTypesBoundRelation2[] Relations { get; set; }
         public string ItemGUID { get; set; }
-        public int ItemVersion { get; set; }
+        public int? ItemVersion { get; set; }
     }
 
     public class EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedJournal
@@ -1546,16 +1560,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string Note { get; set; }
         public string PrevFieldValue { get; set; }
         public string TypeEn { get; set; }
-        public bool IsSystem { get; set; }
+        public bool? IsSystem { get; set; }
         public string Phone { get; set; }
         public string PhoneNormalized { get; set; }
-        public bool IsGdprRelevant { get; set; }
+        public bool? IsGdprRelevant { get; set; }
         public string Picture { get; set; }
-        public int PictureWidth { get; set; }
-        public int PictureHeight { get; set; }
+        public int? PictureWidth { get; set; }
+        public int? PictureHeight { get; set; }
         public string StateEn { get; set; }
         public string PrevStateEn { get; set; }
-        public bool IsPrivate { get; set; }
+        public bool? IsPrivate { get; set; }
 
         [JsonProperty("Server_ItemCreated")]
         public string ServerItemCreated { get; set; }
@@ -1569,9 +1583,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
+        public EWayWcfServiceItemTypesInnerTypesBoundRelation2[] Relations { get; set; }
         public string ItemGUID { get; set; }
-        public int ItemVersion { get; set; }
+        public int? ItemVersion { get; set; }
     }
 
     public class EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedLead
@@ -1672,16 +1686,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string EstimatedEnd { get; set; }
 
         [JsonProperty("HID")]
-        public int HId { get; set; }
+        public int? HId { get; set; }
         public string LeadOriginEn { get; set; }
         public string Note { get; set; }
         public string Phone { get; set; }
         public string PhoneNormalized { get; set; }
         public string PrevStateEn { get; set; }
-        public double Price { get; set; }
+        public double? Price { get; set; }
         public string PriceChanged { get; set; }
-        public double PriceDefaultCurrency { get; set; }
-        public double Probability { get; set; }
+        public double? PriceDefaultCurrency { get; set; }
+        public double? Probability { get; set; }
         public string ReceiveDate { get; set; }
         public string StateEn { get; set; }
         public string Street { get; set; }
@@ -1689,19 +1703,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string Zip { get; set; }
         public string LastActivity { get; set; }
         public string NextStep { get; set; }
-        public double EstimatedValue { get; set; }
-        public bool IsCompleted { get; set; }
-        public bool IsLost { get; set; }
+        public double? EstimatedValue { get; set; }
+        public bool? IsCompleted { get; set; }
+        public bool? IsLost { get; set; }
         public string CountryEn { get; set; }
         public string State { get; set; }
         public string POBox { get; set; }
-        public bool EmailOptOut { get; set; }
+        public bool? EmailOptOut { get; set; }
         public string Picture { get; set; }
-        public int PictureWidth { get; set; }
-        public int PictureHeight { get; set; }
+        public int? PictureWidth { get; set; }
+        public int? PictureHeight { get; set; }
         public string CompletedDate { get; set; }
         public string LostDate { get; set; }
-        public bool IsPrivate { get; set; }
+        public bool? IsPrivate { get; set; }
 
         [JsonProperty("Server_ItemCreated")]
         public string ServerItemCreated { get; set; }
@@ -1715,9 +1729,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
+        public EWayWcfServiceItemTypesInnerTypesBoundRelation2[] Relations { get; set; }
         public string ItemGUID { get; set; }
-        public int ItemVersion { get; set; }
+        public int? ItemVersion { get; set; }
     }
 
     public class EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedProject
@@ -1837,44 +1851,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         [JsonProperty("Users_SupervisorGuid")]
         public string UsersSupervisorGuid { get; set; }
         public string Note { get; set; }
-        public double Price { get; set; }
+        public double? Price { get; set; }
         public string ProjectEnd { get; set; }
         public string ProjectName { get; set; }
         public string TypeEn { get; set; }
         public string StateEn { get; set; }
-        public double PeopleExpenses { get; set; }
+        public double? PeopleExpenses { get; set; }
         public string ProjectRealEnd { get; set; }
-        public double EstimatedPrice { get; set; }
+        public double? EstimatedPrice { get; set; }
 
         [JsonProperty("HID")]
-        public int HId { get; set; }
+        public int? HId { get; set; }
         public string ProjectOriginEn { get; set; }
         public string PaymentTypeEn { get; set; }
-        public double OtherExpenses { get; set; }
-        public double Margin { get; set; }
-        public double Profit { get; set; }
-        public int PaymentMaturity { get; set; }
+        public double? OtherExpenses { get; set; }
+        public double? Margin { get; set; }
+        public double? Profit { get; set; }
+        public int? PaymentMaturity { get; set; }
         public string InvoicePaymentDate { get; set; }
         public string InvoiceIssueDate { get; set; }
-        public double EstimatedMargin { get; set; }
-        public double EstimatedProfit { get; set; }
-        public double EstimatedPeopleExpenses { get; set; }
-        public double EstimatedOtherExpenses { get; set; }
-        public int LicensesCount { get; set; }
-        public double LicensePrice { get; set; }
+        public double? EstimatedMargin { get; set; }
+        public double? EstimatedProfit { get; set; }
+        public double? EstimatedPeopleExpenses { get; set; }
+        public double? EstimatedOtherExpenses { get; set; }
+        public int? LicensesCount { get; set; }
+        public double? LicensePrice { get; set; }
         public string PrevStateEn { get; set; }
-        public bool ShowInCaplan { get; set; }
+        public bool? ShowInCaplan { get; set; }
         public string ProjectStart { get; set; }
-        public int EstimatedWorkHours { get; set; }
-        public double TotalWorkHours { get; set; }
-        public double EstimatedPeopleExpensesDefaultCurrency { get; set; }
-        public double EstimatedOtherExpensesDefaultCurrency { get; set; }
-        public double EstimatedPriceDefaultCurrency { get; set; }
-        public double PeopleExpensesDefaultCurrency { get; set; }
-        public double OtherExpensesDefaultCurrency { get; set; }
-        public double PriceDefaultCurrency { get; set; }
-        public double ProfitDefaultCurrency { get; set; }
-        public double EstimatedProfitDefaultCurrency { get; set; }
+        public int? EstimatedWorkHours { get; set; }
+        public double? TotalWorkHours { get; set; }
+        public double? EstimatedPeopleExpensesDefaultCurrency { get; set; }
+        public double? EstimatedOtherExpensesDefaultCurrency { get; set; }
+        public double? EstimatedPriceDefaultCurrency { get; set; }
+        public double? PeopleExpensesDefaultCurrency { get; set; }
+        public double? OtherExpensesDefaultCurrency { get; set; }
+        public double? PriceDefaultCurrency { get; set; }
+        public double? ProfitDefaultCurrency { get; set; }
+        public double? EstimatedProfitDefaultCurrency { get; set; }
         public string CurrencyEn { get; set; }
         public string EstimatedPeopleExpensesChanged { get; set; }
         public string EstimatedOtherExpensesChanged { get; set; }
@@ -1882,18 +1896,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string EstimatedPriceChanged { get; set; }
         public string PriceChanged { get; set; }
         public string LicensePriceChanged { get; set; }
-        public double LicensePriceDefaultCurrency { get; set; }
+        public double? LicensePriceDefaultCurrency { get; set; }
         public string LastActivity { get; set; }
         public string NextStep { get; set; }
         public string CompletedDate { get; set; }
-        public bool IsCompleted { get; set; }
+        public bool? IsCompleted { get; set; }
         public string LostDate { get; set; }
-        public bool IsLost { get; set; }
+        public bool? IsLost { get; set; }
         public string PeopleExpensesChanged { get; set; }
         public string Picture { get; set; }
-        public int PictureWidth { get; set; }
-        public int PictureHeight { get; set; }
-        public bool IsPrivate { get; set; }
+        public int? PictureWidth { get; set; }
+        public int? PictureHeight { get; set; }
+        public bool? IsPrivate { get; set; }
 
         [JsonProperty("Server_ItemCreated")]
         public string ServerItemCreated { get; set; }
@@ -1907,9 +1921,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
+        public EWayWcfServiceItemTypesInnerTypesBoundRelation2[] Relations { get; set; }
         public string ItemGUID { get; set; }
-        public int ItemVersion { get; set; }
+        public int? ItemVersion { get; set; }
     }
 
     public class EWayWcfServiceResponsesDataResponse1EWayWcfServiceItemTypesGeneratedTask
@@ -2012,25 +2026,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         [JsonProperty("Tasks_TaskOriginGuid")]
         public string TasksTaskOriginGuid { get; set; }
         public string Body { get; set; }
-        public bool IsCompleted { get; set; }
+        public bool? IsCompleted { get; set; }
         public string DueDate { get; set; }
-        public double PercentCompleteDecimal { get; set; }
+        public double? PercentCompleteDecimal { get; set; }
         public string PrevStateEn { get; set; }
         public string StartDate { get; set; }
         public string StateEn { get; set; }
         public string Subject { get; set; }
         public string TypeEn { get; set; }
-        public int Level { get; set; }
+        public int? Level { get; set; }
         public string ImportanceEn { get; set; }
-        public double ActualWorkHours { get; set; }
-        public double EstimatedWorkHours { get; set; }
-        public bool IsReminderSet { get; set; }
+        public double? ActualWorkHours { get; set; }
+        public double? EstimatedWorkHours { get; set; }
+        public bool? IsReminderSet { get; set; }
         public string ReminderDate { get; set; }
         public string CompletedDate { get; set; }
         public string Picture { get; set; }
-        public int PictureWidth { get; set; }
-        public int PictureHeight { get; set; }
-        public bool IsPrivate { get; set; }
+        public int? PictureWidth { get; set; }
+        public int? PictureHeight { get; set; }
+        public bool? IsPrivate { get; set; }
 
         [JsonProperty("Server_ItemCreated")]
         public string ServerItemCreated { get; set; }
@@ -2044,9 +2058,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string CreatedByGUID { get; set; }
         public string ModifiedByGUID { get; set; }
         public JToken AdditionalFields { get; set; }
-        public EWayWcfServiceItemTypesInnerTypesBoundRelation[] Relations { get; set; }
+        public EWayWcfServiceItemTypesInnerTypesBoundRelation2[] Relations { get; set; }
         public string ItemGUID { get; set; }
-        public int ItemVersion { get; set; }
+        public int? ItemVersion { get; set; }
     }
 
     public class EWayWcfServiceResponsesDataResponse1SystemGuid

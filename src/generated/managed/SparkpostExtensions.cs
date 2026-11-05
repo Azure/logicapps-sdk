@@ -122,13 +122,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
 
     public class Recipient
     {
-        [JsonProperty("address")]
+        [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public Address Address { get; set; }
     }
 
     public class Address
     {
-        [JsonProperty("email")]
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmailAddress { get; set; }
 
         [JsonProperty("name")]
@@ -155,13 +155,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
 
     public class EmailRecipientList
     {
-        [JsonProperty("list_id")]
+        [JsonProperty("list_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Recipient { get; set; }
     }
 
     public class EmailTemplateList
     {
-        [JsonProperty("template_id")]
+        [JsonProperty("template_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Template { get; set; }
     }
 
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
 
     public class EmailRecipient
     {
-        [JsonProperty("address")]
+        [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EmailAddress { get; set; }
     }
 

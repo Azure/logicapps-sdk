@@ -168,14 +168,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         [JsonProperty("fileName")]
         public string FileName { get; set; }
 
-        [JsonProperty("pptxOptions")]
-        public SubmitLiveDocGenerationInputOutputsTypeItemPptxOptionsType PptxOptions { get; set; }
+        [JsonProperty("pptxOptions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SubmitLiveDocGenerationInputOutputsTypeItemPptxOptionsType PptxOptions { get; set; } = new SubmitLiveDocGenerationInputOutputsTypeItemPptxOptionsType();
 
-        [JsonProperty("docxOptions")]
-        public SubmitLiveDocGenerationInputOutputsTypeItemDocxOptionsType DocxOptions { get; set; }
+        [JsonProperty("docxOptions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SubmitLiveDocGenerationInputOutputsTypeItemDocxOptionsType DocxOptions { get; set; } = new SubmitLiveDocGenerationInputOutputsTypeItemDocxOptionsType();
 
-        [JsonProperty("pdfOptions")]
-        public SubmitLiveDocGenerationInputOutputsTypeItemPdfOptionsType PdfOptions { get; set; }
+        [JsonProperty("pdfOptions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SubmitLiveDocGenerationInputOutputsTypeItemPdfOptionsType PdfOptions { get; set; } = new SubmitLiveDocGenerationInputOutputsTypeItemPdfOptionsType();
 
         [JsonProperty("xlsxOptions")]
         public SubmitLiveDocGenerationInputOutputsTypeItemXlsxOptionsType XlsxOptions { get; set; }

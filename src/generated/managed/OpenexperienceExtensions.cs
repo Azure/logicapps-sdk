@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openexperience
         public string[] Services { get; set; }
 
         [JsonProperty("settings", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateNewProjectInputSettingsType Settings { get; set; }
+        public CreateNewProjectInputSettingsType Settings { get; set; } = new CreateNewProjectInputSettingsType();
     }
 
     public class CreateNewProjectInputSettingsType

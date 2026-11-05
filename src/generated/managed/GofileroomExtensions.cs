@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<ModifyUserResponse, ApiConnectionActionConfiguration> ModifyUser(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<ModifyUserInput>> body = null)
+        public IBodyWorkflowAction<ModifyUserResponse, ApiConnectionActionConfiguration> ModifyUser(Expression<Func<userTypeInput2>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<ModifyUserInput>> body = null)
         {
             var __workflow_userType = WorkflowExpression.Compile(userType, nameof(userType), required: false);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetUsersResponseItem[], ApiConnectionActionConfiguration> GetUsers(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null)
+        public IBodyWorkflowAction<GetUsersResponseItem[], ApiConnectionActionConfiguration> GetUsers(Expression<Func<userTypeInput3>> userType = null, Expression<Func<string>> xAuthorization = null)
         {
             var __workflow_userType = WorkflowExpression.Compile(userType, nameof(userType), required: false);
             var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
@@ -1263,8 +1263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum userTypeInput
     {
-        GFRUSERS,
-        CLIENTFLOWUSERS
+        GFRUSERS
     }
 
     public class CreateUsersInput
@@ -1413,6 +1412,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
 
         [JsonProperty("userId")]
         public string UserId { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum userTypeInput2
+    {
+        GFRUSERS,
+        CLIENTFLOWUSERS
     }
 
     public class ModifyUserInput
@@ -1683,6 +1689,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
 
         [JsonProperty("loginId")]
         public string LoginId { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum userTypeInput3
+    {
+        GFRUSERS,
+        CLIENTFLOWUSERS
     }
 
     public class GetLookupListResponseItem

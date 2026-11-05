@@ -55,13 +55,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Httpv2
     public class InvokeHttpRequestInput
     {
         [JsonProperty("headers")]
-        public KeyValue[] Headers { get; set; }
+        public KeyValue2[] Headers { get; set; }
 
         [JsonProperty("queryParameters")]
-        public KeyValue[] QueryParameters { get; set; }
+        public KeyValue2[] QueryParameters { get; set; }
 
         [JsonProperty("body")]
         public JToken Body { get; set; }
+    }
+
+    public class KeyValue2
+    {
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
     }
 }
 

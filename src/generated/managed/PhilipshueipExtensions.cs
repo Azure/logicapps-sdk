@@ -573,8 +573,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [JsonProperty("dynamics")]
         public ExecuteLightInputDynamicsType Dynamics { get; set; }
 
-        [JsonProperty("alert")]
-        public ExecuteLightInputAlertType Alert { get; set; }
+        [JsonProperty("alert", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ExecuteLightInputAlertType Alert { get; set; } = new ExecuteLightInputAlertType();
 
         [JsonProperty("gradient")]
         public ExecuteLightInputGradientType Gradient { get; set; }
@@ -840,8 +840,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [JsonProperty("metadata")]
         public ExecuteDeviceInputMetadataType Metadata { get; set; }
 
-        [JsonProperty("identify")]
-        public ExecuteDeviceInputIdentifyType Identify { get; set; }
+        [JsonProperty("identify", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ExecuteDeviceInputIdentifyType Identify { get; set; } = new ExecuteDeviceInputIdentifyType();
     }
 
     public class ExecuteDeviceInputMetadataType

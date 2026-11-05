@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         public JToken Subject { get; set; }
 
         [JsonProperty("relationship", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Relationship { get; set; }
+        public JToken Relationship { get; set; }
 
         [JsonProperty("object", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken ObjectEntity { get; set; }

@@ -946,13 +946,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
 
     public class RoleInput
     {
-        [JsonProperty("action")]
+        [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Action { get; set; }
 
-        [JsonProperty("label")]
+        [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Label { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
 

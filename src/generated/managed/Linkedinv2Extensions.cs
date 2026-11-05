@@ -90,10 +90,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         public bool? IsReshareDisabledByAuthor { get; set; } = false;
 
         [JsonProperty("distribution", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostCompanyUpdateV2InputDistributionType Distribution { get; set; }
+        public PostCompanyUpdateV2InputDistributionType Distribution { get; set; } = new PostCompanyUpdateV2InputDistributionType();
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostCompanyUpdateV2InputContentType Content { get; set; }
+        public PostCompanyUpdateV2InputContentType Content { get; set; } = new PostCompanyUpdateV2InputContentType();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -112,8 +112,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
 
     public class PostCompanyUpdateV2InputContentType
     {
-        [JsonProperty("article")]
-        public PostCompanyUpdateV2InputContentTypeArticleType Article { get; set; }
+        [JsonProperty("article", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostCompanyUpdateV2InputContentTypeArticleType Article { get; set; } = new PostCompanyUpdateV2InputContentTypeArticleType();
     }
 
     public class PostCompanyUpdateV2InputContentTypeArticleType
@@ -146,10 +146,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         public bool? IsReshareDisabledByAuthor { get; set; } = false;
 
         [JsonProperty("distribution", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostUpdateV2InputDistributionType Distribution { get; set; }
+        public PostUpdateV2InputDistributionType Distribution { get; set; } = new PostUpdateV2InputDistributionType();
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostUpdateV2InputContentType Content { get; set; }
+        public PostUpdateV2InputContentType Content { get; set; } = new PostUpdateV2InputContentType();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -170,8 +170,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
 
     public class PostUpdateV2InputContentType
     {
-        [JsonProperty("article")]
-        public PostUpdateV2InputContentTypeArticleType Article { get; set; }
+        [JsonProperty("article", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostUpdateV2InputContentTypeArticleType Article { get; set; } = new PostUpdateV2InputContentTypeArticleType();
     }
 
     public class PostUpdateV2InputContentTypeArticleType

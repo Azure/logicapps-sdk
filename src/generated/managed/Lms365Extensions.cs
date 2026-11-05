@@ -623,7 +623,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string CourseId { get; set; }
         public string Duration { get; set; }
         public string LongDescription { get; set; }
-        public CreateCourseInputPublishingSettingsType PublishingSettings { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateCourseInputPublishingSettingsType PublishingSettings { get; set; } = new CreateCourseInputPublishingSettingsType();
         public CreateCourseInputExpirySettingsType ExpirySettings { get; set; }
         public CreateCourseInputDueDateSettingsType DueDateSettings { get; set; }
         public bool? ShowInCatalog { get; set; }
@@ -1071,7 +1073,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateCourseSessionInputTimeZoneType TimeZone { get; set; }
         public string EnrollmentDeadline { get; set; }
-        public CreateCourseSessionInputRoomType Room { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateCourseSessionInputRoomType Room { get; set; } = new CreateCourseSessionInputRoomType();
         public string MeetingUrl { get; set; }
         public string MaxAttendees { get; set; }
     }

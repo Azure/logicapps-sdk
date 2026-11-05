@@ -4238,7 +4238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Condition { get; set; }
 
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookInputConfigType Config { get; set; }
+        public WebhookInputConfigType Config { get; set; } = new WebhookInputConfigType();
 
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Event { get; set; } = "ONPOST";
@@ -4290,7 +4290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Condition { get; set; }
 
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookOnDeleteInputConfigType Config { get; set; }
+        public WebhookOnDeleteInputConfigType Config { get; set; } = new WebhookOnDeleteInputConfigType();
 
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Event { get; set; } = "ONDELETE";
@@ -4342,7 +4342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Condition { get; set; }
 
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookOnInsertInputConfigType Config { get; set; }
+        public WebhookOnInsertInputConfigType Config { get; set; } = new WebhookOnInsertInputConfigType();
 
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Event { get; set; } = "ONINSERT";
@@ -4394,7 +4394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Condition { get; set; }
 
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookOnUpdateInputConfigType Config { get; set; }
+        public WebhookOnUpdateInputConfigType Config { get; set; } = new WebhookOnUpdateInputConfigType();
 
         [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Event { get; set; } = "ONUPDATE";

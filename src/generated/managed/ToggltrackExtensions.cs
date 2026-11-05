@@ -1557,7 +1557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public string OriginFeature { get; set; }
 
         [JsonProperty("visible_goals_count")]
-        public int VisibleGoalsCount { get; set; }
+        public int? VisibleGoalsCount { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

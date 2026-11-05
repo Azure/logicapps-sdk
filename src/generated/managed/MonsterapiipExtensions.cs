@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         internal string Model { get; set; } = "whisper";
 
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AudioPostInputDataType Data { get; set; }
+        public AudioPostInputDataType Data { get; set; } = new AudioPostInputDataType();
     }
 
     public class AudioPostInputDataType

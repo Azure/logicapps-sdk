@@ -431,8 +431,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         [JsonProperty("orders")]
         public WorkflowExecutionsSearchInputOrdersTypeItem[] Orders { get; set; }
 
-        [JsonProperty("predicate")]
-        public WorkflowExecutionsSearchInputPredicateType Predicate { get; set; }
+        [JsonProperty("predicate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WorkflowExecutionsSearchInputPredicateType Predicate { get; set; } = new WorkflowExecutionsSearchInputPredicateType();
     }
 
     public class WorkflowExecutionsSearchInputOrdersTypeItem
@@ -587,8 +587,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
         [JsonProperty("orders")]
         public WorkflowsSearchInputOrdersTypeItem[] Orders { get; set; }
 
-        [JsonProperty("predicate")]
-        public WorkflowsSearchInputPredicateType Predicate { get; set; }
+        [JsonProperty("predicate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WorkflowsSearchInputPredicateType Predicate { get; set; } = new WorkflowsSearchInputPredicateType();
     }
 
     public class WorkflowsSearchInputOrdersTypeItem

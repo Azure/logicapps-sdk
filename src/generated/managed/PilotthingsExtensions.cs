@@ -1775,7 +1775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public double Latitude { get; set; }
 
         [JsonProperty("link")]
-        public URI Link { get; set; }
+        public URI2 Link { get; set; }
 
         [JsonProperty("longitude", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Longitude { get; set; }
@@ -1793,16 +1793,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public AddMessageInputProcessedType Processed { get; set; }
 
         [JsonProperty("rawMeasurements")]
-        public JsonNode RawMeasurements { get; set; }
+        public JsonNode2 RawMeasurements { get; set; }
 
         [JsonProperty("thing", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ThingTinyRo Thing { get; set; }
+        public ThingTinyRo2 Thing { get; set; }
 
         [JsonProperty("timestamp", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Timestamp { get; set; }
 
         [JsonProperty("topic", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Topic { get; set; }
+    }
+
+    public class URI2
+    {
+        [JsonProperty("absolute")]
+        public bool? Absolute { get; set; }
+
+        [JsonProperty("authority")]
+        public string Authority { get; set; }
+
+        [JsonProperty("fragment")]
+        public string Fragment { get; set; }
+
+        [JsonProperty("host")]
+        public string Host { get; set; }
+
+        [JsonProperty("opaque")]
+        public bool? Opaque { get; set; }
+
+        [JsonProperty("path")]
+        public string Path { get; set; }
+
+        [JsonProperty("port")]
+        public int? Port { get; set; }
+
+        [JsonProperty("query")]
+        public string Query { get; set; }
+
+        [JsonProperty("rawAuthority")]
+        public string RawAuthority { get; set; }
+
+        [JsonProperty("rawFragment")]
+        public string RawFragment { get; set; }
+
+        [JsonProperty("rawPath")]
+        public string RawPath { get; set; }
+
+        [JsonProperty("rawQuery")]
+        public string RawQuery { get; set; }
+
+        [JsonProperty("rawSchemeSpecificPart")]
+        public string RawSchemeSpecificPart { get; set; }
+
+        [JsonProperty("rawUserInfo")]
+        public string RawUserInfo { get; set; }
+
+        [JsonProperty("scheme")]
+        public string Scheme { get; set; }
+
+        [JsonProperty("schemeSpecificPart")]
+        public string SchemeSpecificPart { get; set; }
+
+        [JsonProperty("userInfo")]
+        public string UserInfo { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1820,6 +1874,93 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         [EnumMember(Value = "TODO_CUSTOM")]
         TODOCUSTOM,
         ERROR
+    }
+
+    public class JsonNode2
+    {
+        [JsonProperty("array")]
+        public bool? Array { get; set; }
+
+        [JsonProperty("bigDecimal")]
+        public bool? BigDecimal { get; set; }
+
+        [JsonProperty("bigInteger")]
+        public bool? BigInteger { get; set; }
+
+        [JsonProperty("binary")]
+        public bool? Binary { get; set; }
+
+        [JsonProperty("boolean")]
+        public bool? Boolean { get; set; }
+
+        [JsonProperty("containerNode")]
+        public bool? ContainerNode { get; set; }
+
+        [JsonProperty("double")]
+        public bool? Double { get; set; }
+
+        [JsonProperty("float")]
+        public bool? Float { get; set; }
+
+        [JsonProperty("floatingPointNumber")]
+        public bool? FloatingPointNumber { get; set; }
+
+        [JsonProperty("int")]
+        public bool? Int { get; set; }
+
+        [JsonProperty("integralNumber")]
+        public bool? IntegralNumber { get; set; }
+
+        [JsonProperty("long")]
+        public bool? Long { get; set; }
+
+        [JsonProperty("missingNode")]
+        public bool? MissingNode { get; set; }
+
+        [JsonProperty("nodeType")]
+        public JsonNodeNodeTypeType? NodeType { get; set; }
+
+        [JsonProperty("null")]
+        public bool? Null { get; set; }
+
+        [JsonProperty("number")]
+        public bool? Number { get; set; }
+
+        [JsonProperty("object")]
+        public bool? ObjectEntity { get; set; }
+
+        [JsonProperty("pojo")]
+        public bool? Pojo { get; set; }
+
+        [JsonProperty("short")]
+        public bool? Short { get; set; }
+
+        [JsonProperty("textual")]
+        public bool? Textual { get; set; }
+
+        [JsonProperty("valueNode")]
+        public bool? ValueNode { get; set; }
+    }
+
+    public class ThingTinyRo2
+    {
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("fixedName")]
+        public string FixedName { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("nbAlerts")]
+        public int? NbAlerts { get; set; }
+
+        [JsonProperty("tags")]
+        public ThingTagRo[] Tags { get; set; }
     }
 
     public class PageSiteRo
@@ -2489,10 +2630,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public ApplicationTinyRo Application { get; set; }
 
         [JsonProperty("connectivity", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ConnectivityRo Connectivity { get; set; }
+        public ConnectivityRo2 Connectivity { get; set; }
 
         [JsonProperty("customFields")]
-        public CustomFieldRo[] CustomFields { get; set; }
+        public CustomFieldRo2[] CustomFields { get; set; }
 
         [JsonProperty("customModel")]
         public CustomModelTinyRo CustomModel { get; set; }
@@ -2501,7 +2642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Description { get; set; }
 
         [JsonProperty("device", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DeviceRo Device { get; set; }
+        public DeviceRo2 Device { get; set; }
 
         [JsonProperty("displayName")]
         public string DisplayName { get; set; }
@@ -2531,10 +2672,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public double? LastLongitude { get; set; }
 
         [JsonProperty("lastMeasurements")]
-        public JsonNode LastMeasurements { get; set; }
+        public JsonNode2 LastMeasurements { get; set; }
 
         [JsonProperty("lastMeasurementsTimestamps")]
-        public JsonNode LastMeasurementsTimestamps { get; set; }
+        public JsonNode2 LastMeasurementsTimestamps { get; set; }
 
         [JsonProperty("lastMessageDate")]
         public int? LastMessageDate { get; set; }
@@ -2549,10 +2690,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public int? NbAlerts { get; set; }
 
         [JsonProperty("product")]
-        public ProductTinyRo Product { get; set; }
+        public ProductTinyRo2 Product { get; set; }
 
         [JsonProperty("site")]
-        public SiteRo Site { get; set; }
+        public SiteRo2 Site { get; set; }
 
         [JsonProperty("sourceId")]
         public string SourceId { get; set; }
@@ -2562,6 +2703,174 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
 
         [JsonProperty("tags")]
         public ThingTagRo[] Tags { get; set; }
+    }
+
+    public class ConnectivityRo2
+    {
+        [JsonProperty("additionalProperties")]
+        public JToken AdditionalProperties { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("rawStatus")]
+        public string RawStatus { get; set; }
+
+        [JsonProperty("status")]
+        public ConnectivityRoStatusType? Status { get; set; }
+
+        [JsonProperty("type")]
+        public ConnectivityRoTypeType? Type { get; set; }
+    }
+
+    public class CustomFieldRo2
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("imageLink")]
+        public string ImageLink { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public CustomFieldRoTypeType? Type { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+    }
+
+    public class DeviceRo2
+    {
+        [JsonProperty("batteryLevel")]
+        public int? BatteryLevel { get; set; }
+
+        [JsonProperty("batteryStatus")]
+        public DeviceRoBatteryStatusType? BatteryStatus { get; set; }
+
+        [JsonProperty("deviceType")]
+        public string DeviceType { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("manufacturer")]
+        public string Manufacturer { get; set; }
+
+        [JsonProperty("memoryFree")]
+        public int? MemoryFree { get; set; }
+
+        [JsonProperty("memoryTotal")]
+        public int? MemoryTotal { get; set; }
+
+        [JsonProperty("model")]
+        public string Model { get; set; }
+
+        [JsonProperty("modelNumber")]
+        public string ModelNumber { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("serialNumber")]
+        public string SerialNumber { get; set; }
+
+        [JsonProperty("status")]
+        public DeviceRoStatusType? Status { get; set; }
+    }
+
+    public class ProductTinyRo2
+    {
+        [JsonProperty("connectivityTypes")]
+        public ProductTinyRoConnectivityTypesTypeItem[] ConnectivityTypes { get; set; }
+
+        [JsonProperty("generateLinks")]
+        public bool? GenerateLinks { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("link")]
+        public string Link { get; set; }
+
+        [JsonProperty("manufacturer")]
+        public ManufacturerTinyRo2 Manufacturer { get; set; }
+
+        [JsonProperty("model")]
+        public ModelTinyRo2 Model { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+    }
+
+    public class ManufacturerTinyRo2
+    {
+        [JsonProperty("generateLinks")]
+        public bool? GenerateLinks { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("link")]
+        public string Link { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class ModelTinyRo2
+    {
+        [JsonProperty("color")]
+        public string Color { get; set; }
+
+        [JsonProperty("generateLinks")]
+        public bool? GenerateLinks { get; set; }
+
+        [JsonProperty("icon")]
+        public string Icon { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("isCustomModel")]
+        public bool? IsCustomModel { get; set; }
+
+        [JsonProperty("link")]
+        public URI2 Link { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+
+    public class SiteRo2
+    {
+        [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Address { get; set; }
+
+        [JsonProperty("city", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string City { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("latitude")]
+        public double? Latitude { get; set; }
+
+        [JsonProperty("longitude")]
+        public double? Longitude { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("postalCode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PostalCode { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2916,13 +3225,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public double Latitude { get; set; }
 
         [JsonProperty("link")]
-        public URI Link { get; set; }
+        public URI2 Link { get; set; }
 
         [JsonProperty("longitude", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Longitude { get; set; }
 
         [JsonProperty("measurements")]
-        public JsonNode Measurements { get; set; }
+        public JsonNode2 Measurements { get; set; }
 
         [JsonProperty("metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Metadata { get; set; }
@@ -2934,10 +3243,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public CreateThingMessagesInputProcessedType Processed { get; set; }
 
         [JsonProperty("rawMeasurements")]
-        public JsonNode RawMeasurements { get; set; }
+        public JsonNode2 RawMeasurements { get; set; }
 
         [JsonProperty("thing", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ThingTinyRo Thing { get; set; }
+        public ThingTinyRo2 Thing { get; set; }
 
         [JsonProperty("timestamp", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Timestamp { get; set; }
@@ -3068,7 +3377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     public class UpdateThingFixedPositionInput
     {
         [JsonProperty("customFields")]
-        public CustomFieldRo[] CustomFields { get; set; }
+        public CustomFieldRo2[] CustomFields { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -3101,10 +3410,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public double? LastLongitude { get; set; }
 
         [JsonProperty("lastMeasurements")]
-        public JsonNode LastMeasurements { get; set; }
+        public JsonNode2 LastMeasurements { get; set; }
 
         [JsonProperty("lastMeasurementsTimestamps")]
-        public JsonNode LastMeasurementsTimestamps { get; set; }
+        public JsonNode2 LastMeasurementsTimestamps { get; set; }
 
         [JsonProperty("lastMessageDate")]
         public int? LastMessageDate { get; set; }
@@ -3119,7 +3428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public int? NbAlerts { get; set; }
 
         [JsonProperty("site")]
-        public SiteRo Site { get; set; }
+        public SiteRo2 Site { get; set; }
 
         [JsonProperty("status")]
         public UpdateThingFixedPositionInputStatusType? Status { get; set; }
@@ -3268,7 +3577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public AssociateThingProductInputConnectivityTypesTypeItem[] ConnectivityTypes { get; set; }
 
         [JsonProperty("decoder")]
-        public DecoderTinyRo Decoder { get; set; }
+        public DecoderTinyRo2 Decoder { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -3295,16 +3604,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Link { get; set; }
 
         [JsonProperty("manufacturer")]
-        public ManufacturerTinyRo Manufacturer { get; set; }
+        public ManufacturerTinyRo2 Manufacturer { get; set; }
 
         [JsonProperty("manufacturerCategory")]
         public string ManufacturerCategory { get; set; }
 
         [JsonProperty("model")]
-        public ModelTinyRo Model { get; set; }
+        public ModelTinyRo2 Model { get; set; }
 
         [JsonProperty("modelManufacturer")]
-        public ManufacturerTinyRo ModelManufacturer { get; set; }
+        public ManufacturerTinyRo2 ModelManufacturer { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3319,7 +3628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public TagRo[] Tags { get; set; }
 
         [JsonProperty("things")]
-        public ThingTinyRo[] Things { get; set; }
+        public ThingTinyRo2[] Things { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -3347,6 +3656,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         IEEELRWPAN,
         DALI,
         UNKNOWN
+    }
+
+    public class DecoderTinyRo2
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("link")]
+        public string Link { get; set; }
+
+        [JsonProperty("visible")]
+        public bool? Visible { get; set; }
     }
 
     public class PageFlowRo

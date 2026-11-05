@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         internal bool Enabled { get; set; } = true;
 
         [JsonProperty("settings", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TrigSemantikInvoiceCompletedInputSettingsType Settings { get; set; }
+        public TrigSemantikInvoiceCompletedInputSettingsType Settings { get; set; } = new TrigSemantikInvoiceCompletedInputSettingsType();
     }
 
     public class TrigSemantikInvoiceCompletedInputSettingsType

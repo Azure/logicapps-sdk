@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
     public class ReturnFlowResultInput
     {
         [JsonProperty("result", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BttnActionResult Result { get; set; }
+        public BttnActionResult FlowResult { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

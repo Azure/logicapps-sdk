@@ -1014,7 +1014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     public class BooleanApiFilterEqual
     {
         [JsonProperty("value")]
-        public bool Value { get; set; }
+        public bool? Value { get; set; }
     }
 
     public class DocumentSourceApiFilterMultipleChoice
@@ -1041,19 +1041,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     public class ApiListControl
     {
         [JsonProperty("skip")]
-        public int Skip { get; set; }
+        public int? Skip { get; set; }
 
         [JsonProperty("take")]
-        public int Take { get; set; }
+        public int? Take { get; set; }
     }
 
     public class ApiDocumentListSortFieldsApiListSort
     {
         [JsonProperty("field")]
-        public ApiDocumentListSortFields Field { get; set; }
+        public ApiDocumentListSortFields? Field { get; set; }
 
         [JsonProperty("direction")]
-        public ApiListSortDirection Direction { get; set; }
+        public ApiListSortDirection? Direction { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1155,13 +1155,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     public class DocumentSourceApiValueUpdate
     {
         [JsonProperty("value")]
-        public DocumentSource Value { get; set; }
+        public DocumentSource? Value { get; set; }
     }
 
     public class BooleanApiValueUpdate
     {
         [JsonProperty("value")]
-        public bool Value { get; set; }
+        public bool? Value { get; set; }
     }
 
     public class ApiFieldValueUpdate
@@ -1170,7 +1170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public string Value { get; set; }
 
         [JsonProperty("operation")]
-        public ApiListValueOperation Operation { get; set; }
+        public ApiListValueOperation? Operation { get; set; }
 
         [JsonProperty("key")]
         public string Key { get; set; }
@@ -1179,7 +1179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public string Message { get; set; }
 
         [JsonProperty("isWarning")]
-        public bool IsWarning { get; set; }
+        public bool? IsWarning { get; set; }
 
         [JsonProperty("wordIds")]
         public int[] WordIds { get; set; }
@@ -1219,7 +1219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public string UserId { get; set; }
 
         [JsonProperty("state")]
-        public ApprovalState State { get; set; }
+        public ApprovalState? State { get; set; }
     }
 
     public class StringApiListValueUpdate
@@ -1228,7 +1228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
         public string Value { get; set; }
 
         [JsonProperty("operation")]
-        public ApiListValueOperation Operation { get; set; }
+        public ApiListValueOperation? Operation { get; set; }
     }
 
     public class GrantDocumentAccessInput
@@ -1635,10 +1635,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redquesmartinvoiceca
     public class ApiUserSortListFieldsApiListSort
     {
         [JsonProperty("field")]
-        public ApiUserSortListFields Field { get; set; }
+        public ApiUserSortListFields? Field { get; set; }
 
         [JsonProperty("direction")]
-        public ApiListSortDirection Direction { get; set; }
+        public ApiListSortDirection? Direction { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

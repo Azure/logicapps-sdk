@@ -519,8 +519,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         [JsonProperty("query", DefaultValueHandling = DefaultValueHandling.Include)]
         public string QueryText { get; set; }
 
-        [JsonProperty("serializerSettings")]
-        public ExecuteDatasetQueryInputSerializerSettingsType SerializerSettings { get; set; }
+        [JsonProperty("serializerSettings", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ExecuteDatasetQueryInputSerializerSettingsType SerializerSettings { get; set; } = new ExecuteDatasetQueryInputSerializerSettingsType();
 
         [JsonProperty("impersonatedUserName")]
         public string ImpersonateUser { get; set; }
@@ -672,7 +672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         public string Locale { get; set; }
 
         [JsonProperty("includeHiddenPages")]
-        public bool IncludeHiddenPages { get; set; }
+        public bool? IncludeHiddenPages { get; set; }
     }
 
     public class PageBookmark
@@ -704,7 +704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
     public class EffectiveIdentity
     {
-        [JsonProperty("username")]
+        [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Username { get; set; }
 
         [JsonProperty("datasets")]
@@ -725,7 +725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
 
     public class IdentityBlob
     {
-        [JsonProperty("value")]
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
     }
 

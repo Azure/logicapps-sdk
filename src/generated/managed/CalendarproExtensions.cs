@@ -1017,7 +1017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         public UpdateEventInputTimeZoneType TimeZone { get; set; }
 
         [JsonProperty("address")]
-        public Address Address { get; set; }
+        public Address2 Address { get; set; }
 
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
@@ -1799,6 +1799,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         WET
     }
 
+    public class Address2
+    {
+        [JsonProperty("fullAddress", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FullAddress { get; set; }
+
+        [JsonProperty("lat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Lat { get; set; }
+
+        [JsonProperty("lng", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Lng { get; set; }
+    }
+
     public class CreateNewEventInput
     {
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -1826,7 +1838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         public CreateNewEventInputTimeZoneType TimeZone { get; set; }
 
         [JsonProperty("address")]
-        public Address Address { get; set; }
+        public Address2 Address { get; set; }
 
         [JsonProperty("tags")]
         public string[] Tags { get; set; }

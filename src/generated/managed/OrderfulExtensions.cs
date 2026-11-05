@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orderful
         public string Name { get; set; }
 
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CommunicationChannelInputConfigType Config { get; set; }
+        public CommunicationChannelInputConfigType Config { get; set; } = new CommunicationChannelInputConfigType();
 
         [JsonProperty("ownerId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int OwnerId { get; set; }

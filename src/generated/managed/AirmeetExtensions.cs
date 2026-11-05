@@ -316,10 +316,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         internal string EventType { get; set; } = "MEETUP";
 
         [JsonProperty("timing", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateAirmeetInputTimingType Timing { get; set; }
+        public CreateAirmeetInputTimingType Timing { get; set; } = new CreateAirmeetInputTimingType();
 
-        [JsonProperty("config")]
-        public CreateAirmeetInputConfigType Config { get; set; }
+        [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateAirmeetInputConfigType Config { get; set; } = new CreateAirmeetInputConfigType();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -753,7 +753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string[] Tags { get; set; }
 
         [JsonProperty("metaData", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateBoothInputMetaDataType MetaData { get; set; }
+        public CreateBoothInputMetaDataType MetaData { get; set; } = new CreateBoothInputMetaDataType();
     }
 
     public class CreateBoothInputExhibitorInfoTypeItem

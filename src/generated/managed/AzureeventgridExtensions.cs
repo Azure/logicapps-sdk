@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgrid
     public class CreateSubscriptionInput
     {
         [JsonProperty("properties", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSubscriptionInputPropertiesType Properties { get; set; }
+        public CreateSubscriptionInputPropertiesType Properties { get; set; } = new CreateSubscriptionInputPropertiesType();
     }
 
     public class CreateSubscriptionInputPropertiesType
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgrid
         public string ResourceName { get; set; }
 
         [JsonProperty("destination", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSubscriptionInputPropertiesTypeDestinationType Destination { get; set; }
+        public CreateSubscriptionInputPropertiesTypeDestinationType Destination { get; set; } = new CreateSubscriptionInputPropertiesTypeDestinationType();
 
         [JsonProperty("filter")]
         public CreateSubscriptionInputPropertiesTypeFilterType Filter { get; set; }
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgrid
         internal string EndpointType { get; set; } = "webhook";
 
         [JsonProperty("properties", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateSubscriptionInputPropertiesTypeDestinationTypePropertiesType Properties { get; set; }
+        public CreateSubscriptionInputPropertiesTypeDestinationTypePropertiesType Properties { get; set; } = new CreateSubscriptionInputPropertiesTypeDestinationTypePropertiesType();
     }
 
     public class CreateSubscriptionInputPropertiesTypeDestinationTypePropertiesType

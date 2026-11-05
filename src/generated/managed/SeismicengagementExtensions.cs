@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
     public class SeismicDeliveryCustomDeliveryContent
     {
         [JsonProperty("repository")]
-        public SeismicDeliveryCustomDeliveryContentRepositoryType Repository { get; set; }
+        public SeismicDeliveryCustomDeliveryRepository? Repository { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SeismicDeliveryCustomDeliveryContentRepositoryType
+    public enum SeismicDeliveryCustomDeliveryRepository
     {
         [EnumMember(Value = "generatedlivedocs")]
         Generatedlivedocs,
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
     public class SeismicDeliveryCustomDelContent
     {
         [JsonProperty("repository")]
-        public SeismicDeliveryCustomRepository Repository { get; set; }
+        public SeismicDeliveryCustomRepository? Repository { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -507,10 +507,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         public string[] Tags { get; set; }
 
         [JsonProperty("settings")]
-        public SeismicLiveSendLiveSendLinkSettings Settings { get; set; }
+        public SeismicLiveSendLiveSendLinkSettings2 Settings { get; set; }
 
         [JsonProperty("content")]
-        public SeismicLiveSendLiveSendLinkContent[] Content { get; set; }
+        public SeismicLiveSendLiveSendLinkContent2[] Content { get; set; }
+    }
+
+    public class SeismicLiveSendLiveSendLinkSettings2
+    {
+        [JsonProperty("expiresAt")]
+        public string ExpiresAt { get; set; }
+
+        [JsonProperty("password")]
+        public string Password { get; set; }
+
+        [JsonProperty("allowDownload")]
+        public bool? AllowDownload { get; set; }
+
+        [JsonProperty("notificationType")]
+        public string NotificationType { get; set; }
+
+        [JsonProperty("singleView")]
+        public bool? SingleView { get; set; }
+    }
+
+    public class SeismicLiveSendLiveSendLinkContent2
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("versionId")]
+        public string VersionId { get; set; }
+
+        [JsonProperty("teamsiteId")]
+        public string TeamsiteId { get; set; }
+
+        [JsonProperty("repository")]
+        public SeismicLiveSendLiveSendContentRepositoryEnum? Repository { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("libraryContent")]
+        public SeismicLiveSendLiveSendLinkContentBasicInfo LibraryContent { get; set; }
+
+        [JsonProperty("contentProfileId")]
+        public string ProfileId { get; set; }
+
+        [JsonProperty("contentProfilePath")]
+        public string[] ProfilePath { get; set; }
     }
 
     public class SeismicLiveSendLiveSendSettingsResponse

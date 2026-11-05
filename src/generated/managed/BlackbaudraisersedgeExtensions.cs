@@ -6326,7 +6326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Name { get; set; }
 
         [JsonProperty("sequence")]
-        public int Sequence { get; set; }
+        public int? Sequence { get; set; }
     }
 
     public class EventApiApiCollectionOfParticipantListEntry
@@ -8275,7 +8275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public GiftApiGiftSplitAdd[] Splits { get; set; }
 
         [JsonProperty("payments", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateGiftInputPaymentsType Payments { get; set; }
+        public CreateGiftInputPaymentsType Payments { get; set; } = new CreateGiftInputPaymentsType();
 
         [JsonProperty("is_anonymous")]
         public bool? IsAnonymous { get; set; }
@@ -8313,8 +8313,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         [JsonProperty("origin", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Origin { get; set; } = "{ \"name\": \"Power Platform\" }";
 
-        [JsonProperty("receipts")]
-        public CreateGiftInputReceiptsType Receipts { get; set; }
+        [JsonProperty("receipts", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateGiftInputReceiptsType Receipts { get; set; } = new CreateGiftInputReceiptsType();
     }
 
     public class CreateGiftInputAmountType
@@ -8336,7 +8336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         [JsonProperty("campaign_id")]
         public string CampaignId { get; set; }
 
-        [JsonProperty("fund_id")]
+        [JsonProperty("fund_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FundId { get; set; }
 
         [JsonProperty("appeal_id")]
@@ -8345,13 +8345,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         [JsonProperty("package_id")]
         public string PackageId { get; set; }
 
-        [JsonProperty("amount")]
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public GiftApiGiftSplitAddAmountType Amount { get; set; }
     }
 
     public class GiftApiGiftSplitAddAmountType
     {
-        [JsonProperty("value")]
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
 
@@ -8818,7 +8818,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
     public class AddGiftToBatchInput
     {
         [JsonProperty("gifts", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddGiftToBatchInputGiftsType Gifts { get; set; }
+        public AddGiftToBatchInputGiftsType Gifts { get; set; } = new AddGiftToBatchInputGiftsType();
     }
 
     public class AddGiftToBatchInputGiftsType
@@ -8839,7 +8839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public GiftApiVirtualBatchGiftSplitAdd[] Splits { get; set; }
 
         [JsonProperty("payments", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddGiftToBatchInputGiftsTypePaymentsType Payments { get; set; }
+        public AddGiftToBatchInputGiftsTypePaymentsType Payments { get; set; } = new AddGiftToBatchInputGiftsTypePaymentsType();
 
         [JsonProperty("is_anonymous")]
         public bool? IsAnonymous { get; set; }
@@ -8871,8 +8871,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         [JsonProperty("origin", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Origin { get; set; } = "{ \"name\": \"Power Platform\" }";
 
-        [JsonProperty("receipts")]
-        public AddGiftToBatchInputGiftsTypeReceiptsType Receipts { get; set; }
+        [JsonProperty("receipts", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddGiftToBatchInputGiftsTypeReceiptsType Receipts { get; set; } = new AddGiftToBatchInputGiftsTypeReceiptsType();
     }
 
     public class AddGiftToBatchInputGiftsTypeAmountType
@@ -8894,7 +8894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         [JsonProperty("campaign_id")]
         public string CampaignId { get; set; }
 
-        [JsonProperty("fund_id")]
+        [JsonProperty("fund_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FundId { get; set; }
 
         [JsonProperty("appeal_id")]
@@ -8903,13 +8903,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         [JsonProperty("package_id")]
         public string PackageId { get; set; }
 
-        [JsonProperty("amount")]
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public GiftApiVirtualBatchGiftSplitAddAmountType Amount { get; set; }
     }
 
     public class GiftApiVirtualBatchGiftSplitAddAmountType
     {
-        [JsonProperty("value")]
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
 
@@ -9279,7 +9279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string FundId { get; set; }
 
         [JsonProperty("fundraisers")]
-        public OpportunityApiFundraiser[] FundraiserS { get; set; }
+        public OpportunityApiFundraiser2[] FundraiserS { get; set; }
 
         [JsonProperty("inactive")]
         public bool? Inactive { get; set; }
@@ -9298,6 +9298,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
     }
 
     public class CreateOpportunityInputFundedAmountType
+    {
+        [JsonProperty("value")]
+        public double? Value { get; set; }
+    }
+
+    public class OpportunityApiFundraiser2
+    {
+        [JsonProperty("constituent_id")]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("credit_amount")]
+        public OpportunityApiFundraiserCreditAmountType2 CreditAmount { get; set; }
+    }
+
+    public class OpportunityApiFundraiserCreditAmountType2
     {
         [JsonProperty("value")]
         public double? Value { get; set; }
@@ -9342,7 +9357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string FundId { get; set; }
 
         [JsonProperty("fundraisers")]
-        public OpportunityApiFundraiser[] FundraiserS { get; set; }
+        public OpportunityApiFundraiser2[] FundraiserS { get; set; }
 
         [JsonProperty("inactive")]
         public bool? Inactive { get; set; }

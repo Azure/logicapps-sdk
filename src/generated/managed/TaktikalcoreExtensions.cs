@@ -612,7 +612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         public SigningAttachment[] Attachments { get; set; }
 
         [JsonProperty("attachmentReferences")]
-        public AttachmentReference[] AttachmentReferences { get; set; }
+        public AttachmentReference2[] AttachmentReferences { get; set; }
 
         [JsonProperty("requiresAuth")]
         public bool? RequiresAuth { get; set; }
@@ -669,7 +669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         public string Reason { get; set; }
 
         [JsonProperty("hidePersonalCode")]
-        public bool HidePersonalCode { get; set; }
+        public bool? HidePersonalCode { get; set; }
 
         [JsonProperty("communicationDeliveryType")]
         public string CommunicationDeliveryType { get; set; }
@@ -682,6 +682,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
 
         [JsonProperty("language")]
         public string Language { get; set; }
+    }
+
+    public class AttachmentReference2
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("fileName")]
+        public string FileName { get; set; }
+
+        [JsonProperty("contentLength")]
+        public int? ContentLength { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("processKey")]
+        public string ProcessKey { get; set; }
+
+        [JsonProperty("attachmentType")]
+        public string AttachmentType { get; set; }
+
+        [JsonProperty("signeeKey")]
+        public string SigneeKey { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -759,7 +789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         [JsonProperty("pdfFileName")]
         public string PdfFileName { get; set; }
 
-        [JsonProperty("flowKey")]
+        [JsonProperty("flowKey", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FlowKey { get; set; }
 
         [JsonProperty("createSignees")]
@@ -772,16 +802,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         public SigningAttachment[] Attachments { get; set; }
 
         [JsonProperty("attachmentReferences")]
-        public AttachmentReference[] AttachmentReferences { get; set; }
+        public AttachmentReference2[] AttachmentReferences { get; set; }
 
         [JsonProperty("requiresAuth")]
-        public bool RequiresAuth { get; set; }
+        public bool? RequiresAuth { get; set; }
 
         [JsonProperty("signInOrder")]
-        public bool SignInOrder { get; set; }
+        public bool? SignInOrder { get; set; }
 
         [JsonProperty("signatureLocation")]
-        public CreateSigningProcessSignatureLocationType SignatureLocation { get; set; }
+        public CreateSigningProcessSignatureLocationType? SignatureLocation { get; set; }
 
         [JsonProperty("user")]
         public string User { get; set; }
@@ -793,7 +823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         public string ActivityDisplayName { get; set; }
 
         [JsonProperty("flattenDocument")]
-        public bool FlattenDocument { get; set; }
+        public bool? FlattenDocument { get; set; }
 
         [JsonProperty("reminderRule")]
         public string ReminderRule { get; set; }

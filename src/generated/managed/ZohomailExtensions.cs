@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
     public class SendMailInputAttachmentTypeItem
     {
         [JsonProperty("attachmentContent")]
-        public WorkflowBinaryContent AttachmentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent AttachmentContent { get; set; }
 
         [JsonProperty("attachmentName")]
         public string AttachmentName { get; set; }
@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
     public class SaveDraftInputAttachmentTypeItem
     {
         [JsonProperty("attachmentContent")]
-        public string AttachmentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent AttachmentContent { get; set; }
 
         [JsonProperty("attachmentName")]
         public string AttachmentName { get; set; }

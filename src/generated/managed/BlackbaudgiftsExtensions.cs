@@ -1099,7 +1099,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public GiftApiGiftSplitAdd[] Splits { get; set; }
 
         [JsonProperty("payments", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateGiftInputPaymentsType Payments { get; set; }
+        public CreateGiftInputPaymentsType Payments { get; set; } = new CreateGiftInputPaymentsType();
 
         [JsonProperty("is_anonymous")]
         public bool? IsAnonymous { get; set; }
@@ -1137,8 +1137,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [JsonProperty("origin", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Origin { get; set; } = "{ \"name\": \"Power Platform\" }";
 
-        [JsonProperty("receipts")]
-        public CreateGiftInputReceiptsType Receipts { get; set; }
+        [JsonProperty("receipts", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateGiftInputReceiptsType Receipts { get; set; } = new CreateGiftInputReceiptsType();
     }
 
     public class CreateGiftInputAmountType
@@ -1160,7 +1160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [JsonProperty("campaign_id")]
         public string CampaignId { get; set; }
 
-        [JsonProperty("fund_id")]
+        [JsonProperty("fund_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FundId { get; set; }
 
         [JsonProperty("appeal_id")]
@@ -1169,13 +1169,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [JsonProperty("package_id")]
         public string PackageId { get; set; }
 
-        [JsonProperty("amount")]
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public GiftApiGiftSplitAddAmountType Amount { get; set; }
     }
 
     public class GiftApiGiftSplitAddAmountType
     {
-        [JsonProperty("value")]
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
 
@@ -1687,7 +1687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     public class AddGiftToBatchInput
     {
         [JsonProperty("gifts", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddGiftToBatchInputGiftsType Gifts { get; set; }
+        public AddGiftToBatchInputGiftsType Gifts { get; set; } = new AddGiftToBatchInputGiftsType();
     }
 
     public class AddGiftToBatchInputGiftsType
@@ -1708,7 +1708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public GiftApiVirtualBatchGiftSplitAdd[] Splits { get; set; }
 
         [JsonProperty("payments", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddGiftToBatchInputGiftsTypePaymentsType Payments { get; set; }
+        public AddGiftToBatchInputGiftsTypePaymentsType Payments { get; set; } = new AddGiftToBatchInputGiftsTypePaymentsType();
 
         [JsonProperty("is_anonymous")]
         public bool? IsAnonymous { get; set; }
@@ -1740,8 +1740,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [JsonProperty("origin", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Origin { get; set; } = "{ \"name\": \"Power Platform\" }";
 
-        [JsonProperty("receipts")]
-        public AddGiftToBatchInputGiftsTypeReceiptsType Receipts { get; set; }
+        [JsonProperty("receipts", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddGiftToBatchInputGiftsTypeReceiptsType Receipts { get; set; } = new AddGiftToBatchInputGiftsTypeReceiptsType();
     }
 
     public class AddGiftToBatchInputGiftsTypeAmountType
@@ -1763,7 +1763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [JsonProperty("campaign_id")]
         public string CampaignId { get; set; }
 
-        [JsonProperty("fund_id")]
+        [JsonProperty("fund_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FundId { get; set; }
 
         [JsonProperty("appeal_id")]
@@ -1772,13 +1772,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [JsonProperty("package_id")]
         public string PackageId { get; set; }
 
-        [JsonProperty("amount")]
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public GiftApiVirtualBatchGiftSplitAddAmountType Amount { get; set; }
     }
 
     public class GiftApiVirtualBatchGiftSplitAddAmountType
     {
-        [JsonProperty("value")]
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
 
@@ -2090,7 +2090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public Gift2ApiNewGiftSplit[] Splits { get; set; }
 
         [JsonProperty("payments", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgeInputPaymentsType Payments { get; set; }
+        public CreatePledgeInputPaymentsType Payments { get; set; } = new CreatePledgeInputPaymentsType();
 
         [JsonProperty("send_reminder")]
         public bool? SendReminder { get; set; }
@@ -2128,11 +2128,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [JsonProperty("origin", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Origin { get; set; } = "{ \"name\": \"Power Platform\" }";
 
-        [JsonProperty("receipts")]
-        public CreatePledgeInputReceiptsType Receipts { get; set; }
+        [JsonProperty("receipts", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreatePledgeInputReceiptsType Receipts { get; set; } = new CreatePledgeInputReceiptsType();
 
-        [JsonProperty("acknowledgements")]
-        public CreatePledgeInputAcknowledgementsType Acknowledgements { get; set; }
+        [JsonProperty("acknowledgements", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreatePledgeInputAcknowledgementsType Acknowledgements { get; set; } = new CreatePledgeInputAcknowledgementsType();
 
         [JsonProperty("recognition_credits")]
         public Gift2ApiNewRecognitionCredit[] Credits { get; set; }
@@ -2179,10 +2179,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class Gift2ApiNewGiftSplit
     {
-        [JsonProperty("amount")]
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public Gift2ApiNewGiftSplitAmountType Amount { get; set; }
 
-        [JsonProperty("fund_id")]
+        [JsonProperty("fund_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FundId { get; set; }
 
         [JsonProperty("campaign_id")]
@@ -2197,7 +2197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class Gift2ApiNewGiftSplitAmountType
     {
-        [JsonProperty("value")]
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
 
@@ -2344,13 +2344,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class Gift2ApiNewRecognitionCredit
     {
-        [JsonProperty("credit_type")]
+        [JsonProperty("credit_type", DefaultValueHandling = DefaultValueHandling.Include)]
         public Gift2ApiNewRecognitionCreditTypeType Type { get; set; }
 
-        [JsonProperty("constituent_id")]
+        [JsonProperty("constituent_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RecipientId { get; set; }
 
-        [JsonProperty("amount")]
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public Gift2ApiNewRecognitionCreditAmountType Amount { get; set; }
     }
 
@@ -2363,7 +2363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
 
     public class Gift2ApiNewRecognitionCreditAmountType
     {
-        [JsonProperty("value")]
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
     }
 
@@ -2373,7 +2373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Date { get; set; }
 
         [JsonProperty("amount")]
-        public double Amount { get; set; }
+        public double? Amount { get; set; }
     }
 
     public class CreatePledgePaymentInput
@@ -2394,7 +2394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public Gift2ApiNewGiftSplit[] Splits { get; set; }
 
         [JsonProperty("payments", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreatePledgePaymentInputPaymentsType Payments { get; set; }
+        public CreatePledgePaymentInputPaymentsType Payments { get; set; } = new CreatePledgePaymentInputPaymentsType();
 
         [JsonProperty("anonymous")]
         public bool? IsAnonymous { get; set; }
@@ -2426,11 +2426,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [JsonProperty("origin", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Origin { get; set; } = "{ \"name\": \"Power Platform\" }";
 
-        [JsonProperty("receipts")]
-        public CreatePledgePaymentInputReceiptsType Receipts { get; set; }
+        [JsonProperty("receipts", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreatePledgePaymentInputReceiptsType Receipts { get; set; } = new CreatePledgePaymentInputReceiptsType();
 
-        [JsonProperty("acknowledgements")]
-        public CreatePledgePaymentInputAcknowledgementsType Acknowledgements { get; set; }
+        [JsonProperty("acknowledgements", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreatePledgePaymentInputAcknowledgementsType Acknowledgements { get; set; } = new CreatePledgePaymentInputAcknowledgementsType();
 
         [JsonProperty("recognition_credits")]
         public Gift2ApiNewRecognitionCredit[] Credits { get; set; }
@@ -2483,7 +2483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Installment { get; set; }
 
         [JsonProperty("amount_applied")]
-        public double Amount { get; set; }
+        public double? Amount { get; set; }
     }
 
     public class CreatePledgePaymentInputGiftSubtypeType
@@ -2600,7 +2600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public Gift2ApiNewGiftSplit[] Splits { get; set; }
 
         [JsonProperty("payments", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateStockInputPaymentsType Payments { get; set; }
+        public CreateStockInputPaymentsType Payments { get; set; } = new CreateStockInputPaymentsType();
 
         [JsonProperty("anonymous")]
         public bool? IsAnonymous { get; set; }
@@ -2629,11 +2629,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         [JsonProperty("origin", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Origin { get; set; } = "{ \"name\": \"Power Platform\" }";
 
-        [JsonProperty("receipts")]
-        public CreateStockInputReceiptsType Receipts { get; set; }
+        [JsonProperty("receipts", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateStockInputReceiptsType Receipts { get; set; } = new CreateStockInputReceiptsType();
 
-        [JsonProperty("acknowledgements")]
-        public CreateStockInputAcknowledgementsType Acknowledgements { get; set; }
+        [JsonProperty("acknowledgements", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateStockInputAcknowledgementsType Acknowledgements { get; set; } = new CreateStockInputAcknowledgementsType();
 
         [JsonProperty("recognition_credits")]
         public Gift2ApiNewRecognitionCredit[] Credits { get; set; }

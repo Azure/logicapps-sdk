@@ -465,7 +465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         public string FundId { get; set; }
 
         [JsonProperty("fundraisers")]
-        public OpportunityApiFundraiser[] FundraiserS { get; set; }
+        public OpportunityApiFundraiser2[] FundraiserS { get; set; }
 
         [JsonProperty("inactive")]
         public bool? Inactive { get; set; }
@@ -484,6 +484,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
     }
 
     public class CreateOpportunityInputFundedAmountType
+    {
+        [JsonProperty("value")]
+        public double? Value { get; set; }
+    }
+
+    public class OpportunityApiFundraiser2
+    {
+        [JsonProperty("constituent_id")]
+        public string ConstituentId { get; set; }
+
+        [JsonProperty("credit_amount")]
+        public OpportunityApiFundraiserCreditAmountType2 CreditAmount { get; set; }
+    }
+
+    public class OpportunityApiFundraiserCreditAmountType2
     {
         [JsonProperty("value")]
         public double? Value { get; set; }
@@ -528,7 +543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         public string FundId { get; set; }
 
         [JsonProperty("fundraisers")]
-        public OpportunityApiFundraiser[] FundraiserS { get; set; }
+        public OpportunityApiFundraiser2[] FundraiserS { get; set; }
 
         [JsonProperty("inactive")]
         public bool? Inactive { get; set; }

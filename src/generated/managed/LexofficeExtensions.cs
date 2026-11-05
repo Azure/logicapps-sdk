@@ -1032,7 +1032,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public string Note { get; set; }
 
         [JsonProperty("price", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateAnArticleInputPriceType Price { get; set; }
+        public UpdateAnArticleInputPriceType Price { get; set; } = new UpdateAnArticleInputPriceType();
 
         [JsonProperty("title")]
         public string Title { get; set; }

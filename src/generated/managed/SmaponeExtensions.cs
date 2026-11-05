@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smapone")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GETSmapVersionRecordReport(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId, Expression<Func<formatInput>> format, Expression<Func<bool>> markAsExported = null, Expression<Func<bool>> useDefault = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GETSmapVersionRecordReport(Expression<Func<string>> smapId, Expression<Func<string>> version, Expression<Func<string>> recordId, Expression<Func<formatInput2>> format, Expression<Func<bool>> markAsExported = null, Expression<Func<bool>> useDefault = null)
         {
             var __workflow_smapId = WorkflowExpression.Compile(smapId, nameof(smapId), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
@@ -876,6 +876,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
 
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Data { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum formatInput2
+    {
+        Pdf,
+        Doc,
+        Docx,
+        Html,
+        Txt
     }
 
     public class SingleFileValue

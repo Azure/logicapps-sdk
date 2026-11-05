@@ -1058,7 +1058,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public JToken FormValues { get; set; }
 
         [JsonProperty("geometry")]
-        public Geometry Geometry { get; set; }
+        public Geometry2 Geometry { get; set; }
 
         [JsonProperty("latitude")]
         public double? Latitude { get; set; }
@@ -1071,6 +1071,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
 
         [JsonProperty("status")]
         public string Status { get; set; }
+    }
+
+    public class Geometry2
+    {
+        [JsonProperty("coordinates", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Coordinates { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GeometryTypeType Type { get; set; }
     }
 
     public class RecordsPartialUpdateInput
@@ -1088,7 +1097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public JToken FormValues { get; set; }
 
         [JsonProperty("geometry")]
-        public Geometry Geometry { get; set; }
+        public Geometry2 Geometry { get; set; }
 
         [JsonProperty("latitude")]
         public double? Latitude { get; set; }
@@ -1121,7 +1130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public JToken FormValues { get; set; }
 
         [JsonProperty("geometry")]
-        public Geometry Geometry { get; set; }
+        public Geometry2 Geometry { get; set; }
 
         [JsonProperty("latitude")]
         public double? Latitude { get; set; }
@@ -1703,7 +1712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
     public class OnFulcrumEventInput
     {
         [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OnFulcrumEventInputWebhookType Webhook { get; set; }
+        public OnFulcrumEventInputWebhookType Webhook { get; set; } = new OnFulcrumEventInputWebhookType();
     }
 
     public class OnFulcrumEventInputWebhookType

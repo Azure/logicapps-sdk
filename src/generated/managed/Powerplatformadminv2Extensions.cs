@@ -4410,7 +4410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
     public class CurrencyAllocationModel2
     {
         [JsonProperty("currencyType")]
-        public ExternalCurrencyType CurrencyType { get; set; }
+        public ExternalCurrencyType? CurrencyType { get; set; }
 
         [JsonProperty("allocated")]
         public int? Allocated { get; set; }
@@ -4425,7 +4425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
     public class EnforcementRule2
     {
         [JsonProperty("ruleType")]
-        public EnforcementRuleTypes RuleType { get; set; }
+        public EnforcementRuleTypes? RuleType { get; set; }
 
         [JsonProperty("enabled")]
         public bool? Enabled { get; set; }
@@ -4519,7 +4519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public BillingInstrumentModel BillingInstrument { get; set; }
 
         [JsonProperty("status")]
-        public BillingPolicyStatus Status { get; set; }
+        public BillingPolicyStatus? Status { get; set; }
     }
 
     public class UpdateBillingPolicyInput
@@ -4528,7 +4528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string Name { get; set; }
 
         [JsonProperty("status")]
-        public BillingPolicyStatus Status { get; set; }
+        public BillingPolicyStatus? Status { get; set; }
     }
 
     public class BillingPolicyEnvironmentResponseModelV1ResponseWithOdataContinuation
@@ -4588,7 +4588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
     public class CurrencyAllocationRequestModelV1
     {
         [JsonProperty("currencyType")]
-        public ExternalCurrencyType CurrencyType { get; set; }
+        public ExternalCurrencyType? CurrencyType { get; set; }
 
         [JsonProperty("allocated")]
         public int? Allocated { get; set; }
@@ -4730,13 +4730,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
     public class PowerAutomatePolicyModel2
     {
         [JsonProperty("cloudFlowRunsPayAsYouGoState")]
-        public PayAsYouGoState CloudFlowRunsPayAsYouGoState { get; set; }
+        public PayAsYouGoState? CloudFlowRunsPayAsYouGoState { get; set; }
 
         [JsonProperty("desktopFlowUnattendedRunsPayAsYouGoState")]
-        public PayAsYouGoState DesktopFlowUnattendedRunsPayAsYouGoState { get; set; }
+        public PayAsYouGoState? DesktopFlowUnattendedRunsPayAsYouGoState { get; set; }
 
         [JsonProperty("desktopFlowAttendedRunsPayAsYouGoState")]
-        public PayAsYouGoState DesktopFlowAttendedRunsPayAsYouGoState { get; set; }
+        public PayAsYouGoState? DesktopFlowAttendedRunsPayAsYouGoState { get; set; }
     }
 
     public class UpdateISVContractInput
@@ -4745,7 +4745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string Name { get; set; }
 
         [JsonProperty("status")]
-        public BillingPolicyStatus Status { get; set; }
+        public BillingPolicyStatus? Status { get; set; }
 
         [JsonProperty("conditions")]
         public BillingPolicyConditionsModel2 Conditions { get; set; }
@@ -6149,13 +6149,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public double? AutoAllocated { get; set; }
 
         [JsonProperty("unit")]
-        public EntitlementUnit Unit { get; set; }
+        public EntitlementUnit? Unit { get; set; }
     }
 
     public class AllocationEnforcementRule2
     {
         [JsonProperty("ruleType")]
-        public AllocationEnforcementRuleTypes RuleType { get; set; }
+        public AllocationEnforcementRuleTypes? RuleType { get; set; }
 
         [JsonProperty("enabled")]
         public bool? Enabled { get; set; }

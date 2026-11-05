@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
 
     public class RfcCallParameters
     {
-        [JsonProperty("RfcName")]
+        [JsonProperty("RfcName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RFCName { get; set; }
 
         [JsonProperty("Payload")]
@@ -720,7 +720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
 
         [JsonProperty("RfcGroupFilter")]
         public string RFCGroupFilter { get; set; }
-        public bool AutoCommit { get; set; }
+        public bool? AutoCommit { get; set; }
         public string QueueName { get; set; }
     }
 

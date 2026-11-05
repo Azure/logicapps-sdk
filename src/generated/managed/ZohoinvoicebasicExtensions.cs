@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohoinvoicebasic")]
-        public IBodyWorkflowAction<InvoicesGetResponse, ApiConnectionActionConfiguration> InvoicesGet(Expression<Func<string>> invoiceNumber = null, Expression<Func<string>> itemName = null, Expression<Func<string>> itemId = null, Expression<Func<string>> itemDescription = null, Expression<Func<string>> referenceNumber = null, Expression<Func<string>> customerName = null, Expression<Func<string>> recurringInvoiceId = null, Expression<Func<string>> email = null, Expression<Func<string>> total = null, Expression<Func<string>> balance = null, Expression<Func<string>> customField = null, Expression<Func<string>> date = null, Expression<Func<string>> dueDate = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> customerId = null, Expression<Func<filterByInput>> filterBy = null, Expression<Func<string>> searchText = null, Expression<Func<sortColumnInput>> sortColumn = null, Expression<Func<string>> zcrmPotentialId = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<InvoicesGetResponse, ApiConnectionActionConfiguration> InvoicesGet(Expression<Func<string>> invoiceNumber = null, Expression<Func<string>> itemName = null, Expression<Func<string>> itemId = null, Expression<Func<string>> itemDescription = null, Expression<Func<string>> referenceNumber = null, Expression<Func<string>> customerName = null, Expression<Func<string>> recurringInvoiceId = null, Expression<Func<string>> email = null, Expression<Func<string>> total = null, Expression<Func<string>> balance = null, Expression<Func<string>> customField = null, Expression<Func<string>> date = null, Expression<Func<string>> dueDate = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> customerId = null, Expression<Func<filterByInput2>> filterBy = null, Expression<Func<string>> searchText = null, Expression<Func<sortColumnInput2>> sortColumn = null, Expression<Func<string>> zcrmPotentialId = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_invoiceNumber = WorkflowExpression.Compile(invoiceNumber, nameof(invoiceNumber), required: false);
             var __workflow_itemName = WorkflowExpression.Compile(itemName, nameof(itemName), required: false);
@@ -325,43 +325,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
     {
         [EnumMember(Value = "Status.All")]
         StatusAll,
-        [EnumMember(Value = "Status.Sent")]
-        StatusSent,
-        [EnumMember(Value = "Status.Draft")]
-        StatusDraft,
-        [EnumMember(Value = "Status.OverDue")]
-        StatusOverDue,
-        [EnumMember(Value = "Status.Paid")]
-        StatusPaid,
-        [EnumMember(Value = "Status.Void")]
-        StatusVoid,
-        [EnumMember(Value = "Status.Unpaid")]
-        StatusUnpaid,
-        [EnumMember(Value = "Status.PartiallyPaid")]
-        StatusPartiallyPaid,
-        [EnumMember(Value = "Status.Viewed")]
-        StatusViewed,
-        [EnumMember(Value = "Date.PaymentExpectedDate")]
-        DatePaymentExpectedDate
+        [EnumMember(Value = "Status.Active")]
+        StatusActive,
+        [EnumMember(Value = "Status.Inactive")]
+        StatusInactive,
+        [EnumMember(Value = "Status.Duplicate")]
+        StatusDuplicate,
+        [EnumMember(Value = "Status.Crm")]
+        StatusCrm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortColumnInput
     {
-        [EnumMember(Value = "customer_name")]
-        CustomerName,
-        [EnumMember(Value = "invoice_number")]
-        InvoiceNumber,
-        [EnumMember(Value = "date")]
-        Date,
-        [EnumMember(Value = "due_date")]
-        DueDate,
-        [EnumMember(Value = "total")]
-        Total,
-        [EnumMember(Value = "balance")]
-        Balance,
+        [EnumMember(Value = "contact_name")]
+        ContactName,
+        [EnumMember(Value = "first_name")]
+        FirstName,
+        [EnumMember(Value = "last_name")]
+        LastName,
+        [EnumMember(Value = "email")]
+        Email,
+        [EnumMember(Value = "outstanding_receivable_amount")]
+        OutstandingReceivableAmount,
         [EnumMember(Value = "created_time")]
-        CreatedTime
+        CreatedTime,
+        [EnumMember(Value = "last_modified_time")]
+        LastModifiedTime
     }
 
     public class ContactPostResponse
@@ -2323,6 +2313,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         PartiallyPaid,
         [EnumMember(Value = "viewed")]
         Viewed
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum filterByInput2
+    {
+        [EnumMember(Value = "Status.All")]
+        StatusAll,
+        [EnumMember(Value = "Status.Sent")]
+        StatusSent,
+        [EnumMember(Value = "Status.Draft")]
+        StatusDraft,
+        [EnumMember(Value = "Status.OverDue")]
+        StatusOverDue,
+        [EnumMember(Value = "Status.Paid")]
+        StatusPaid,
+        [EnumMember(Value = "Status.Void")]
+        StatusVoid,
+        [EnumMember(Value = "Status.Unpaid")]
+        StatusUnpaid,
+        [EnumMember(Value = "Status.PartiallyPaid")]
+        StatusPartiallyPaid,
+        [EnumMember(Value = "Status.Viewed")]
+        StatusViewed,
+        [EnumMember(Value = "Date.PaymentExpectedDate")]
+        DatePaymentExpectedDate
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum sortColumnInput2
+    {
+        [EnumMember(Value = "customer_name")]
+        CustomerName,
+        [EnumMember(Value = "invoice_number")]
+        InvoiceNumber,
+        [EnumMember(Value = "date")]
+        Date,
+        [EnumMember(Value = "due_date")]
+        DueDate,
+        [EnumMember(Value = "total")]
+        Total,
+        [EnumMember(Value = "balance")]
+        Balance,
+        [EnumMember(Value = "created_time")]
+        CreatedTime
     }
 
     public class InvoicePostResponse

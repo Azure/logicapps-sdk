@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sosinventoryip")]
-        public IBodyWorkflowAction<SalesOrderResponse, ApiConnectionActionConfiguration> SalesOrder(Expression<Func<double>> start = null, Expression<Func<double>> maxresults = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> query = null, Expression<Func<bool>> archived = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> location = null, Expression<Func<double>> id = null)
+        public IBodyWorkflowAction<SalesOrderResponse, ApiConnectionActionConfiguration> SalesOrder(Expression<Func<double>> start = null, Expression<Func<double>> maxresults = null, Expression<Func<statusInput2>> status = null, Expression<Func<string>> query = null, Expression<Func<bool>> archived = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> location = null, Expression<Func<double>> id = null)
         {
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
             var __workflow_maxresults = WorkflowExpression.Compile(maxresults, nameof(maxresults), required: false);
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sosinventoryip")]
-        public IBodyWorkflowAction<PickTicketResponse, ApiConnectionActionConfiguration> PickTicket(Expression<Func<double>> start = null, Expression<Func<double>> maxresults = null, Expression<Func<string>> summary = null, Expression<Func<string>> query = null, Expression<Func<bool>> archived = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> location = null, Expression<Func<statusInput>> status = null)
+        public IBodyWorkflowAction<PickTicketResponse, ApiConnectionActionConfiguration> PickTicket(Expression<Func<double>> start = null, Expression<Func<double>> maxresults = null, Expression<Func<string>> summary = null, Expression<Func<string>> query = null, Expression<Func<bool>> archived = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> location = null, Expression<Func<statusInput3>> status = null)
         {
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
             var __workflow_maxresults = WorkflowExpression.Compile(maxresults, nameof(maxresults), required: false);
@@ -592,10 +592,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
-        [EnumMember(Value = "open")]
-        Open,
-        [EnumMember(Value = "closed")]
-        Closed
+        [EnumMember(Value = "expired")]
+        Expired,
+        [EnumMember(Value = "recalled")]
+        Recalled,
+        [EnumMember(Value = "notexpirednotrecalled")]
+        Notexpirednotrecalled
     }
 
     public class LocationResponse
@@ -853,10 +855,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string AddressType { get; set; }
 
         [JsonProperty("address")]
-        public AddressAddressType Address { get; set; }
+        public AddressInfoAddressType Address { get; set; }
     }
 
-    public class AddressAddressType
+    public class AddressInfoAddressType
     {
         [JsonProperty("line1")]
         public string Line1 { get; set; }
@@ -1300,6 +1302,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public Salesorder[] Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum statusInput2
+    {
+        [EnumMember(Value = "open")]
+        Open,
+        [EnumMember(Value = "closed")]
+        Closed
+    }
+
     public class Pickticket
     {
         [JsonProperty("id")]
@@ -1609,7 +1620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
         public string TrackingNumber { get; set; }
 
         [JsonProperty("linkedTransaction")]
-        public Linkedtransaction LinkedTransaction { get; set; }
+        public Linkedtransaction2 LinkedTransaction { get; set; }
 
         [JsonProperty("comment")]
         public string Comment { get; set; }
@@ -1691,6 +1702,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
 
         [JsonProperty("name")]
         public string Name { get; set; }
+    }
+
+    public class Linkedtransaction2
+    {
+        [JsonProperty("id")]
+        public int? Id { get; set; }
+
+        [JsonProperty("transactionType")]
+        public string TransactionType { get; set; }
+
+        [JsonProperty("refNumber")]
+        public string RefNumber { get; set; }
+
+        [JsonProperty("linenumber")]
+        public int? Linenumber { get; set; }
     }
 
     public class UpdatePickTicketInputCustomFieldsTypeItem
@@ -1829,6 +1855,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sosinventoryip
 
         [JsonProperty("data")]
         public Pickticket[] Data { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum statusInput3
+    {
+        [EnumMember(Value = "open")]
+        Open,
+        [EnumMember(Value = "closed")]
+        Closed
     }
 }
 

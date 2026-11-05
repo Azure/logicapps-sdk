@@ -157,10 +157,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bastiongpt
 
     public class Message
     {
-        [JsonProperty("role")]
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public MessageRoleType Role { get; set; }
 
-        [JsonProperty("content")]
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
     }
 

@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
         public string FormId { get; set; }
 
         [JsonProperty("meta", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateFlowInputMetaType Meta { get; set; }
+        public CreateFlowInputMetaType Meta { get; set; } = new CreateFlowInputMetaType();
     }
 
     public class CreateFlowInputMetaType

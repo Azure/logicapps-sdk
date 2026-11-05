@@ -5230,10 +5230,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
     public class V3TermsSettingInsert
     {
         [JsonProperty("amount")]
-        public double Amount { get; set; }
+        public double? Amount { get; set; }
 
         [JsonProperty("workHours")]
-        public double WorkHours { get; set; }
+        public double? WorkHours { get; set; }
 
         [JsonProperty("shiftTemplateId")]
         public string ShiftTemplateId { get; set; }
@@ -5301,14 +5301,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemhk
 
     public class V3TermsSettingUpdate
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
         [JsonProperty("amount")]
-        public double Amount { get; set; }
+        public double? Amount { get; set; }
 
         [JsonProperty("workHours")]
-        public double WorkHours { get; set; }
+        public double? WorkHours { get; set; }
 
         [JsonProperty("shiftTemplateId")]
         public string ShiftTemplateId { get; set; }

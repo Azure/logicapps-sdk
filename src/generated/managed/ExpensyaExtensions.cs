@@ -2317,8 +2317,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public class ValidatorInput
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Mail { get; set; }
-        public double MinimumAmount { get; set; }
+        public double? MinimumAmount { get; set; }
     }
 
     public class LoginResponse

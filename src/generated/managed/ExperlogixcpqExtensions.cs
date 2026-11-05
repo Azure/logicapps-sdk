@@ -237,23 +237,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
 
     public class ChangeConfig
     {
-        [JsonProperty("type")]
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
 
         [JsonProperty("configLineIndex")]
-        public int ConfigLineIndex { get; set; }
+        public int? ConfigLineIndex { get; set; }
 
         [JsonProperty("changeType")]
         public string ChangeType { get; set; }
 
-        [JsonProperty("categoryId")]
+        [JsonProperty("categoryId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CategoryId { get; set; }
 
-        [JsonProperty("optionId")]
+        [JsonProperty("optionId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OptionId { get; set; }
 
         [JsonProperty("selectionIndex")]
-        public int SelectionIndex { get; set; }
+        public int? SelectionIndex { get; set; }
 
         [JsonProperty("propertyId")]
         public string PropertyId { get; set; }

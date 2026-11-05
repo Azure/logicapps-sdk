@@ -1421,7 +1421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public string Url { get; set; }
 
         [JsonProperty("openInNewWindow")]
-        public bool OpenInNewWindow { get; set; }
+        public bool? OpenInNewWindow { get; set; }
     }
 
     public class UpdateLibraryUrlInput

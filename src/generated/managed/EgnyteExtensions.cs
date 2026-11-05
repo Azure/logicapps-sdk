@@ -3887,8 +3887,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [JsonProperty("question", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Question { get; set; }
 
-        [JsonProperty("includeCitations")]
-        public bool? IncludeCitations { get; set; }
+        [JsonProperty("includeCitations", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncludeCitations { get; set; } = false;
 
         [JsonProperty("chatHistory")]
         public AIChatHistory ChatHistory { get; set; }
@@ -3903,7 +3903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     public class AIMessage
     {
         [JsonProperty("role")]
-        public AIMessageRoleType Role { get; set; }
+        public AIMessageRoleType? Role { get; set; }
 
         [JsonProperty("content")]
         public string Content { get; set; }
@@ -3953,8 +3953,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [JsonProperty("selectedItems", DefaultValueHandling = DefaultValueHandling.Include)]
         public AISelectedItems SelectedItems { get; set; }
 
-        [JsonProperty("includeCitations")]
-        public bool? IncludeCitations { get; set; }
+        [JsonProperty("includeCitations", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncludeCitations { get; set; } = false;
 
         [JsonProperty("chatHistory")]
         public AIChatHistory ChatHistory { get; set; }
@@ -3989,8 +3989,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [JsonProperty("question", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Question { get; set; }
 
-        [JsonProperty("includeCitations")]
-        public bool? IncludeCitations { get; set; }
+        [JsonProperty("includeCitations", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncludeCitations { get; set; } = false;
 
         [JsonProperty("chatHistory")]
         public AIChatHistory ChatHistory { get; set; }

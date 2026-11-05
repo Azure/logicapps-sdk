@@ -1226,7 +1226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string NodeId { get; set; }
 
         [JsonProperty("nodeType")]
-        public AssociationReqNodeTypeType NodeType { get; set; }
+        public AssociationReqNodeTypeType? NodeType { get; set; }
 
         [JsonProperty("spaceId")]
         public string SpaceId { get; set; }
@@ -1257,7 +1257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
     public class UpdateProjectInput
     {
         [JsonProperty("customProperties")]
-        public CustomPropertyValues[] CustomProperties { get; set; }
+        public CustomPropertyValues2[] CustomProperties { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -1285,6 +1285,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
 
         [JsonProperty("title")]
         public string Title { get; set; }
+    }
+
+    public class CustomPropertyValues2
+    {
+        [JsonProperty("id")]
+        public string CustomPropertyId { get; set; }
+
+        [JsonProperty("localizations")]
+        public JToken Localizations { get; set; }
+
+        [JsonProperty("multipleValue")]
+        public bool? MultipleValue { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("values")]
+        public CustomPropertyValuesValues[] Values { get; set; }
     }
 
     public class PlannerRequestQueryResponse
@@ -1614,7 +1632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public AssociationReq[] Associations { get; set; }
 
         [JsonProperty("contentRefs")]
-        public ContentRef[] ContentReferences { get; set; }
+        public ContentRef2[] ContentReferences { get; set; }
 
         [JsonProperty("customProperties")]
         public CustomPropertyValuesInput[] CustomProperties { get; set; }
@@ -1644,6 +1662,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string Title { get; set; }
     }
 
+    public class ContentRef2
+    {
+        [JsonProperty("contentId")]
+        public string ContentId { get; set; }
+
+        [JsonProperty("docCenterFullPath")]
+        public string DocCenterFullPath { get; set; }
+
+        [JsonProperty("majorVersion")]
+        public int? MajorVersion { get; set; }
+
+        [JsonProperty("minorVersion")]
+        public int? MinorVersion { get; set; }
+
+        [JsonProperty("modifiedDate")]
+        public string ModifiedDate { get; set; }
+
+        [JsonProperty("orderNo")]
+        public int? OrderNumber { get; set; }
+
+        [JsonProperty("profileId")]
+        public string ProfileId { get; set; }
+
+        [JsonProperty("profileVersionId")]
+        public string ProfileVersionId { get; set; }
+
+        [JsonProperty("source")]
+        public ContentRefSourceType? Source { get; set; }
+
+        [JsonProperty("teamSiteId")]
+        public string TeamSiteId { get; set; }
+
+        [JsonProperty("thumbnailId")]
+        public string ThumbnailId { get; set; }
+
+        [JsonProperty("versionId")]
+        public string VersionId { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateRequestInputPriorityType
     {
@@ -1663,7 +1720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string AssigneeId { get; set; }
 
         [JsonProperty("contentRefs")]
-        public ContentRef[] ContentReferenceObjects { get; set; }
+        public ContentRef2[] ContentReferenceObjects { get; set; }
 
         [JsonProperty("customProperties")]
         public CustomPropertyValuesInput[] CustomProperties { get; set; }

@@ -870,7 +870,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docusign")]
-        public IBodyWorkflowAction<EmbeddedSigningResponse, ApiConnectionActionConfiguration> GenerateEmbeddedSigningURL(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<isInPersonSignerInput>> isInPersonSigner, Expression<Func<authenticationMethodInput>> authenticationMethod, Expression<Func<returnUrlInput>> returnUrl, Expression<Func<object>> additionalURL)
+        public IBodyWorkflowAction<EmbeddedSigningResponse, ApiConnectionActionConfiguration> GenerateEmbeddedSigningURL(Expression<Func<string>> accountId, Expression<Func<string>> envelopeId, Expression<Func<isInPersonSignerInput>> isInPersonSigner, Expression<Func<authenticationMethodInput>> authenticationMethod, Expression<Func<returnUrlInput2>> returnUrl, Expression<Func<object>> additionalURL)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
@@ -990,9 +990,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyInputItemTypeType
     {
-        Text,
-        Note,
-        Number
+        [EnumMember(Value = "Text box")]
+        TextBox,
+        Date,
+        Number,
+        Select,
+        [EnumMember(Value = "Table row")]
+        TableRow
     }
 
     public class AddRemindersResponse
@@ -1257,8 +1261,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum returnUrlInput
     {
-        [EnumMember(Value = "Default URL (Not compatible with iframes)")]
-        DefaultURLNotCompatibleWithIframes,
+        [EnumMember(Value = "DocuSign homepage")]
+        DocuSignHomepage,
         [EnumMember(Value = "Add a different URL")]
         AddADifferentURL
     }
@@ -1570,13 +1574,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
     public class bodyInputItem22
     {
         [JsonProperty("tabType")]
-        public bodyInputItemTypeType Type { get; set; }
+        public bodyInputItemTypeType2 Type { get; set; }
 
         [JsonProperty("tabId")]
         public string Id { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum bodyInputItemTypeType2
+    {
+        Text,
+        Note,
+        Number
     }
 
     public class RecipientTabsResponse
@@ -1633,6 +1645,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docusign
         Smartcard,
         SSLMutualAuth,
         X509Certificate
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum returnUrlInput2
+    {
+        [EnumMember(Value = "Default URL (Not compatible with iframes)")]
+        DefaultURLNotCompatibleWithIframes,
+        [EnumMember(Value = "Add a different URL")]
+        AddADifferentURL
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

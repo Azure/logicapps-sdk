@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voxaide
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("phone")]
+        [JsonProperty("phone", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Phone { get; set; }
 
         [JsonProperty("email")]

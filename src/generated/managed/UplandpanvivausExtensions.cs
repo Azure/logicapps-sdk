@@ -937,13 +937,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
     public class CategoryModel
     {
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
     }
 
     public class QueryVariationViewModel
     {
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [JsonProperty("query")]
         public string Query { get; set; }
@@ -952,7 +952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
     public class ResponseVariationViewModel
     {
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [JsonProperty("channels")]
         public ChannelViewModel[] Channels { get; set; }
@@ -964,7 +964,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
     public class ChannelViewModel
     {
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1411,7 +1411,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public ResponseSection[] Content { get; set; }
 
         [JsonProperty("channels")]
-        public Channel[] Channels { get; set; }
+        public Channel2[] Channels { get; set; }
+    }
+
+    public class Channel2
+    {
+        [JsonProperty("id")]
+        public int? Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 
     public class QueryVariationModel

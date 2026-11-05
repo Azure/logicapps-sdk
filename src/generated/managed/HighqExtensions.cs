@@ -759,7 +759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Sitefolderpermission { get; set; }
 
         [JsonProperty("module")]
-        public ModuleDBO Module { get; set; }
+        public ModuleDBO2 Module { get; set; }
 
         [JsonProperty("adminnote")]
         public string Adminnote { get; set; }
@@ -1005,6 +1005,366 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int? Filerelationshipsitepermissionlevel { get; set; }
     }
 
+    public class ModuleDBO2
+    {
+        [JsonProperty("home")]
+        public HomeDBO Home { get; set; }
+
+        [JsonProperty("activity")]
+        public ActivityDBO Activity { get; set; }
+
+        [JsonProperty("document")]
+        public DocumentDBO Document { get; set; }
+
+        [JsonProperty("blog")]
+        public BlogDBO2 Blog { get; set; }
+
+        [JsonProperty("wiki")]
+        public WikiDBO2 Wiki { get; set; }
+
+        [JsonProperty("task")]
+        public TaskDBO2 TaskObject { get; set; }
+
+        [JsonProperty("event")]
+        public EventDBO2 Event { get; set; }
+
+        [JsonProperty("isheet")]
+        public ISheetDBO2 Isheet { get; set; }
+
+        [JsonProperty("qa")]
+        public QaDBO Qa { get; set; }
+
+        [JsonProperty("people")]
+        public PeopleDBO2 People { get; set; }
+
+        [JsonProperty("contractexpress")]
+        public ContractExpressDBO Contractexpress { get; set; }
+    }
+
+    public class BlogDBO2
+    {
+        [JsonProperty("blogTitle")]
+        public string BlogTitle { get; set; }
+
+        [JsonProperty("blogContent")]
+        public string BlogContent { get; set; }
+
+        [JsonProperty("showComment")]
+        public int? ShowComment { get; set; }
+
+        [JsonProperty("tagList")]
+        public string[] TagList { get; set; }
+
+        [JsonProperty("status")]
+        public int? Status { get; set; }
+
+        [JsonProperty("siteID")]
+        public int? SiteId { get; set; }
+
+        [JsonProperty("author")]
+        public string Author { get; set; }
+
+        [JsonProperty("categoryList")]
+        public string[] CategoryList { get; set; }
+
+        [JsonProperty("notificationTypeID")]
+        public int? NotificationTypeId { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("messageCode")]
+        public int? MessageCode { get; set; }
+
+        [JsonProperty("externalID")]
+        public string ExternalId { get; set; }
+
+        [JsonProperty("publishDate")]
+        public string PublishDate { get; set; }
+
+        [JsonProperty("processtype")]
+        public string Processtype { get; set; }
+
+        [JsonProperty("enable")]
+        public string Enable { get; set; }
+    }
+
+    public class WikiDBO2
+    {
+        [JsonProperty("wikiid")]
+        public int? Wikiid { get; set; }
+
+        [JsonProperty("currentversionid")]
+        public int? Currentversionid { get; set; }
+
+        [JsonProperty("parentwikiid")]
+        public int? Parentwikiid { get; set; }
+
+        [JsonProperty("wikititle")]
+        public string Wikititle { get; set; }
+
+        [JsonProperty("wikicontent")]
+        public string Wikicontent { get; set; }
+
+        [JsonProperty("showcomment")]
+        public int? Showcomment { get; set; }
+
+        [JsonProperty("createddate")]
+        public string Createddate { get; set; }
+
+        [JsonProperty("modifieddate")]
+        public string Modifieddate { get; set; }
+
+        [JsonProperty("taglist")]
+        public string Taglist { get; set; }
+
+        [JsonProperty("wikipath")]
+        public string Wikipath { get; set; }
+
+        [JsonProperty("wikidraftid")]
+        public int? Wikidraftid { get; set; }
+
+        [JsonProperty("drafttype")]
+        public string Drafttype { get; set; }
+
+        [JsonProperty("status")]
+        public int? Status { get; set; }
+
+        [JsonProperty("wikiversionid")]
+        public int? Wikiversionid { get; set; }
+    }
+
+    public class TaskDBO2
+    {
+        [JsonProperty("index")]
+        public string Index { get; set; }
+
+        [JsonProperty("parenttaskid")]
+        public int? Parenttaskid { get; set; }
+
+        [JsonProperty("taskid")]
+        public int? Taskid { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("duedate")]
+        public string Duedate { get; set; }
+
+        [JsonProperty("startdate")]
+        public string Startdate { get; set; }
+
+        [JsonProperty("mattermaptaskid")]
+        public string Mattermaptaskid { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("dependenton")]
+        public string Dependenton { get; set; }
+
+        [JsonProperty("daysfromdependent")]
+        public string Daysfromdependent { get; set; }
+
+        [JsonProperty("ignoreweekend")]
+        public int? Ignoreweekend { get; set; }
+
+        [JsonProperty("duration")]
+        public int? Duration { get; set; }
+
+        [JsonProperty("resource")]
+        public string Resource { get; set; }
+    }
+
+    public class EventDBO2
+    {
+        [JsonProperty("eventTitle")]
+        public string EventTitle { get; set; }
+
+        [JsonProperty("eventContent")]
+        public string EventContent { get; set; }
+
+        [JsonProperty("showComment")]
+        public int? ShowComment { get; set; }
+
+        [JsonProperty("tagList")]
+        public string[] TagList { get; set; }
+
+        [JsonProperty("status")]
+        public int? Status { get; set; }
+
+        [JsonProperty("siteID")]
+        public int? SiteId { get; set; }
+
+        [JsonProperty("contact")]
+        public string Contact { get; set; }
+
+        [JsonProperty("categoryList")]
+        public string[] CategoryList { get; set; }
+
+        [JsonProperty("notificationTypeID")]
+        public int? NotificationTypeId { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("messageCode")]
+        public int? MessageCode { get; set; }
+
+        [JsonProperty("externalID")]
+        public string ExternalId { get; set; }
+
+        [JsonProperty("startDate")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("endDate")]
+        public string EndDate { get; set; }
+
+        [JsonProperty("startTime")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("endTime")]
+        public string EndTime { get; set; }
+
+        [JsonProperty("location")]
+        public string Location { get; set; }
+
+        [JsonProperty("author")]
+        public string Author { get; set; }
+
+        [JsonProperty("processtype")]
+        public string Processtype { get; set; }
+
+        [JsonProperty("enable")]
+        public string Enable { get; set; }
+    }
+
+    public class ISheetDBO2
+    {
+        [JsonProperty("id")]
+        public int? Id { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("accesstype")]
+        public string Accesstype { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("viewlink")]
+        public string Viewlink { get; set; }
+
+        [JsonProperty("allowsections")]
+        public string Allowsections { get; set; }
+
+        [JsonProperty("allowlookup")]
+        public string Allowlookup { get; set; }
+
+        [JsonProperty("displayisheet")]
+        public string Displayisheet { get; set; }
+
+        [JsonProperty("searchasdefaultview")]
+        public string Searchasdefaultview { get; set; }
+
+        [JsonProperty("enableversion")]
+        public string Enableversion { get; set; }
+
+        [JsonProperty("enablesheetalerter")]
+        public string Enablesheetalerter { get; set; }
+
+        [JsonProperty("alertercondition")]
+        public string Alertercondition { get; set; }
+
+        [JsonProperty("overrideitemmodifieddate")]
+        public string Overrideitemmodifieddate { get; set; }
+
+        [JsonProperty("enablebulkinsertupdate")]
+        public string Enablebulkinsertupdate { get; set; }
+
+        [JsonProperty("fielddescriptions")]
+        public string Fielddescriptions { get; set; }
+
+        [JsonProperty("enablerowlocking")]
+        public string Enablerowlocking { get; set; }
+
+        [JsonProperty("setcharlimittruncatemultilinetextenabled")]
+        public string Setcharlimittruncatemultilinetextenabled { get; set; }
+
+        [JsonProperty("setcharlimittruncatemultilinetextval")]
+        public string Setcharlimittruncatemultilinetextval { get; set; }
+
+        [JsonProperty("allowchoicelistvaluesforreuse")]
+        public string Allowchoicelistvaluesforreuse { get; set; }
+
+        [JsonProperty("allowscorelistvaluesforreuse")]
+        public string Allowscorelistvaluesforreuse { get; set; }
+
+        [JsonProperty("allowIsheetComments")]
+        public string AllowIsheetComments { get; set; }
+
+        [JsonProperty("shareRecordsLimit")]
+        public int? ShareRecordsLimit { get; set; }
+
+        [JsonProperty("shareRecordsLimitEnabled")]
+        public int? ShareRecordsLimitEnabled { get; set; }
+
+        [JsonProperty("enableIsheetAddRecordFormSharing")]
+        public string EnableIsheetAddRecordFormSharing { get; set; }
+
+        [JsonProperty("recordcount")]
+        public string Recordcount { get; set; }
+
+        [JsonProperty("sheettypeid")]
+        public int? Sheettypeid { get; set; }
+    }
+
+    public class PeopleDBO2
+    {
+        [JsonProperty("person")]
+        public PersonDBO2[] Person { get; set; }
+    }
+
+    public class PersonDBO2
+    {
+        [JsonProperty("userid")]
+        public int? Userid { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("httpavatar")]
+        public string Httpavatar { get; set; }
+
+        [JsonProperty("avatar")]
+        public string Avatar { get; set; }
+
+        [JsonProperty("userlink")]
+        public string Userlink { get; set; }
+
+        [JsonProperty("httplink")]
+        public string Httplink { get; set; }
+
+        [JsonProperty("phone")]
+        public string Phone { get; set; }
+
+        [JsonProperty("mobile")]
+        public string Mobile { get; set; }
+
+        [JsonProperty("department")]
+        public string Department { get; set; }
+    }
+
     public class UpdateSiteInput
     {
         [JsonProperty("id")]
@@ -1029,7 +1389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Sitefolderpermission { get; set; }
 
         [JsonProperty("module")]
-        public ModuleDBO Module { get; set; }
+        public ModuleDBO2 Module { get; set; }
 
         [JsonProperty("adminnote")]
         public string Adminnote { get; set; }

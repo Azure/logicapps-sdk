@@ -587,10 +587,88 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         public string AssignedUserIds { get; set; }
 
         [JsonProperty("appliedCategories")]
-        public AppliedCategories AppliedCategories { get; set; }
+        public AppliedCategories2 AppliedCategories { get; set; }
 
         [JsonProperty("priority")]
         public int? Priority { get; set; }
+    }
+
+    public class AppliedCategories2
+    {
+        [JsonProperty("category1")]
+        public bool? Pink { get; set; }
+
+        [JsonProperty("category2")]
+        public bool? Red { get; set; }
+
+        [JsonProperty("category3")]
+        public bool? Yellow { get; set; }
+
+        [JsonProperty("category4")]
+        public bool? Green { get; set; }
+
+        [JsonProperty("category5")]
+        public bool? Blue { get; set; }
+
+        [JsonProperty("category6")]
+        public bool? Purple { get; set; }
+
+        [JsonProperty("category7")]
+        public bool? Bronze { get; set; }
+
+        [JsonProperty("category8")]
+        public bool? Lime { get; set; }
+
+        [JsonProperty("category9")]
+        public bool? Aqua { get; set; }
+
+        [JsonProperty("category10")]
+        public bool? Gray { get; set; }
+
+        [JsonProperty("category11")]
+        public bool? Silver { get; set; }
+
+        [JsonProperty("category12")]
+        public bool? Brown { get; set; }
+
+        [JsonProperty("category13")]
+        public bool? Cranberry { get; set; }
+
+        [JsonProperty("category14")]
+        public bool? Orange { get; set; }
+
+        [JsonProperty("category15")]
+        public bool? Peach { get; set; }
+
+        [JsonProperty("category16")]
+        public bool? Marigold { get; set; }
+
+        [JsonProperty("category17")]
+        public bool? LightGreen { get; set; }
+
+        [JsonProperty("category18")]
+        public bool? DarkGreen { get; set; }
+
+        [JsonProperty("category19")]
+        public bool? Teal { get; set; }
+
+        [JsonProperty("category20")]
+        public bool? LightBlue { get; set; }
+
+        [JsonProperty("category21")]
+        public bool? DarkBlue { get; set; }
+
+        [JsonProperty("category22")]
+        public bool? Lavender { get; set; }
+
+        [JsonProperty("category23")]
+        public bool? Plum { get; set; }
+
+        [JsonProperty("category24")]
+        public bool? LightGray { get; set; }
+
+        [JsonProperty("category25")]
+        public bool? DarkGray { get; set; }
     }
 
     public class GetTaskDetailsResponse
@@ -689,7 +767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         public string BucketId { get; set; }
 
         [JsonProperty("appliedCategories")]
-        public AppliedCategories AppliedCategories { get; set; }
+        public AppliedCategories2 AppliedCategories { get; set; }
     }
 
     public class UpdateTaskDetailsV2Input

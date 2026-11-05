@@ -1583,7 +1583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public string DiscussionText { get; set; }
 
         [JsonProperty("renderType")]
-        public AddIcmDiscussionEntryRequestRenderTypeType RenderType { get; set; }
+        public AddIcmDiscussionEntryRequestRenderTypeType? RenderType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1623,13 +1623,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
 
     public class IcmAccessClaim
     {
-        [JsonProperty("claimType")]
+        [JsonProperty("claimType", DefaultValueHandling = DefaultValueHandling.Include)]
         public IcmAccessClaimClaimTypeType ClaimType { get; set; }
 
-        [JsonProperty("claim")]
+        [JsonProperty("claim", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Claim { get; set; }
 
-        [JsonProperty("role")]
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public IcmAccessClaimRoleType Role { get; set; }
     }
 

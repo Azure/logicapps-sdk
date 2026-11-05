@@ -615,7 +615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         internal string Description { get; set; } = "PowerAutomate auto-created webhook. Please don´t modify. Will be removed by PowerAutomate , when the Flow/Logic App is disabled or removed";
 
         [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewMessageInputOptionsType Options { get; set; }
+        public NewMessageInputOptionsType Options { get; set; } = new NewMessageInputOptionsType();
     }
 
     public class NewMessageInputOptionsType

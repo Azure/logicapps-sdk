@@ -725,7 +725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         internal string STATUS { get; set; } = "OK";
 
         [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookCreateProjectInputWebhookType Webhook { get; set; }
+        public WebhookCreateProjectInputWebhookType Webhook { get; set; } = new WebhookCreateProjectInputWebhookType();
     }
 
     public class WebhookCreateProjectInputWebhookType
@@ -746,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         internal string STATUS { get; set; } = "OK";
 
         [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookCreateTaskInputWebhookType Webhook { get; set; }
+        public WebhookCreateTaskInputWebhookType Webhook { get; set; } = new WebhookCreateTaskInputWebhookType();
     }
 
     public class WebhookCreateTaskInputWebhookType
@@ -767,7 +767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         internal string STATUS { get; set; } = "OK";
 
         [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
-        public WebhookCreateUserInputWebhookType Webhook { get; set; }
+        public WebhookCreateUserInputWebhookType Webhook { get; set; } = new WebhookCreateUserInputWebhookType();
     }
 
     public class WebhookCreateUserInputWebhookType

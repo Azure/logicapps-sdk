@@ -816,7 +816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
     public class CreateTimeOffInput
     {
         [JsonProperty("sharedTimeOff", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTimeOffInputValueType Value { get; set; }
+        public CreateTimeOffInputValueType Value { get; set; } = new CreateTimeOffInputValueType();
 
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
@@ -834,7 +834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string EndTime { get; set; }
 
         [JsonProperty("theme", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Theme Theme { get; set; }
+        public Theme Theme { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Shifts.Theme.White;
     }
 
     public class ListShiftsResponse
@@ -957,7 +957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string SchedulingGroupId { get; set; }
 
         [JsonProperty("sharedShift", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateShiftInputValueType Value { get; set; }
+        public CreateShiftInputValueType Value { get; set; } = new CreateShiftInputValueType();
 
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UserId { get; set; }
@@ -978,10 +978,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string EndTime { get; set; }
 
         [JsonProperty("theme", DefaultValueHandling = DefaultValueHandling.Include)]
-        public Theme Theme { get; set; }
+        public Theme Theme { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Shifts.Theme.White;
 
         [JsonProperty("activities")]
-        public ActivitiesItem[] Activities { get; set; }
+        public ActivitiesItem2[] Activities { get; set; }
+    }
+
+    public class ActivitiesItem2
+    {
+        [JsonProperty("isPaid")]
+        public bool? IsPaid { get; set; }
+
+        [JsonProperty("startDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string StartTime { get; set; }
+
+        [JsonProperty("endDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EndTime { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
     }
 
     public class ListOpenShiftsResponse
@@ -1073,8 +1091,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [JsonProperty("schedulingGroupId")]
         public string SchedulingGroupId { get; set; }
 
-        [JsonProperty("sharedOpenShift")]
-        public CreateOpenShiftInputSharedOpenShiftType SharedOpenShift { get; set; }
+        [JsonProperty("sharedOpenShift", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateOpenShiftInputSharedOpenShiftType SharedOpenShift { get; set; } = new CreateOpenShiftInputSharedOpenShiftType();
     }
 
     public class CreateOpenShiftInputSharedOpenShiftType
@@ -1091,14 +1109,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [JsonProperty("endDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EndTime { get; set; }
 
-        [JsonProperty("theme")]
-        public Theme? Theme { get; set; }
+        [JsonProperty("theme", DefaultValueHandling = DefaultValueHandling.Include)]
+        public Theme? Theme { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Shifts.Theme.White;
 
         [JsonProperty("openSlotCount", DefaultValueHandling = DefaultValueHandling.Include)]
         public int OpenSlotCount { get; set; }
 
         [JsonProperty("activities")]
-        public ActivitiesItem[] Activities { get; set; }
+        public ActivitiesItem2[] Activities { get; set; }
     }
 
     public class UpdateOpenShiftInput
@@ -1106,8 +1124,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [JsonProperty("schedulingGroupId")]
         public string SchedulingGroupId { get; set; }
 
-        [JsonProperty("sharedOpenShift")]
-        public UpdateOpenShiftInputSharedOpenShiftType SharedOpenShift { get; set; }
+        [JsonProperty("sharedOpenShift", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateOpenShiftInputSharedOpenShiftType SharedOpenShift { get; set; } = new UpdateOpenShiftInputSharedOpenShiftType();
     }
 
     public class UpdateOpenShiftInputSharedOpenShiftType
@@ -1124,14 +1142,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         [JsonProperty("endDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EndTime { get; set; }
 
-        [JsonProperty("theme")]
-        public Theme? Theme { get; set; }
+        [JsonProperty("theme", DefaultValueHandling = DefaultValueHandling.Include)]
+        public Theme? Theme { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Shifts.Theme.White;
 
         [JsonProperty("openSlotCount", DefaultValueHandling = DefaultValueHandling.Include)]
         public int OpenSlotCount { get; set; }
 
         [JsonProperty("activities")]
-        public ActivitiesItem[] Activities { get; set; }
+        public ActivitiesItem2[] Activities { get; set; }
     }
 
     public class GetTimeOffReasonsResponse

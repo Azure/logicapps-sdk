@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<OpenAIResponse, ApiConnectionActionConfiguration> InvokeAgent(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<InvokeAgentInput>> body)
+        public IBodyWorkflowAction<OpenAIResponse, ApiConnectionActionConfiguration> InvokeAgent(Expression<Func<apiVersionInput2>> apiVersion, Expression<Func<InvokeAgentInput>> body)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -226,8 +226,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum apiVersionInput
     {
-        [EnumMember(Value = "2025-11-15-preview")]
-        _20251115Preview
+        [EnumMember(Value = "2025-05-01")]
+        _20250501
     }
 
     public class ListAgentsServiceResponse
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
     public class Messages
     {
         [JsonProperty("role")]
-        public MessagesRoleType Role { get; set; }
+        public MessagesRoleType? Role { get; set; }
 
         [JsonProperty("content")]
         public string Content { get; set; }
@@ -983,6 +983,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         AgentId
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum apiVersionInput2
+    {
+        [EnumMember(Value = "2025-11-15-preview")]
+        _20251115Preview
+    }
+
     public class InvokeAgentInput
     {
         [JsonProperty("metadata")]
@@ -1010,13 +1017,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public InvokeAgentInputTextType Text { get; set; }
 
         [JsonProperty("tools")]
-        public OpenAITool[] Tools { get; set; }
+        public OpenAITool2[] Tools { get; set; }
 
         [JsonProperty("tool_choice")]
         public JToken ToolChoice { get; set; }
 
         [JsonProperty("prompt")]
-        public OpenAIPrompt Prompt { get; set; }
+        public OpenAIPrompt2 Prompt { get; set; }
 
         [JsonProperty("truncation", DefaultValueHandling = DefaultValueHandling.Include)]
         public InvokeAgentInputTruncationType? Truncation { get; set; } = InvokeAgentInputTruncationType.Disabled;
@@ -1046,7 +1053,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
     public class InvokeAgentInputTextType
     {
         [JsonProperty("format")]
-        public OpenAIResponseTextFormatConfiguration Format { get; set; }
+        public OpenAIResponseTextFormatConfiguration2 Format { get; set; }
+    }
+
+    public class OpenAIResponseTextFormatConfiguration2
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public OpenAIResponseTextFormatConfigurationType Type { get; set; }
+    }
+
+    public class OpenAITool2
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public OpenAIToolType Type { get; set; }
+    }
+
+    public class OpenAIPrompt2
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("version")]
+        public string Version { get; set; }
+
+        [JsonProperty("variables")]
+        public JToken Variables { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1092,13 +1123,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
     public class AgentReference
     {
-        [JsonProperty("type")]
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public AgentReferenceTypeType Type { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
-        [JsonProperty("version")]
+        [JsonProperty("version", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Version { get; set; }
     }
 

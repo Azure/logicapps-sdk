@@ -2105,7 +2105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     public class MilestoneStatus
     {
         [JsonProperty("value")]
-        public MilestoneStatusValueType Value { get; set; }
+        public MilestoneStatusValueType? Value { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2128,10 +2128,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class Milestone
     {
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
-        [JsonProperty("date")]
+        [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Date { get; set; }
 
         [JsonProperty("projectPhase")]
@@ -2231,7 +2231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class Timing
     {
-        [JsonProperty("on")]
+        [JsonProperty("on", DefaultValueHandling = DefaultValueHandling.Include)]
         public TimingOnType On { get; set; }
 
         [JsonProperty("milestoneId")]
@@ -2264,13 +2264,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class FinancialEvent
     {
-        [JsonProperty("type")]
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public FinancialEventTypeType Type { get; set; }
 
-        [JsonProperty("amount")]
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
 
-        [JsonProperty("timing")]
+        [JsonProperty("timing", DefaultValueHandling = DefaultValueHandling.Include)]
         public Timing Timing { get; set; }
 
         [JsonProperty("description")]
@@ -2357,13 +2357,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class FinancialActualsCreateOrReplaceRequest
     {
-        [JsonProperty("type")]
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public FinancialActualsCreateOrReplaceRequestTypeType Type { get; set; }
 
-        [JsonProperty("amount")]
+        [JsonProperty("amount", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Amount { get; set; }
 
-        [JsonProperty("bookingDate")]
+        [JsonProperty("bookingDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BookingDate { get; set; }
 
         [JsonProperty("description")]
@@ -2444,11 +2444,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class AllocatedEntity
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
         [JsonProperty("type")]
-        public AllocatedEntityTypeType Type { get; set; }
+        public AllocatedEntityTypeType? Type { get; set; }
 
         [JsonProperty("projectRole")]
         public string ProjectRole { get; set; }
@@ -2466,20 +2466,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class AllocationSegment
     {
-        [JsonProperty("start")]
+        [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Start { get; set; }
 
-        [JsonProperty("finish")]
+        [JsonProperty("finish", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Finish { get; set; }
 
         [JsonProperty("fte")]
-        public double Fte { get; set; }
+        public double? Fte { get; set; }
 
         [JsonProperty("days")]
-        public double Days { get; set; }
+        public double? Days { get; set; }
 
         [JsonProperty("hours")]
-        public double Hours { get; set; }
+        public double? Hours { get; set; }
     }
 
     public class ReplaceAllocationInput
@@ -2490,7 +2490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class Allocation
     {
-        [JsonProperty("allocatedEntity")]
+        [JsonProperty("allocatedEntity", DefaultValueHandling = DefaultValueHandling.Include)]
         public AllocatedEntity AllocatedEntity { get; set; }
 
         [JsonProperty("segments")]
@@ -2580,17 +2580,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CreateAbsenceRequest
     {
-        [JsonProperty("start")]
+        [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Start { get; set; }
 
-        [JsonProperty("finish")]
+        [JsonProperty("finish", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Finish { get; set; }
 
         [JsonProperty("startDayType")]
-        public CreateAbsenceRequestStartDayTypeType StartDayType { get; set; }
+        public CreateAbsenceRequestStartDayTypeType? StartDayType { get; set; }
 
         [JsonProperty("finishDayType")]
-        public CreateAbsenceRequestFinishDayTypeType FinishDayType { get; set; }
+        public CreateAbsenceRequestFinishDayTypeType? FinishDayType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2811,13 +2811,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string Finish { get; set; }
 
         [JsonProperty("fte")]
-        public double Fte { get; set; }
+        public double? Fte { get; set; }
 
         [JsonProperty("days")]
-        public double Days { get; set; }
+        public double? Days { get; set; }
 
         [JsonProperty("hours")]
-        public double Hours { get; set; }
+        public double? Hours { get; set; }
     }
 
     public class PaginatedResponseAllProjectsResponse
@@ -3304,11 +3304,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class BookedEntity
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
         [JsonProperty("type")]
-        public BookedEntityTypeType Type { get; set; }
+        public BookedEntityTypeType? Type { get; set; }
 
         [JsonProperty("teamId")]
         public string TeamId { get; set; }
@@ -3325,17 +3325,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class Bookings
     {
-        [JsonProperty("bookingDate")]
+        [JsonProperty("bookingDate", DefaultValueHandling = DefaultValueHandling.Include)]
         public string BookingDate { get; set; }
 
-        [JsonProperty("hours")]
+        [JsonProperty("hours", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Hours { get; set; }
 
         [JsonProperty("costType")]
-        public BookingsCostTypeType CostType { get; set; }
+        public BookingsCostTypeType? CostType { get; set; }
 
         [JsonProperty("costPerHour")]
-        public double CostPerHour { get; set; }
+        public double? CostPerHour { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -3463,27 +3463,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     public class UpdatePrioritiesInput
     {
         [JsonProperty("aboveMustHave")]
-        public Priorities AboveMustHave { get; set; }
+        public Priorities BelowCutOff { get; set; }
 
         [JsonProperty("regular")]
-        public Priorities Regular { get; set; }
+        public Priorities BelowCutOff2 { get; set; }
 
         [JsonProperty("belowCutOff")]
-        public Priorities BelowCutOff { get; set; }
+        public Priorities BelowCutOff3 { get; set; }
     }
 
     public class Priorities
     {
-        [JsonProperty("items")]
+        [JsonProperty("items", DefaultValueHandling = DefaultValueHandling.Include)]
         public PriorityEntry[] Items { get; set; }
 
         [JsonProperty("position")]
-        public PrioritiesPositionType Position { get; set; }
+        public PrioritiesPositionType? Position { get; set; }
     }
 
     public class PriorityEntry
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
     }
 
@@ -3603,7 +3603,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string CostPerHourValidFrom { get; set; }
 
         [JsonProperty("costRates")]
-        public CostRate[] CostRates { get; set; }
+        public CostRate2[] CostRates { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -3611,6 +3611,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     {
         CAPEX,
         OPEX
+    }
+
+    public class CostRate2
+    {
+        [JsonProperty("costPerHour", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double CostPerHour { get; set; }
+
+        [JsonProperty("costPerHourValidFrom", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CostPerHourValidFrom { get; set; }
     }
 
     public class PaginatedResponseResourceResponse
@@ -3779,7 +3788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string CostPerHourValidFrom { get; set; }
 
         [JsonProperty("costRates")]
-        public CostRate[] CostRates { get; set; }
+        public CostRate2[] CostRates { get; set; }
     }
 
     public class PostalAddress
@@ -3850,7 +3859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         [JsonProperty("finish")]
         public string Finish { get; set; }
 
-        [JsonProperty("relativeCapacity")]
+        [JsonProperty("relativeCapacity", DefaultValueHandling = DefaultValueHandling.Include)]
         public double RelativeCapacity { get; set; }
     }
 
@@ -3970,25 +3979,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class WorkingHours
     {
-        [JsonProperty("monday")]
+        [JsonProperty("monday", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Monday { get; set; }
 
-        [JsonProperty("tuesday")]
+        [JsonProperty("tuesday", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Tuesday { get; set; }
 
-        [JsonProperty("wednesday")]
+        [JsonProperty("wednesday", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Wednesday { get; set; }
 
-        [JsonProperty("thursday")]
+        [JsonProperty("thursday", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Thursday { get; set; }
 
-        [JsonProperty("friday")]
+        [JsonProperty("friday", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Friday { get; set; }
 
-        [JsonProperty("saturday")]
+        [JsonProperty("saturday", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Saturday { get; set; }
 
-        [JsonProperty("sunday")]
+        [JsonProperty("sunday", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Sunday { get; set; }
     }
 
@@ -4027,10 +4036,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
 
     public class CalendarException
     {
-        [JsonProperty("date")]
+        [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Date { get; set; }
 
-        [JsonProperty("workingHours")]
+        [JsonProperty("workingHours", DefaultValueHandling = DefaultValueHandling.Include)]
         public double WorkingHours { get; set; }
 
         [JsonProperty("description")]
@@ -4197,7 +4206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string CostPerHourValidFrom { get; set; }
 
         [JsonProperty("costRates")]
-        public CostRate[] CostRates { get; set; }
+        public CostRate2[] CostRates { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -4255,7 +4264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string CostPerHourValidFrom { get; set; }
 
         [JsonProperty("costRates")]
-        public CostRate[] CostRates { get; set; }
+        public CostRate2[] CostRates { get; set; }
     }
 
     public class UpdateAbsencesInput

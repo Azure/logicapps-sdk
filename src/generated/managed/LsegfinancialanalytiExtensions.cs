@@ -1449,20 +1449,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
         [JsonProperty("scenarioID")]
         public string ScenarioId { get; set; }
 
-        [JsonProperty("scenarioType")]
-        public ScenarioV3ScenarioTypeType ScenarioType { get; set; }
+        [JsonProperty("scenarioType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ScenarioV3ScenarioTypeType? ScenarioType { get; set; } = ScenarioV3ScenarioTypeType.ParShiftUserScenario;
 
-        [JsonProperty("scenarioTiming")]
-        public ScenarioV3ScenarioTimingType ScenarioTiming { get; set; }
+        [JsonProperty("scenarioTiming", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ScenarioV3ScenarioTimingType? ScenarioTiming { get; set; } = ScenarioV3ScenarioTimingType.Gradual;
 
-        [JsonProperty("reinvestmentRate")]
-        public string ReinvestmentRate { get; set; }
+        [JsonProperty("reinvestmentRate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ReinvestmentRate { get; set; } = "Default";
 
-        [JsonProperty("swapSpreadConstant")]
-        public ScenarioV3SwapSpreadConstantType SwapSpreadConstant { get; set; }
+        [JsonProperty("swapSpreadConstant", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ScenarioV3SwapSpreadConstantType? SwapSpreadConstant { get; set; } = ScenarioV3SwapSpreadConstantType.No;
 
-        [JsonProperty("interpolationType")]
-        public ScenarioV3InterpolationTypeType InterpolationType { get; set; }
+        [JsonProperty("interpolationType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ScenarioV3InterpolationTypeType? InterpolationType { get; set; } = ScenarioV3InterpolationTypeType.Years;
 
         [JsonProperty("curveShifts")]
         public CurveShiftV3[] CurveShifts { get; set; }
@@ -1611,10 +1611,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
     public class CurveShiftV3
     {
         [JsonProperty("curveShiftYear")]
-        public double CurveShiftYear { get; set; }
+        public double? CurveShiftYear { get; set; }
 
         [JsonProperty("curveShiftValue")]
-        public double CurveShiftValue { get; set; }
+        public double? CurveShiftValue { get; set; }
     }
 }
 

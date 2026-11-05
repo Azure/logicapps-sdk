@@ -494,14 +494,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [JsonProperty("repositoryId")]
         public int? RepositoryId { get; set; }
 
-        [JsonProperty("repository")]
-        public Repository Repository { get; set; }
-
         [JsonProperty("documentTypeId")]
         public int? DocumentTypeId { get; set; }
 
         [JsonProperty("documentType")]
-        public DocumentType DocumentType { get; set; }
+        public DocumentType2 DocumentType { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -511,6 +508,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
 
         [JsonProperty("ocr")]
         public bool? Ocr { get; set; }
+    }
+
+    public class DocumentType2
+    {
+        [JsonProperty("documentTypeId")]
+        public int? DocumentTypeId { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
     }
 
     public class Solution
@@ -581,9 +590,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [JsonProperty("solutionKey")]
         public string SolutionKey { get; set; }
 
-        [JsonProperty("department")]
-        public Department Department { get; set; }
-
         [JsonProperty("name")]
         public string Name { get; set; }
     }
@@ -595,9 +601,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
 
         [JsonProperty("solutionKey")]
         public string SolutionKey { get; set; }
-
-        [JsonProperty("department")]
-        public Department Department { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -768,10 +771,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public int? Status { get; set; }
 
         [JsonProperty("propertyValues")]
-        public PropertyValue[] PropertyValues { get; set; }
+        public PropertyValue2[] PropertyValues { get; set; }
 
         [JsonProperty("url")]
         public string Url { get; set; }
+    }
+
+    public class PropertyValue2
+    {
+        [JsonProperty("documentId")]
+        public int? DocumentId { get; set; }
+
+        [JsonProperty("documentPropertyId")]
+        public int? DocumentPropertyId { get; set; }
+
+        [JsonProperty("documentProperty")]
+        public DocumentProperty2 DocumentProperty { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+
+        [JsonProperty("columnName")]
+        public string ColumnName { get; set; }
+    }
+
+    public class DocumentProperty2
+    {
+        [JsonProperty("documentPropertyId")]
+        public int? DocumentPropertyId { get; set; }
+
+        [JsonProperty("documentTypeId")]
+        public int? DocumentTypeId { get; set; }
+
+        [JsonProperty("documentType")]
+        public DocumentType2 DocumentType { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("dataTypeId")]
+        public int? DataTypeId { get; set; }
+
+        [JsonProperty("dataType")]
+        public DataType2 DataType { get; set; }
+
+        [JsonProperty("optionSetId")]
+        public int? OptionSetId { get; set; }
+
+        [JsonProperty("externalOptionSet")]
+        public string ExternalOptionSet { get; set; }
+
+        [JsonProperty("displayFormat")]
+        public string DisplayFormat { get; set; }
+
+        [JsonProperty("internalName")]
+        public string InternalName { get; set; }
+    }
+
+    public class DataType2
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 
     public class PadocumenttypesAddInput
@@ -782,14 +845,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [JsonProperty("repositoryId")]
         public int? RepositoryId { get; set; }
 
-        [JsonProperty("repository")]
-        public Repository Repository { get; set; }
-
         [JsonProperty("documentTypeId")]
         public int? DocumentTypeId { get; set; }
 
         [JsonProperty("documentType")]
-        public DocumentType DocumentType { get; set; }
+        public DocumentType2 DocumentType { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -821,14 +881,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         [JsonProperty("repositoryId")]
         public int? RepositoryId { get; set; }
 
-        [JsonProperty("repository")]
-        public Repository Repository { get; set; }
-
         [JsonProperty("documentTypeId")]
         public int? DocumentTypeId { get; set; }
 
         [JsonProperty("documentType")]
-        public DocumentType DocumentType { get; set; }
+        public DocumentType2 DocumentType { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

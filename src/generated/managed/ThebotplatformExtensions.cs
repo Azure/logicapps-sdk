@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
     public class SimpleTextMessageInput
     {
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SimpleTextMessageInputDataType Data { get; set; }
+        public SimpleTextMessageInputDataType Data { get; set; } = new SimpleTextMessageInputDataType();
     }
 
     public class SimpleTextMessageInputDataType
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
     public class CreateUserAttributeInput
     {
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateUserAttributeInputDataType Data { get; set; }
+        public CreateUserAttributeInputDataType Data { get; set; } = new CreateUserAttributeInputDataType();
     }
 
     public class CreateUserAttributeInputDataType
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
     public class SetUserAttributeInput
     {
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetUserAttributeInputDataType Data { get; set; }
+        public SetUserAttributeInputDataType Data { get; set; } = new SetUserAttributeInputDataType();
     }
 
     public class SetUserAttributeInputDataType

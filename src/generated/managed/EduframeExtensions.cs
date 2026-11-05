@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eduframe")]
-        public IBodyWorkflowAction<User[], ApiConnectionActionConfiguration> GetUsers(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<sortInputItem[]>> sort = null)
+        public IBodyWorkflowAction<User[], ApiConnectionActionConfiguration> GetUsers(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<sortInputItem2[]>> sort = null)
         {
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
@@ -493,7 +493,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public string Email { get; set; }
 
         [JsonProperty("address_attributes")]
-        public AddressInfo AddressAttributes { get; set; }
+        public AddressInfo2 AddressAttributes { get; set; }
+    }
+
+    public class AddressInfo2
+    {
+        [JsonProperty("id")]
+        public int? Id { get; set; }
+
+        [JsonProperty("addressee")]
+        public string Addressee { get; set; }
+
+        [JsonProperty("address", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Address { get; set; }
+
+        [JsonProperty("postal_code", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PostalCode { get; set; }
+
+        [JsonProperty("city", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string City { get; set; }
+
+        [JsonProperty("country", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Country { get; set; }
+
+        [JsonProperty("updated_at")]
+        public string UpdatedAt { get; set; }
+
+        [JsonProperty("created_at")]
+        public string CreatedAt { get; set; }
     }
 
     public class Authentication
@@ -635,12 +662,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortInputItem
     {
-        [EnumMember(Value = "first_name")]
-        FirstName,
-        [EnumMember(Value = "last_name")]
-        LastName,
-        [EnumMember(Value = "middle_name")]
-        MiddleName
+        [EnumMember(Value = "position")]
+        Position
     }
 
     public class Course
@@ -923,7 +946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public double[] LabelIds { get; set; }
 
         [JsonProperty("address_attributes")]
-        public AddressInfo AddressAttributes { get; set; }
+        public AddressInfo2 AddressAttributes { get; set; }
 
         [JsonProperty("notes_user")]
         public string NotesUser { get; set; }
@@ -944,6 +967,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         EnUS,
         [EnumMember(Value = "en_GB")]
         EnGB
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum sortInputItem2
+    {
+        [EnumMember(Value = "first_name")]
+        FirstName,
+        [EnumMember(Value = "last_name")]
+        LastName,
+        [EnumMember(Value = "middle_name")]
+        MiddleName
     }
 
     public class Invoice
@@ -1078,7 +1112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         public PostInvoicesInputCurrencyType Currency { get; set; }
 
         [JsonProperty("invoice_items_attributes", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InvoiceItem[] InvoiceItemsAttributes { get; set; }
+        public InvoiceItem2[] InvoiceItemsAttributes { get; set; }
 
         [JsonProperty("feature")]
         public string Feature { get; set; }
@@ -1094,6 +1128,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eduframe
         ISK,
         USD,
         GBP
+    }
+
+    public class InvoiceItem2
+    {
+        [JsonProperty("id")]
+        public int? Id { get; set; }
+
+        [JsonProperty("units", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double Units { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("unit_price", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UnitPrice { get; set; }
+
+        [JsonProperty("invoice_vat_id")]
+        public double? InvoiceVatId { get; set; }
+
+        [JsonProperty("catalog_variant_id")]
+        public double? CatalogVariantId { get; set; }
+
+        [JsonProperty("updated_at")]
+        public string UpdatedAt { get; set; }
+
+        [JsonProperty("created_at")]
+        public string CreatedAt { get; set; }
     }
 
     public class InvoiceVat

@@ -106,15 +106,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itglue
     public class PostOrganizationTypeInput
     {
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OrganizationTypesCreate Data { get; set; }
+        public OrganizationTypesCreate Data { get; set; } = new OrganizationTypesCreate();
     }
 
     public class OrganizationTypesCreate
     {
-        [JsonProperty("type")]
-        public OrganizationTypesCreateTypeType Type { get; set; }
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal OrganizationTypesCreateTypeType Type { get; set; } = OrganizationTypesCreateTypeType.OrganizationTypes;
 
-        [JsonProperty("attributes")]
+        [JsonProperty("attributes", DefaultValueHandling = DefaultValueHandling.Include)]
         public OrganizationTypesCreateNameType Name { get; set; }
     }
 
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itglue
 
     public class OrganizationTypesCreateNameType
     {
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
     }
 
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itglue
     public class PatchOrganizationTypeInput
     {
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OrganizationTypesCreate Data { get; set; }
+        public OrganizationTypesCreate Data { get; set; } = new OrganizationTypesCreate();
     }
 }
 

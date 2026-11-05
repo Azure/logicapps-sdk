@@ -4005,55 +4005,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class BlogAuthor
     {
-        [JsonProperty("avatar")]
+        [JsonProperty("avatar", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Avatar { get; set; }
 
-        [JsonProperty("bio")]
+        [JsonProperty("bio", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Bio { get; set; }
 
-        [JsonProperty("created")]
+        [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Created { get; set; }
 
-        [JsonProperty("deletedAt")]
+        [JsonProperty("deletedAt", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeletedAt { get; set; }
 
-        [JsonProperty("displayName")]
+        [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
-        [JsonProperty("email")]
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Email { get; set; }
 
-        [JsonProperty("facebook")]
+        [JsonProperty("facebook", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Facebook { get; set; }
 
-        [JsonProperty("fullName")]
+        [JsonProperty("fullName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FullName { get; set; }
 
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
-        [JsonProperty("language")]
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Language { get; set; }
 
-        [JsonProperty("linkedin")]
+        [JsonProperty("linkedin", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Linkedin { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
-        [JsonProperty("slug")]
+        [JsonProperty("slug", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Slug { get; set; }
 
-        [JsonProperty("translatedFromId")]
+        [JsonProperty("translatedFromId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TranslatedFromId { get; set; }
 
-        [JsonProperty("twitter")]
+        [JsonProperty("twitter", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Twitter { get; set; }
 
-        [JsonProperty("updated")]
+        [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Updated { get; set; }
 
-        [JsonProperty("website")]
+        [JsonProperty("website", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Website { get; set; }
     }
 
@@ -4812,26 +4812,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class Column5
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
-        [JsonProperty("label")]
+        [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Label { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
-        [JsonProperty("options")]
-        public Option[] Options { get; set; }
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public Option2[] Options { get; set; }
 
-        [JsonProperty("type")]
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
 
-        [JsonProperty("foreignTableId")]
+        [JsonProperty("foreignTableId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ForeignTableId { get; set; }
 
-        [JsonProperty("foreignColumnId")]
+        [JsonProperty("foreignColumnId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ForeignColumnId { get; set; }
+    }
+
+    public class Option2
+    {
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Order { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Label { get; set; }
     }
 
     public class UpdateanexistingtableInput

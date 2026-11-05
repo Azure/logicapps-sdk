@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<CampaignsGetResponseItem[], ApiConnectionActionConfiguration> CampaignsGet(Expression<Func<statusInput>> status = null, Expression<Func<int>> id = null)
+        public IBodyWorkflowAction<CampaignsGetResponseItem[], ApiConnectionActionConfiguration> CampaignsGet(Expression<Func<statusInput2>> status = null, Expression<Func<int>> id = null)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
@@ -355,13 +355,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
-        RUNNING,
-        DRAFT,
-        EDITED,
-        PAUSED,
-        STOPPED,
-        COMPLETED,
-        DELETED
+        ACTIVE,
+        BLACKLIST,
+        BOUNCED,
+        [EnumMember(Value = "INVALID")]
+        INVALId,
+        REPLIED
     }
 
     public class ProspectsPostResponse
@@ -962,6 +961,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
 
         [JsonProperty("to")]
         public int To { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum statusInput2
+    {
+        RUNNING,
+        DRAFT,
+        EDITED,
+        PAUSED,
+        STOPPED,
+        COMPLETED,
+        DELETED
     }
 }
 

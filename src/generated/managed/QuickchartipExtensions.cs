@@ -360,10 +360,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
-        [EnumMember(Value = "svg")]
-        Svg,
         [EnumMember(Value = "png")]
-        Png
+        Png,
+        [EnumMember(Value = "svg")]
+        Svg
     }
 
     public class GraphVizResponse

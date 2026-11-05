@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aadinvitationmanager
         public string InvitedUserEmailAddress { get; set; }
 
         [JsonProperty("invitedUserMessageInfo")]
-        public InvitedUserMessageInfo InvitedUserMessageInfo { get; set; }
+        public InvitedUserMessageInfo2 InvitedUserMessageInfo { get; set; }
 
         [JsonProperty("invitedUserType")]
         public string InvitedUserType { get; set; }
@@ -114,6 +114,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aadinvitationmanager
 
         [JsonProperty("sendInvitationMessage")]
         public bool? SendInvitationMessage { get; set; }
+    }
+
+    public class InvitedUserMessageInfo2
+    {
+        [JsonProperty("ccRecipients")]
+        public CcRecipientsItem2[] CcRecipients { get; set; }
+
+        [JsonProperty("customizedMessageBody")]
+        public string CustomizedMessageBody { get; set; }
+
+        [JsonProperty("messageLanguage")]
+        public string MessageLanguage { get; set; }
+    }
+
+    public class CcRecipientsItem2
+    {
+        [JsonProperty("emailAddress")]
+        public EmailAddress EmailAddress { get; set; }
     }
 }
 

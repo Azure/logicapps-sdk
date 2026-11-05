@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moreappforms
         public JToken Data { get; set; }
 
         [JsonProperty("publishInfo", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTaskInputPublishInfoType PublishInfo { get; set; }
+        public CreateTaskInputPublishInfoType PublishInfo { get; set; } = new CreateTaskInputPublishInfoType();
     }
 
     public class CreateTaskInputPublishInfoType

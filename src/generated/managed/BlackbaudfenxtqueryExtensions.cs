@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
 
     public class QueryApiAskFieldInformation
     {
-        [JsonProperty("operator")]
+        [JsonProperty("operator", DefaultValueHandling = DefaultValueHandling.Include)]
         public QueryApiAskFieldInformationOperatorType Operator { get; set; }
 
         [JsonProperty("filter_values")]

@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
-        public IBodyWorkflowAction<ListWorkspacesResponseItem[], ApiConnectionActionConfiguration> ListWorkspaces(Expression<Func<orderByInput>> orderBy = null, Expression<Func<orderDirInput>> orderDir = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<ListWorkspacesResponseItem[], ApiConnectionActionConfiguration> ListWorkspaces(Expression<Func<orderByInput2>> orderBy = null, Expression<Func<orderDirInput>> orderDir = null, Expression<Func<int>> limit = null)
         {
             var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
             var __workflow_orderDir = WorkflowExpression.Compile(orderDir, nameof(orderDir), required: false);
@@ -316,8 +316,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
     {
         [EnumMember(Value = "createdAt")]
         CreatedAt,
-        [EnumMember(Value = "updatedAt")]
-        UpdatedAt
+        [EnumMember(Value = "title")]
+        Title,
+        [EnumMember(Value = "slashtag")]
+        Slashtag
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -399,6 +401,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
 
         [JsonProperty("role")]
         public string Role { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum orderByInput2
+    {
+        [EnumMember(Value = "createdAt")]
+        CreatedAt,
+        [EnumMember(Value = "updatedAt")]
+        UpdatedAt
     }
 
     public class GetLinkResponse

@@ -345,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
     public class NewODataItemInput
     {
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public NewODataItemInputConfigType Config { get; set; }
+        public NewODataItemInputConfigType Config { get; set; } = new NewODataItemInputConfigType();
     }
 
     public class NewODataItemInputConfigType

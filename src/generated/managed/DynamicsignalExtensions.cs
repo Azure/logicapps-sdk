@@ -860,7 +860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public PreregisterUserInputNotificationsDefaultType? NotificationsDefault { get; set; }
 
         [JsonProperty("privileges")]
-        public UserPrivilegesRequestResponse Privileges { get; set; }
+        public UserPrivilegesRequestResponse Value { get; set; }
     }
 
     public class UserTagRequestResponse
@@ -882,16 +882,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class UserPrivilegesRequestResponse
     {
         [JsonProperty("canSharePosts")]
-        public bool CanSharePosts { get; set; }
+        public bool? CanSharePosts { get; set; }
 
         [JsonProperty("canCommentPosts")]
-        public bool CanCommentPosts { get; set; }
+        public bool? CanCommentPosts { get; set; }
 
         [JsonProperty("canSubmitPosts")]
-        public bool CanSubmitPosts { get; set; }
+        public bool? CanSubmitPosts { get; set; }
 
         [JsonProperty("canManageOrganization")]
-        public bool CanManageOrganization { get; set; }
+        public bool? CanManageOrganization { get; set; }
     }
 
     public class UploadImageResponse

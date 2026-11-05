@@ -500,8 +500,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         public string Value { get; set; }
 
         [JsonProperty("Type")]
-        public int FilterType { get; set; }
-        public ListDataWhereRequestPreType Pre { get; set; }
+        public int? FilterType { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public ListDataWhereRequestPreType? Pre { get; set; } = ListDataWhereRequestPreType.And;
         public ListDataWhereRequest[] Child { get; set; }
     }
 

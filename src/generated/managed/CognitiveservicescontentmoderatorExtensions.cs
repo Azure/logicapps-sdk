@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<ScreenTextResponse, ApiConnectionActionConfiguration> ScreenText(Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> textContent, Expression<Func<string>> language = null, Expression<Func<bool>> autocorrect = null, Expression<Func<bool>> pII = null, Expression<Func<string>> listId = null, Expression<Func<bool>> classify = null)
+        public IBodyWorkflowAction<ScreenTextResponse, ApiConnectionActionConfiguration> ScreenText(Expression<Func<contentTypeInput2>> contentType, Expression<Func<string>> textContent, Expression<Func<string>> language = null, Expression<Func<bool>> autocorrect = null, Expression<Func<bool>> pII = null, Expression<Func<string>> listId = null, Expression<Func<bool>> classify = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_textContent = WorkflowExpression.Compile(textContent, nameof(textContent), required: true);
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<DetectLanguageResponse, ApiConnectionActionConfiguration> DetectLanguage(Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> textContent)
+        public IBodyWorkflowAction<DetectLanguageResponse, ApiConnectionActionConfiguration> DetectLanguage(Expression<Func<contentTypeInput3>> contentType, Expression<Func<string>> textContent)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_textContent = WorkflowExpression.Compile(textContent, nameof(textContent), required: true);
@@ -201,14 +201,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum contentTypeInput
     {
-        [EnumMember(Value = "text/plain")]
-        TextPlain,
-        [EnumMember(Value = "text/html")]
-        TextHtml,
-        [EnumMember(Value = "text/xml")]
-        TextXml,
-        [EnumMember(Value = "text/markdown")]
-        TextMarkdown
+        Image,
+        Text
     }
 
     public class CreateJobInput
@@ -378,6 +372,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         public string DetectedTerm { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum contentTypeInput2
+    {
+        [EnumMember(Value = "text/plain")]
+        TextPlain,
+        [EnumMember(Value = "text/html")]
+        TextHtml,
+        [EnumMember(Value = "text/xml")]
+        TextXml,
+        [EnumMember(Value = "text/markdown")]
+        TextMarkdown
+    }
+
     public class FindFacesResponse
     {
         public string TrackingId { get; set; }
@@ -408,6 +415,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
     public class DetectLanguageResponse
     {
         public string DetectedLanguage { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum contentTypeInput3
+    {
+        [EnumMember(Value = "text/plain")]
+        TextPlain,
+        [EnumMember(Value = "text/html")]
+        TextHtml,
+        [EnumMember(Value = "text/xml")]
+        TextXml,
+        [EnumMember(Value = "text/markdown")]
+        TextMarkdown
     }
 
     public class MatchImageResponse

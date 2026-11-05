@@ -235,11 +235,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
-        [JsonProperty("postprocessConfig")]
-        public PostprocessConfig PostprocessConfig { get; set; }
+        [JsonProperty("postprocessConfig", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostprocessConfig2 Postprocessing { get; set; } = new PostprocessConfig2();
 
         [JsonProperty("preprocessConfig")]
-        public PreprocessConfig PreprocessConfig { get; set; }
+        public PreprocessConfig2 Preprocessing { get; set; }
+    }
+
+    public class PostprocessConfig2
+    {
+        [JsonProperty("outputFormat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostprocessConfigTheOutputFormatType? TheOutputFormat { get; set; } = PostprocessConfigTheOutputFormatType.V2;
+
+        [JsonProperty("strategy", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PostprocessConfigTheStrategyUsedForAggregatingPredictionsType? TheStrategyUsedForAggregatingPredictions { get; set; } = PostprocessConfigTheStrategyUsedForAggregatingPredictionsType.BESTFIRST;
+    }
+
+    public class PreprocessConfig2
+    {
+        [JsonProperty("autoRotate")]
+        public bool? AutoRotate { get; set; }
+
+        [JsonProperty("maxPages")]
+        public int? MaxPages { get; set; }
+
+        [JsonProperty("imageQuality")]
+        public string ImageQuality { get; set; }
     }
 
     public class CreateExecutionDeprecatedResponse
@@ -259,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
 
     public class WorkflowInput
     {
-        [JsonProperty("documentId")]
+        [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentId { get; set; }
 
         [JsonProperty("title")]
@@ -284,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         internal bool Enabled { get; set; } = true;
 
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RunCompletedInputConfigType Config { get; set; }
+        public RunCompletedInputConfigType Config { get; set; } = new RunCompletedInputConfigType();
     }
 
     public class RunCompletedInputConfigType

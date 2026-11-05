@@ -446,7 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> PostMessageToConversation(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
+        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> PostMessageToConversation(Expression<Func<posterInput2>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
         {
             var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
@@ -462,7 +462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> ReplyWithMessageToConversation(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
+        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> ReplyWithMessageToConversation(Expression<Func<posterInput3>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
         {
             var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> PostCardToConversation(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
+        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> PostCardToConversation(Expression<Func<posterInput4>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
         {
             var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PostCardAndWaitForResponse(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<PostCardAndWaitForResponseInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> PostCardAndWaitForResponse(Expression<Func<posterInput5>> poster, Expression<Func<string>> location, Expression<Func<PostCardAndWaitForResponseInput>> body)
         {
             var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> ReplyWithCardToConversation(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
+        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> ReplyWithCardToConversation(Expression<Func<posterInput6>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
         {
             var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> UpdateCardInConversation(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
+        public IBodyWorkflowAction<PostToConversationResponse, ApiConnectionActionConfiguration> UpdateCardInConversation(Expression<Func<posterInput7>> poster, Expression<Func<string>> location, Expression<Func<object>> body)
         {
             var __workflow_poster = WorkflowExpression.Compile(poster, nameof(poster), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
@@ -1481,7 +1481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string Subject { get; set; }
 
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateTeamsMeetingInputBodyType Body { get; set; }
+        public CreateTeamsMeetingInputBodyType Body { get; set; } = new CreateTeamsMeetingInputBodyType();
 
         [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TimeZone { get; set; }
@@ -1878,8 +1878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     public enum posterInput
     {
         [EnumMember(Value = "Flow bot")]
-        FlowBot,
-        User
+        FlowBot
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2284,7 +2283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     public class PostMessageToSelfInput
     {
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostMessageToSelfInputBodyType Body { get; set; }
+        public PostMessageToSelfInputBodyType Body { get; set; } = new PostMessageToSelfInputBodyType();
     }
 
     public class PostMessageToSelfInputBodyType
@@ -2360,13 +2359,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string ConversationId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum posterInput2
+    {
+        [EnumMember(Value = "Power Virtual Agents")]
+        MicrosoftCopilotStudioAgent,
+        [EnumMember(Value = "Flow bot")]
+        FlowBot,
+        User
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum posterInput3
+    {
+        [EnumMember(Value = "Flow bot")]
+        FlowBot,
+        User
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum posterInput4
+    {
+        [EnumMember(Value = "Power Apps")]
+        PowerApps,
+        [EnumMember(Value = "Power Virtual Agents")]
+        MicrosoftCopilotStudioAgent,
+        [EnumMember(Value = "Flow bot")]
+        FlowBot,
+        User
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum posterInput5
+    {
+        [EnumMember(Value = "Power Virtual Agents")]
+        MicrosoftCopilotStudioAgent,
+        [EnumMember(Value = "Flow bot")]
+        FlowBot
+    }
+
     public class PostCardAndWaitForResponseInput
     {
         [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
-        public PostCardAndWaitForResponseInputBodyType Body { get; set; }
+        public PostCardAndWaitForResponseInputBodyType Body { get; set; } = new PostCardAndWaitForResponseInputBodyType();
     }
 
     public class PostCardAndWaitForResponseInputBodyType
@@ -2379,6 +2417,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
         [JsonProperty("updateMessage", DefaultValueHandling = DefaultValueHandling.Include)]
         public string UpdateMessage { get; set; } = "Thanks for your response!";
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum posterInput6
+    {
+        [EnumMember(Value = "Flow bot")]
+        FlowBot,
+        User
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum posterInput7
+    {
+        [EnumMember(Value = "Flow bot")]
+        FlowBot,
+        User
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

@@ -548,8 +548,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [JsonProperty("building")]
         public string Building { get; set; }
 
-        [JsonProperty("options")]
-        public GetFullAddressInputOptionsType Options { get; set; }
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GetFullAddressInputOptionsType Options { get; set; } = new GetFullAddressInputOptionsType();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -617,8 +617,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [JsonProperty("marketing", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool Marketing { get; set; } = true;
 
-        [JsonProperty("options")]
-        public IsDeceasedInputOptionsType Options { get; set; }
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public IsDeceasedInputOptionsType Options { get; set; } = new IsDeceasedInputOptionsType();
     }
 
     public class IsDeceasedInputRecordType
@@ -843,8 +843,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
-        [JsonProperty("options")]
-        public RetrievePredictiveAddressInputOptionsType Options { get; set; }
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RetrievePredictiveAddressInputOptionsType Options { get; set; } = new RetrievePredictiveAddressInputOptionsType();
     }
 
     public class RetrievePredictiveAddressInputOptionsType

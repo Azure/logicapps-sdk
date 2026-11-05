@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
     public class AddSigneeInput
     {
         [JsonProperty("autographPosition")]
-        public AutographPosition AutographPosition { get; set; }
+        public AutographPosition2 AutographPosition { get; set; }
 
         [JsonProperty("comment")]
         public string Comment { get; set; }
@@ -447,10 +447,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         public int? SignOrder { get; set; }
     }
 
+    public class AutographPosition2
+    {
+        [JsonProperty("height")]
+        public double? Height { get; set; }
+
+        [JsonProperty("pageNumber")]
+        public int? PageNumber { get; set; }
+
+        [JsonProperty("width")]
+        public double? Width { get; set; }
+
+        [JsonProperty("x")]
+        public double? X { get; set; }
+
+        [JsonProperty("y")]
+        public double? Y { get; set; }
+    }
+
     public class UpdateSigneeInput
     {
         [JsonProperty("autographPosition")]
-        public AutographPosition AutographPosition { get; set; }
+        public AutographPosition2 AutographPosition { get; set; }
 
         [JsonProperty("comment")]
         public string Comment { get; set; }

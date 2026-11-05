@@ -1056,7 +1056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "morta")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RequestResourcePermissions(Expression<Func<string>> projectId, Expression<Func<typeInput>> type, Expression<Func<string>> id)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RequestResourcePermissions(Expression<Func<string>> projectId, Expression<Func<typeInput2>> type, Expression<Func<string>> id)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -2610,8 +2610,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class IntegrationsPassthroughDownloadApiCallInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Data { get; set; } = null;
@@ -2634,14 +2634,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class BaseRequestContext
     {
-        [JsonProperty("processPublicId")]
-        public string ProcessPublicId { get; set; }
+        [JsonProperty("processPublicId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProcessPublicId { get; set; } = null;
 
-        [JsonProperty("processResponsePublicId")]
-        public string ProcessResponsePublicId { get; set; }
+        [JsonProperty("processResponsePublicId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProcessResponsePublicId { get; set; } = null;
 
-        [JsonProperty("processSectionPublicId")]
-        public string ProcessSectionPublicId { get; set; }
+        [JsonProperty("processSectionPublicId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProcessSectionPublicId { get; set; } = null;
 
         [JsonProperty("projectId")]
         public string ProjectId { get; set; }
@@ -2700,8 +2700,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class IntegrationsPassthroughApiCallInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Data { get; set; } = null;
@@ -3003,8 +3003,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class DuplicateProcessInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("processId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProcessId { get; set; }
@@ -3423,8 +3423,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         [JsonProperty("commentText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CommentText { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("mainReferenceId")]
         public string MainReferenceId { get; set; }
@@ -3540,10 +3540,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateTrigger
     {
-        [JsonProperty("resource")]
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Resource { get; set; }
 
-        [JsonProperty("verb")]
+        [JsonProperty("verb", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Verb { get; set; }
     }
 
@@ -3668,8 +3668,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         [JsonProperty("attributeKind", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateResourcePermissionsInputAttributeKindType AttributeKind { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("resourceId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ResourceId { get; set; }
@@ -3893,8 +3893,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateProcessInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
@@ -4170,10 +4170,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
     public class CreateTableInput
     {
         [JsonProperty("columns", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TableColumn[] Columns { get; set; }
+        public TableColumn2[] Columns { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("joins")]
         public TableJoin2[] Joins { get; set; }
@@ -4188,13 +4188,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         public string Type { get; set; } = "n/a";
     }
 
+    public class TableColumn2
+    {
+        [JsonProperty("aconexSynced")]
+        public int? AconexSynced { get; set; }
+
+        [JsonProperty("aggregate")]
+        public int? Aggregate { get; set; }
+
+        [JsonProperty("alterOptions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken AlterOptions { get; set; } = null;
+
+        [JsonProperty("autodeskBim360Synced")]
+        public int? AutodeskBim360Synced { get; set; }
+
+        [JsonProperty("dateFormat")]
+        public string DateFormat { get; set; }
+
+        [JsonProperty("decimalPlaces")]
+        public int? DecimalPlaces { get; set; }
+
+        [JsonProperty("description")]
+        public JToken Description { get; set; }
+
+        [JsonProperty("isIndexed")]
+        public bool? IsIndexed { get; set; }
+
+        [JsonProperty("isJoined")]
+        public bool? IsJoined { get; set; }
+
+        [JsonProperty("kind")]
+        public TableColumnKindType? Kind { get; set; }
+
+        [JsonProperty("kindOptions")]
+        public SelectOptionsLookup KindOptions { get; set; }
+
+        [JsonProperty("mortaSynced")]
+        public int? MortaSynced { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("procoreSynced")]
+        public int? ProcoreSynced { get; set; }
+
+        [JsonProperty("publicId")]
+        public string PublicId { get; set; }
+
+        [JsonProperty("reviztoIssuesSynced")]
+        public int? ReviztoIssuesSynced { get; set; }
+
+        [JsonProperty("script")]
+        public string Script { get; set; }
+
+        [JsonProperty("scriptEnabled")]
+        public bool? ScriptEnabled { get; set; }
+
+        [JsonProperty("thousandSeparator")]
+        public bool? ThousandSeparator { get; set; }
+
+        [JsonProperty("viewpointSynced")]
+        public int? ViewpointSynced { get; set; }
+
+        [JsonProperty("width")]
+        public int? Width { get; set; }
+    }
+
     public class TableJoin2
     {
         [JsonProperty("dataColumns")]
         public TableJoinImportedColumns[] DataColumns { get; set; }
 
         [JsonProperty("isOneToMany")]
-        public bool IsOneToMany { get; set; }
+        public bool? IsOneToMany { get; set; }
 
         [JsonProperty("joinColumns")]
         public TableColumnJoin[] JoinColumns { get; set; }
@@ -4346,8 +4412,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class SubmitProcessResponseInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("response")]
         public JToken Response { get; set; }
@@ -4385,8 +4451,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class SubmitProcessResponseDraftInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("response")]
         public JToken Response { get; set; }
@@ -4424,8 +4490,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpsertTableRowsInViewInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("rows", DefaultValueHandling = DefaultValueHandling.Include)]
         public TableRowAction[] Rows { get; set; }
@@ -4436,14 +4502,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class TableRowAction
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
-        [JsonProperty("rowData")]
+        [JsonProperty("rowData", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken RowData { get; set; }
 
         [JsonProperty("sortOrder")]
-        public double SortOrder { get; set; }
+        public double? SortOrder { get; set; }
     }
 
     public class DuplicateProcessSectionAsyncResponse
@@ -4541,8 +4607,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateProcessResponseInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("dueDate")]
         public string DueDate { get; set; }
@@ -4588,8 +4654,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateProcessResponseInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("type")]
         public CreateProcessResponseInputTypeType? Type { get; set; }
@@ -4638,8 +4704,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class PreviewTableRowInViewInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("rowData", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken RowData { get; set; }
@@ -4809,8 +4875,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         [JsonProperty("autodeskBim360Synced")]
         public int? AutodeskBim360Synced { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("dateFormat")]
         public string DateFormat { get; set; }
@@ -5200,8 +5266,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         [JsonProperty("autodeskBim360Synced")]
         public int? AutodeskBim360Synced { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("dateFormat")]
         public string DateFormat { get; set; }
@@ -5386,19 +5452,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         [JsonProperty("cells", DefaultValueHandling = DefaultValueHandling.Include)]
         public UpdateDocumentTableCell[] Cells { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
     }
 
     public class UpdateDocumentTableCell
     {
-        [JsonProperty("columnName")]
+        [JsonProperty("columnName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ColumnName { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
-        [JsonProperty("rowId")]
+        [JsonProperty("rowId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RowId { get; set; }
 
         [JsonProperty("value")]
@@ -5479,8 +5545,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class InsertTableRowsInViewInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("rows", DefaultValueHandling = DefaultValueHandling.Include)]
         public TableRowAction[] Rows { get; set; }
@@ -5509,8 +5575,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateTableRowsInViewInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("rows", DefaultValueHandling = DefaultValueHandling.Include)]
         public TableRowAction1[] Rows { get; set; }
@@ -5518,17 +5584,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class TableRowAction1
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
-        [JsonProperty("publicId")]
+        [JsonProperty("publicId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PublicId { get; set; }
 
-        [JsonProperty("rowData")]
+        [JsonProperty("rowData", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken RowData { get; set; }
 
         [JsonProperty("sortOrder")]
-        public double SortOrder { get; set; }
+        public double? SortOrder { get; set; }
     }
 
     public class GetDistinctValuesForColumnResponse
@@ -5569,8 +5635,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class DuplicateDefaultTableViewInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -5611,8 +5677,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpsertTableRowsInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("rows", DefaultValueHandling = DefaultValueHandling.Include)]
         public TableRowAction[] Rows { get; set; }
@@ -5719,8 +5785,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         [JsonProperty("commentText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CommentText { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
     }
 
     public class ResolveCommentThreadResponse
@@ -5770,8 +5836,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         [JsonProperty("commentText", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CommentText { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
     }
 
     public class ReopenCommentThreadResponse
@@ -5858,6 +5924,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
+        [EnumMember(Value = "process")]
+        Process,
+        [EnumMember(Value = "process_section")]
+        ProcessSection,
+        [EnumMember(Value = "process_response")]
+        ProcessResponse,
+        [EnumMember(Value = "table")]
+        Table,
+        [EnumMember(Value = "project")]
+        Project,
+        [EnumMember(Value = "user")]
+        User
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum typeInput2
+    {
         [EnumMember(Value = "project")]
         Project,
         [EnumMember(Value = "process")]
@@ -5879,8 +5962,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateMultipleProcessSectionsInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("sections", DefaultValueHandling = DefaultValueHandling.Include)]
         public ExtendedUpdateProcessSection[] Sections { get; set; }
@@ -5888,8 +5971,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class ExtendedUpdateProcessSection
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("description")]
         public JToken Description { get; set; }
@@ -5898,18 +5981,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         public string Name { get; set; }
 
         [JsonProperty("pageBreakBefore")]
-        public bool PageBreakBefore { get; set; }
+        public bool? PageBreakBefore { get; set; }
 
         [JsonProperty("pdfIncludeDescription")]
-        public bool PdfIncludeDescription { get; set; }
+        public bool? PdfIncludeDescription { get; set; }
 
         [JsonProperty("pdfIncludeSection")]
-        public bool PdfIncludeSection { get; set; }
+        public bool? PdfIncludeSection { get; set; }
 
         [JsonProperty("plaintextDescription")]
         public string PlaintextDescription { get; set; }
 
-        [JsonProperty("publicId")]
+        [JsonProperty("publicId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PublicId { get; set; }
     }
 
@@ -5987,8 +6070,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateProcessSectionOrderInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("processSections")]
         public SectionOrder[] ProcessSections { get; set; }
@@ -6000,7 +6083,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         public string ParentId { get; set; }
 
         [JsonProperty("position")]
-        public int Position { get; set; }
+        public int? Position { get; set; }
 
         [JsonProperty("sectionId")]
         public string SectionId { get; set; }
@@ -6089,8 +6172,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateProcessRespondersInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("responders")]
         public string[] Responders { get; set; }
@@ -6113,8 +6196,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateMultipleProcessSectionsInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("sections", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateProcessSection[] Sections { get; set; }
@@ -6122,20 +6205,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateProcessSection
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
-        [JsonProperty("description")]
-        public JToken Description { get; set; }
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Description { get; set; } = null;
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
         [JsonProperty("parentId")]
         public string ParentId { get; set; }
 
-        [JsonProperty("plaintextDescription")]
-        public string PlaintextDescription { get; set; }
+        [JsonProperty("plaintextDescription", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PlaintextDescription { get; set; } = null;
     }
 
     public class InviteMultipleUsersToProjectResponse
@@ -6391,8 +6474,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class DuplicateProjectInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("duplicatePermissions")]
         public bool? DuplicatePermissions { get; set; }
@@ -6400,8 +6483,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class DuplicateProcessAsyncInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("duplicateLinkedTables", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? DuplicateLinkedTables { get; set; } = false;
@@ -6424,8 +6507,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateProcessSectionsInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("details")]
         public CreateProcessSection[] Details { get; set; }
@@ -6505,8 +6588,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateProcessSectionInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("description")]
         public JToken Description { get; set; }
@@ -6634,8 +6717,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateProcessSectionInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Description { get; set; } = null;
@@ -6815,8 +6898,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         [JsonProperty("colour", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Colour { get; set; } = "#000";
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("fontSize", DefaultValueHandling = DefaultValueHandling.Include)]
         public double? FontSize { get; set; } = 1;
@@ -6996,13 +7079,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         public bool? CollapsedGroupView { get; set; }
 
         [JsonProperty("colourSettings")]
-        public Colour[] ColourSettings { get; set; }
+        public Colour2[] ColourSettings { get; set; }
 
         [JsonProperty("columns")]
         public UpdateTableViewColumn[] Columns { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("description")]
         public JToken Description { get; set; }
@@ -7017,13 +7100,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         public int? DisplayValidationErrorRows { get; set; }
 
         [JsonProperty("filterSettings")]
-        public Filter[] FilterSettings { get; set; }
+        public Filter2[] FilterSettings { get; set; }
 
         [JsonProperty("frozenIndex")]
         public int? FrozenIndex { get; set; }
 
         [JsonProperty("groupSettings")]
-        public Group[] GroupSettings { get; set; }
+        public Group2[] GroupSettings { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -7032,7 +7115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         public int? RowHeight { get; set; }
 
         [JsonProperty("sortSettings")]
-        public Sort[] SortSettings { get; set; }
+        public Sort2[] SortSettings { get; set; }
 
         [JsonProperty("type")]
         public int? Type { get; set; }
@@ -7041,97 +7124,121 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         public bool? UnpackMultiselectGroupView { get; set; }
     }
 
+    public class Colour2
+    {
+        [JsonProperty("backgroundColour", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BackgroundColour { get; set; }
+
+        [JsonProperty("columnId")]
+        public string ColumnId { get; set; }
+
+        [JsonProperty("columnName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ColumnName { get; set; }
+
+        [JsonProperty("filterType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ColourFilterTypeType FilterType { get; set; }
+
+        [JsonProperty("fontColour", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FontColour { get; set; }
+
+        [JsonProperty("multipleValues")]
+        public JToken[] MultipleValues { get; set; }
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+    }
+
     public class UpdateTableViewColumn
     {
         [JsonProperty("aconexSynced")]
-        public int AconexSynced { get; set; }
+        public int? AconexSynced { get; set; }
 
         [JsonProperty("aggregate")]
-        public int Aggregate { get; set; }
+        public int? Aggregate { get; set; }
 
-        [JsonProperty("alterOptions")]
-        public JToken AlterOptions { get; set; }
+        [JsonProperty("alterOptions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken AlterOptions { get; set; } = null;
 
         [JsonProperty("autodeskBim360Synced")]
-        public int AutodeskBim360Synced { get; set; }
+        public int? AutodeskBim360Synced { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("dateFormat")]
         public string DateFormat { get; set; }
 
         [JsonProperty("decimalPlaces")]
-        public int DecimalPlaces { get; set; }
+        public int? DecimalPlaces { get; set; }
 
         [JsonProperty("description")]
         public JToken Description { get; set; }
 
         [JsonProperty("hardValidation")]
-        public bool HardValidation { get; set; }
+        public bool? HardValidation { get; set; }
 
         [JsonProperty("isIndexed")]
-        public bool IsIndexed { get; set; }
+        public bool? IsIndexed { get; set; }
 
         [JsonProperty("isJoined")]
-        public bool IsJoined { get; set; }
+        public bool? IsJoined { get; set; }
 
         [JsonProperty("kind")]
-        public UpdateTableViewColumnKindType Kind { get; set; }
+        public UpdateTableViewColumnKindType? Kind { get; set; }
 
         [JsonProperty("kindOptions")]
         public SelectOptionsLookup KindOptions { get; set; }
 
         [JsonProperty("locked")]
-        public bool Locked { get; set; }
+        public bool? Locked { get; set; }
 
         [JsonProperty("mortaSynced")]
-        public int MortaSynced { get; set; }
+        public int? MortaSynced { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("procoreSynced")]
-        public int ProcoreSynced { get; set; }
+        public int? ProcoreSynced { get; set; }
 
         [JsonProperty("publicId")]
         public string PublicId { get; set; }
 
         [JsonProperty("required")]
-        public bool Required { get; set; }
+        public bool? Required { get; set; }
 
         [JsonProperty("reviztoIssuesSynced")]
-        public int ReviztoIssuesSynced { get; set; }
+        public int? ReviztoIssuesSynced { get; set; }
 
         [JsonProperty("script")]
         public string Script { get; set; }
 
         [JsonProperty("scriptEnabled")]
-        public bool ScriptEnabled { get; set; }
+        public bool? ScriptEnabled { get; set; }
 
         [JsonProperty("sortOrder")]
-        public double SortOrder { get; set; }
+        public double? SortOrder { get; set; }
 
         [JsonProperty("stringValidation")]
         public string StringValidation { get; set; }
 
         [JsonProperty("thousandSeparator")]
-        public bool ThousandSeparator { get; set; }
+        public bool? ThousandSeparator { get; set; }
 
         [JsonProperty("validationMessage")]
         public string ValidationMessage { get; set; }
 
         [JsonProperty("validationNoBlanks")]
-        public bool ValidationNoBlanks { get; set; }
+        public bool? ValidationNoBlanks { get; set; }
 
         [JsonProperty("validationNoDuplicates")]
-        public bool ValidationNoDuplicates { get; set; }
+        public bool? ValidationNoDuplicates { get; set; }
 
         [JsonProperty("viewpointSynced")]
-        public int ViewpointSynced { get; set; }
+        public int? ViewpointSynced { get; set; }
 
         [JsonProperty("width")]
-        public int Width { get; set; }
+        public int? Width { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -7185,6 +7292,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         Autonumber
     }
 
+    public class Filter2
+    {
+        [JsonProperty("columnId")]
+        public string ColumnId { get; set; }
+
+        [JsonProperty("columnName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ColumnName { get; set; }
+
+        [JsonProperty("filterType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public FilterFilterTypeType FilterType { get; set; }
+
+        [JsonProperty("multipleValues")]
+        public JToken[] MultipleValues { get; set; }
+
+        [JsonProperty("orGroup", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OrGroup { get; set; } = "main";
+
+        [JsonProperty("value")]
+        public JToken Value { get; set; }
+    }
+
+    public class Group2
+    {
+        [JsonProperty("columnId")]
+        public string ColumnId { get; set; }
+
+        [JsonProperty("columnName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ColumnName { get; set; }
+
+        [JsonProperty("direction", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Direction { get; set; }
+    }
+
+    public class Sort2
+    {
+        [JsonProperty("columnId")]
+        public string ColumnId { get; set; }
+
+        [JsonProperty("columnName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ColumnName { get; set; }
+
+        [JsonProperty("direction", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Direction { get; set; }
+    }
+
     public class DuplicateTableResponse
     {
         [JsonProperty("data")]
@@ -7196,8 +7348,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class DuplicateTableInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("duplicateLinkedTables", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? DuplicateLinkedTables { get; set; } = false;
@@ -7253,7 +7405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class TableColumnIndex
     {
-        [JsonProperty("publicId")]
+        [JsonProperty("publicId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string PublicId { get; set; }
     }
 
@@ -7289,8 +7441,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         [JsonProperty("autodeskBim360Synced")]
         public int? AutodeskBim360Synced { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("dateFormat")]
         public string DateFormat { get; set; }
@@ -7415,8 +7567,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         [JsonProperty("autodeskBim360Synced")]
         public int? AutodeskBim360Synced { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("dateFormat")]
         public string DateFormat { get; set; }
@@ -7541,8 +7693,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         [JsonProperty("cells", DefaultValueHandling = DefaultValueHandling.Include)]
         public UpdateDocumentTableCell[] Cells { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
     }
 
     public class GetTableJoinsResponse
@@ -7584,13 +7736,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         public bool? CollapsedGroupView { get; set; } = false;
 
         [JsonProperty("colourSettings")]
-        public Colour[] ColourSettings { get; set; }
+        public Colour2[] ColourSettings { get; set; }
 
         [JsonProperty("columns")]
         public ViewColumn[] Columns { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("description")]
         public JToken Description { get; set; }
@@ -7605,13 +7757,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         public int? DisplayValidationErrorRows { get; set; } = 0;
 
         [JsonProperty("filterSettings")]
-        public Filter[] FilterSettings { get; set; }
+        public Filter2[] FilterSettings { get; set; }
 
         [JsonProperty("frozenIndex", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? FrozenIndex { get; set; } = 0;
 
         [JsonProperty("groupSettings")]
-        public Group[] GroupSettings { get; set; }
+        public Group2[] GroupSettings { get; set; }
 
         [JsonProperty("includeAllColumns", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IncludeAllColumns { get; set; } = false;
@@ -7626,7 +7778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         public int? RowHeight { get; set; } = 0;
 
         [JsonProperty("sortSettings")]
-        public Sort[] SortSettings { get; set; }
+        public Sort2[] SortSettings { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Type { get; set; } = 0;
@@ -7640,17 +7792,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         [JsonProperty("columnId")]
         public string ColumnId { get; set; }
 
-        [JsonProperty("columnName")]
+        [JsonProperty("columnName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ColumnName { get; set; }
 
-        [JsonProperty("description")]
-        public JToken Description { get; set; }
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Description { get; set; } = null;
 
-        [JsonProperty("locked")]
-        public bool Locked { get; set; }
+        [JsonProperty("locked", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Locked { get; set; } = false;
 
-        [JsonProperty("required")]
-        public bool Required { get; set; }
+        [JsonProperty("required", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Required { get; set; } = false;
     }
 
     public class DeleteTableJoinResponse
@@ -7673,8 +7825,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateTableJoinInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("dataColumns")]
         public string[] DataColumns { get; set; }
@@ -7712,8 +7864,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         [JsonProperty("companyId")]
         public string CompanyId { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("enterpriseId")]
         public string EnterpriseId { get; set; }
@@ -7789,8 +7941,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateTableJoinInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("dataColumns")]
         public string[] DataColumns { get; set; }
@@ -7864,8 +8016,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class CreateTableRowsInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("rows", DefaultValueHandling = DefaultValueHandling.Include)]
         public TableRowAction[] Rows { get; set; }
@@ -7894,8 +8046,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateTableRowsInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("rows", DefaultValueHandling = DefaultValueHandling.Include)]
         public TableRowAction1[] Rows { get; set; }
@@ -8086,13 +8238,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateTrigger
     {
-        [JsonProperty("publicId")]
-        public string PublicId { get; set; }
+        [JsonProperty("publicId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PublicId { get; set; } = null;
 
-        [JsonProperty("resource")]
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Resource { get; set; }
 
-        [JsonProperty("verb")]
+        [JsonProperty("verb", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Verb { get; set; }
     }
 
@@ -8107,8 +8259,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
 
     public class UpdateResourcePermissionsInput
     {
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public UpdateResourcePermissionsInputRoleType Role { get; set; }
@@ -8251,8 +8403,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         [JsonProperty("allowDuplication")]
         public bool? AllowDuplication { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("description")]
         public JToken Description { get; set; }
@@ -8326,8 +8478,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         [JsonProperty("allowDuplication")]
         public bool? AllowDuplication { get; set; }
 
-        [JsonProperty("context")]
-        public BaseRequestContext Context { get; set; }
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BaseRequestContext Context { get; set; } = new BaseRequestContext();
 
         [JsonProperty("joins")]
         public TableJoin1[] Joins { get; set; }
@@ -8360,7 +8512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         public TableJoinImportedColumns[] DataColumns { get; set; }
 
         [JsonProperty("isOneToMany")]
-        public bool IsOneToMany { get; set; }
+        public bool? IsOneToMany { get; set; }
 
         [JsonProperty("joinColumns")]
         public TableColumnJoin[] JoinColumns { get; set; }

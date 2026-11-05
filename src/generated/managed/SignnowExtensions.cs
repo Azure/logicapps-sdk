@@ -1982,7 +1982,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         internal string Action { get; set; } = "callback";
 
         [JsonProperty("attributes", DefaultValueHandling = DefaultValueHandling.Include)]
-        public TriggersV2InputAttributesType Attributes { get; set; }
+        public TriggersV2InputAttributesType Attributes { get; set; } = new TriggersV2InputAttributesType();
     }
 
     public class TriggersV2InputAttributesType

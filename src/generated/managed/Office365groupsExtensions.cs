@@ -468,13 +468,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         public string Subject { get; set; }
 
         [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateCalendarEventInputStartType Start { get; set; }
+        public UpdateCalendarEventInputStartType Start { get; set; } = new UpdateCalendarEventInputStartType();
 
         [JsonProperty("end", DefaultValueHandling = DefaultValueHandling.Include)]
-        public UpdateCalendarEventInputEndType End { get; set; }
+        public UpdateCalendarEventInputEndType End { get; set; } = new UpdateCalendarEventInputEndType();
 
-        [JsonProperty("body")]
-        public UpdateCalendarEventInputBodyType Body { get; set; }
+        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateCalendarEventInputBodyType Body { get; set; } = new UpdateCalendarEventInputBodyType();
 
         [JsonProperty("location")]
         public UpdateCalendarEventInputLocationType Location { get; set; }
@@ -556,13 +556,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         public string Subject { get; set; }
 
         [JsonProperty("start", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCalendarEventV2InputStartType Start { get; set; }
+        public CreateCalendarEventV2InputStartType Start { get; set; } = new CreateCalendarEventV2InputStartType();
 
         [JsonProperty("end", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateCalendarEventV2InputEndType End { get; set; }
+        public CreateCalendarEventV2InputEndType End { get; set; } = new CreateCalendarEventV2InputEndType();
 
-        [JsonProperty("body")]
-        public CreateCalendarEventV2InputBodyType Body { get; set; }
+        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateCalendarEventV2InputBodyType Body { get; set; } = new CreateCalendarEventV2InputBodyType();
 
         [JsonProperty("location")]
         public CreateCalendarEventV2InputLocationType Location { get; set; }

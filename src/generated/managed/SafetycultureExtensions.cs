@@ -597,19 +597,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     public class SearchActionsInput
     {
         [JsonProperty("audit_id")]
-        public string[] AuditId { get; set; }
+        public string[] AuditIdS { get; set; }
 
         [JsonProperty("assignees")]
         public AssigneesArrayItem[] Assignees { get; set; }
 
         [JsonProperty("created_at")]
-        public CreatedAt CreatedAt { get; set; }
+        public CreatedAt Created { get; set; }
 
         [JsonProperty("modified_at")]
-        public ModifiedAt ModifiedAt { get; set; }
+        public ModifiedAt Modified { get; set; }
 
         [JsonProperty("due_at")]
-        public DueAt DueAt { get; set; }
+        public DueAt Due { get; set; }
     }
 
     public class AssigneesArrayItem
@@ -618,7 +618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string AssigneeId { get; set; }
 
         [JsonProperty("type")]
-        public AssigneesArrayItemTypeType Type { get; set; }
+        public AssigneesArrayItemTypeType? Type { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -681,7 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string DueAt { get; set; }
 
         [JsonProperty("assignees")]
-        public AssigneesArrayItem2[] Assignees { get; set; }
+        public AssigneesArrayItem[] Assignees { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -710,15 +710,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         _60
     }
 
-    public class AssigneesArrayItem2
-    {
-        [JsonProperty("id")]
-        public string AssigneeId { get; set; }
-
-        [JsonProperty("type")]
-        public AssigneesArrayItemTypeType Type { get; set; }
-    }
-
     public class DeleteActionResponse
     {
         [JsonProperty("ok")]
@@ -743,7 +734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string DueAt { get; set; }
 
         [JsonProperty("assignees")]
-        public AssigneesArrayItem22[] Assignees { get; set; }
+        public AssigneesArrayItem[] Assignees { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -770,15 +761,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         _50,
         [EnumMember(Value = "60")]
         _60
-    }
-
-    public class AssigneesArrayItem22
-    {
-        [JsonProperty("id")]
-        public string AssigneeId { get; set; }
-
-        [JsonProperty("type")]
-        public AssigneesArrayItemTypeType Type { get; set; }
     }
 
     public class InitInspectionExportResponse

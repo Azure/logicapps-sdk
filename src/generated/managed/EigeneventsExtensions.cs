@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eigenevents
     public class CreateWebhookInput
     {
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal JToken CallbackURL { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

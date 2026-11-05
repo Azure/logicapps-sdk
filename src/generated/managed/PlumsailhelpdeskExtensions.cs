@@ -760,9 +760,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
 
     public class Attachment
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string AttachmentContent { get; set; }
 
-        [JsonProperty("Name")]
+        [JsonProperty("Name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AttachmentFileName { get; set; }
     }
 

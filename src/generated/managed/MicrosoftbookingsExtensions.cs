@@ -1,0 +1,172 @@
+//------------------------------------------------------------
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+//------------------------------------------------------------
+
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftbookings
+{
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
+    using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    public class MicrosoftbookingsActions([ConnectionName] string connectionId)
+    {
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftbookings")]
+        public IBodyWorkflowAction<ListMailboxResponse, ApiConnectionActionConfiguration> ListBookingsBusinessUserAsAdmin()
+        {
+            return new DeferredBodyAction<ListMailboxResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/BookingsService/api/V1/bookingBusinessesUserAsAdmin";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-Prefer-OWAUserConfig"] = Convert.ToString("true");
+                return new ApiConnectionAction<ListMailboxResponse>(callPayload);
+            });
+        }
+    }
+
+    public class MicrosoftbookingsTriggers([ConnectionName] string connectionId)
+    {
+        public IBodyWorkflowTrigger<Webhookresponse, ApiConnectionTriggerConfiguration> CreateAppointment(Expression<Func<string>> sMTPAddress, Expression<Func<CreateAppointmentInput>> body, FlowRecurrence recurrence = null)
+        {
+            var __workflow_sMTPAddress = WorkflowExpression.Compile(sMTPAddress, nameof(sMTPAddress), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyTrigger<Webhookresponse, ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/BookingsService/api/V1/bookingBusinesses/{0}/webhook/AppointmentCreated", __workflow_sMTPAddress.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionTrigger<Webhookresponse>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> UpdateAppointment(Expression<Func<string>> sMTPAddress, Expression<Func<UpdateAppointmentInput>> body, FlowRecurrence recurrence = null)
+        {
+            var __workflow_sMTPAddress = WorkflowExpression.Compile(sMTPAddress, nameof(sMTPAddress), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/BookingsService/api/V1/bookingBusinesses/{0}/webhook/AppointmentUpdated", __workflow_sMTPAddress.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
+        }
+
+        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CancelAppointment(Expression<Func<string>> sMTPAddress, Expression<Func<CancelAppointmentInput>> body, FlowRecurrence recurrence = null)
+        {
+            var __workflow_sMTPAddress = WorkflowExpression.Compile(sMTPAddress, nameof(sMTPAddress), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/BookingsService/api/V1/bookingBusinesses/{0}/webhook/AppointmentDeleted", __workflow_sMTPAddress.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
+        }
+    }
+
+    public class ListMailboxResponse
+    {
+        [JsonProperty("mailboxes")]
+        public MailboxEntity[] Mailboxes { get; set; }
+    }
+
+    public class MailboxEntity
+    {
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+    }
+
+    public class Webhookresponse
+    {
+        [JsonProperty("webhookId")]
+        public string WebhookId { get; set; }
+    }
+
+    public class CreateAppointmentInput
+    {
+        [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateAppointmentInputWebhookType Webhook { get; set; } = new CreateAppointmentInputWebhookType();
+    }
+
+    public class CreateAppointmentInputWebhookType
+    {
+        [JsonProperty("notification_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "Appointments";
+
+        [JsonProperty("change_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string[] ChangeType { get; set; } = new string[]
+        {
+            "Created"
+        };
+    }
+
+    public class UpdateAppointmentInput
+    {
+        [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateAppointmentInputWebhookType Webhook { get; set; } = new UpdateAppointmentInputWebhookType();
+    }
+
+    public class UpdateAppointmentInputWebhookType
+    {
+        [JsonProperty("notification_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "Appointments";
+
+        [JsonProperty("change_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string[] ChangeType { get; set; } = new string[]
+        {
+            "Updated"
+        };
+    }
+
+    public class CancelAppointmentInput
+    {
+        [JsonProperty("webhook", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CancelAppointmentInputWebhookType Webhook { get; set; } = new CancelAppointmentInputWebhookType();
+    }
+
+    public class CancelAppointmentInputWebhookType
+    {
+        [JsonProperty("notification_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("resource", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Resource { get; set; } = "Appointments";
+
+        [JsonProperty("change_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string[] ChangeType { get; set; } = new string[]
+        {
+            "Deleted"
+        };
+    }
+}
+
+namespace Microsoft.Azure.Workflows.Sdk
+{
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftbookings;
+
+    public partial class WorkflowManagedActions
+    {
+        public MicrosoftbookingsActions Microsoftbookings(string connectionId) => new MicrosoftbookingsActions(connectionId);
+    }
+
+    public partial class WorkflowManagedTriggers
+    {
+        public MicrosoftbookingsTriggers Microsoftbookings(string connectionId) => new MicrosoftbookingsTriggers(connectionId);
+    }
+}

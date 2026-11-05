@@ -309,11 +309,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
 
     public class CreateToDoV3Input
     {
-        [JsonProperty("dueDateTime")]
-        public CreateToDoV3InputDueDateTimeType DueDateTime { get; set; }
+        [JsonProperty("dueDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateToDoV3InputDueDateTimeType DueDateTime { get; set; } = new CreateToDoV3InputDueDateTimeType();
 
-        [JsonProperty("reminderDateTime")]
-        public CreateToDoV3InputReminderDateTimeType ReminderDateTime { get; set; }
+        [JsonProperty("reminderDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateToDoV3InputReminderDateTimeType ReminderDateTime { get; set; } = new CreateToDoV3InputReminderDateTimeType();
 
         [JsonProperty("importance")]
         public CreateToDoV3InputImportanceType? Importance { get; set; }
@@ -324,8 +324,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [JsonProperty("status")]
         public CreateToDoV3InputStatusType? Status { get; set; }
 
-        [JsonProperty("body")]
-        public CreateToDoV3InputBodyType Body { get; set; }
+        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateToDoV3InputBodyType Body { get; set; } = new CreateToDoV3InputBodyType();
 
         [JsonProperty("isReminderOn")]
         public bool? IsReminderOn { get; set; }
@@ -392,11 +392,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
 
     public class UpdateToDoV2Input
     {
-        [JsonProperty("dueDateTime")]
-        public UpdateToDoV2InputDueDateTimeType DueDateTime { get; set; }
+        [JsonProperty("dueDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateToDoV2InputDueDateTimeType DueDateTime { get; set; } = new UpdateToDoV2InputDueDateTimeType();
 
-        [JsonProperty("reminderDateTime")]
-        public UpdateToDoV2InputReminderDateTimeType ReminderDateTime { get; set; }
+        [JsonProperty("reminderDateTime", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateToDoV2InputReminderDateTimeType ReminderDateTime { get; set; } = new UpdateToDoV2InputReminderDateTimeType();
 
         [JsonProperty("importance")]
         public UpdateToDoV2InputImportanceType? Importance { get; set; }
@@ -407,8 +407,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [JsonProperty("status")]
         public UpdateToDoV2InputStatusType? Status { get; set; }
 
-        [JsonProperty("body")]
-        public UpdateToDoV2InputBodyType Body { get; set; }
+        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateToDoV2InputBodyType Body { get; set; } = new UpdateToDoV2InputBodyType();
 
         [JsonProperty("isReminderOn")]
         public bool? IsReminderOn { get; set; }

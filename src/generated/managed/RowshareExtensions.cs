@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
         internal int OwnerIdType { get; set; } = 1;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Version { get; set; }
+        internal string Version { get; set; } = "0000000000000000";
     }
 
     public class CreateRowInput
@@ -230,7 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
         public string Id { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Version { get; set; }
+        internal string Version { get; set; } = "0000000000000000";
         public JToken Values { get; set; }
     }
 
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rowshare
         public string Id { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Version { get; set; }
+        internal string Version { get; set; } = "0000000000000000";
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal JToken Values { get; set; } = JToken.Parse("{}");

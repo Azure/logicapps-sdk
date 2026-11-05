@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
     public class ParseNameInput
     {
         [JsonProperty("inputPerson", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ParseNameInputInputPersonType InputPerson { get; set; }
+        public ParseNameInputInputPersonType InputPerson { get; set; } = new ParseNameInputInputPersonType();
     }
 
     public class ParseNameInputInputPersonType

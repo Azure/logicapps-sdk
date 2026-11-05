@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
     public class ListHookTriggerInput
     {
         [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListHookTriggerInputConfigType Config { get; set; }
+        public ListHookTriggerInputConfigType Config { get; set; } = new ListHookTriggerInputConfigType();
     }
 
     public class ListHookTriggerInputConfigType

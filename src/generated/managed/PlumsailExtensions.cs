@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsail")]
-        public IBodyWorkflowAction<DocumentProcessingResponse, ApiConnectionActionConfiguration> FlowV1DocumentsJobsAddWatermarkToPdf(Expression<Func<typeInput>> type, Expression<Func<object>> request)
+        public IBodyWorkflowAction<DocumentProcessingResponse, ApiConnectionActionConfiguration> FlowV1DocumentsJobsAddWatermarkToPdf(Expression<Func<typeInput2>> type, Expression<Func<object>> request)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
@@ -7577,7 +7577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class FlowV1DocumentsJobsApplyDocxPostInput
     {
         [JsonProperty("docxDocument", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DOCXDocumentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DOCXDocumentContent { get; set; }
 
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken TemplateData { get; set; }
@@ -7592,7 +7592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class FlowV1DocumentsJobsApplyHtmlPostInput
     {
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceHTML { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceHTML { get; set; }
 
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken TemplateData { get; set; }
@@ -9998,31 +9998,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class FlowV1DocumentsJobsDocx2PdfPostInput
     {
         [JsonProperty("documentContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
     }
 
     public class FlowV1DocumentsJobsXslx2PdfPostInput
     {
         [JsonProperty("documentContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
     }
 
     public class FlowV1DocumentsJobsPptx2PdfPostInput
     {
         [JsonProperty("documentContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
     }
 
     public class FlowV1DocumentsJobsAny2PdfV2PostInput
     {
         [JsonProperty("documentContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
     }
 
     public class FlowV1DocumentsJobsEmail2PdfPostInput
     {
         [JsonProperty("documentContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string EmailContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent EmailContent { get; set; }
 
         [JsonProperty("mergeAttachments", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool MergeAttachments { get; set; }
@@ -10031,19 +10031,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class FlowV1DocumentsJobsDoc2DocxPostInput
     {
         [JsonProperty("documentContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
     }
 
     public class FlowV1DocumentsJobsXls2XlsxPostInput
     {
         [JsonProperty("documentContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
     }
 
     public class FlowV1DocumentsJobsPpt2PptxPostInput
     {
         [JsonProperty("documentContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
     }
 
     public class DocumentsWithFilenamesResponse
@@ -10064,10 +10064,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
-        Text,
-        Image,
-        Pdf,
-        Html
+        ExtractPages,
+        SplitIntoChunks,
+        SplitByBookmarks
     }
 
     public class FlowV1DocumentsJobsMergeAnyToPdfV2PostInput
@@ -10085,7 +10084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class FlowV1DocumentsJobsExtractTextFromPdfPostInput
     {
         [JsonProperty("documentContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
 
         [JsonProperty("startPage")]
         public int? StartPage { get; set; }
@@ -10110,7 +10109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class FlowV1DocumentsJobsPdf2ImageV2PostInput
     {
         [JsonProperty("documentContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
 
         [JsonProperty("filenamePrefix")]
         public string FilenamePrefix { get; set; }
@@ -10149,13 +10148,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         public bool? SingleImagePerPage { get; set; }
 
         [JsonProperty("imageContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] ImageContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent[] ImageContent { get; set; }
     }
 
     public class FlowV1DocumentsJobsFillInPdfFormPostInput
     {
         [JsonProperty("documentContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
 
         [JsonProperty("jsonData", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken JSONData { get; set; }
@@ -10170,7 +10169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class FlowV1DocumentsJobsGetPdfFormPostInput
     {
         [JsonProperty("documentContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }
@@ -10179,7 +10178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class FlowV1DocumentsJobsProtectPdfPostInput
     {
         [JsonProperty("documentContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
 
         [JsonProperty("allowPrinting", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool EnablePrinting { get; set; }
@@ -10212,13 +10211,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class FlowV1DocumentsJobsGetPdfProtectionInfoPostInput
     {
         [JsonProperty("documentContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
     }
 
     public class FlowV1DocumentsJobsCompressPdfPostInput
     {
         [JsonProperty("documentContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
 
         [JsonProperty("losslessMode", DefaultValueHandling = DefaultValueHandling.Include)]
         public FlowV1DocumentsJobsCompressPdfPostInputLosslessModeType? LosslessMode { get; set; } = FlowV1DocumentsJobsCompressPdfPostInputLosslessModeType.On;
@@ -10232,6 +10231,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     {
         On,
         Off
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum typeInput2
+    {
+        Text,
+        Image,
+        Pdf,
+        Html
     }
 
     public class FlowV1DocumentsJobsMergeDocxPostInput
@@ -10249,7 +10257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class FlowV1DocumentsJobsParseCsvPostInput
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentOfCSVDocument { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ContentOfCSVDocument { get; set; }
 
         [JsonProperty("delimiter")]
         public FlowV1DocumentsJobsParseCsvPostInputDelimiterType? Delimiter { get; set; }
@@ -11402,7 +11410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class FlowV1DocumentsJobsCsv2XlsxPostInput
     {
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ContentOfCSVDocument { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ContentOfCSVDocument { get; set; }
 
         [JsonProperty("delimiter")]
         public FlowV1DocumentsJobsCsv2XlsxPostInputDelimiterType? Delimiter { get; set; }
@@ -12554,11 +12562,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
 
     public class Csv2XlsxColumnMapping
     {
-        [JsonProperty("csvColumnIndexOrName")]
+        [JsonProperty("csvColumnIndexOrName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string CSVColumnNameOrIndex { get; set; }
 
         [JsonProperty("xlsxColumnType")]
-        public Csv2XlsxColumnMappingXLSXColumnTypeType XLSXColumnType { get; set; }
+        public Csv2XlsxColumnMappingXLSXColumnTypeType? XLSXColumnType { get; set; }
 
         [JsonProperty("xlsxColumnName")]
         public string XLSXColumnName { get; set; }
@@ -12584,7 +12592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class FlowV1DocumentsJobsJson2XlsxPostInput
     {
         [JsonProperty("content")]
-        public string JSONFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent JSONFileContent { get; set; }
 
         [JsonProperty("jsonData")]
         public string JSONData { get; set; }
@@ -13724,11 +13732,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
 
     public class Json2XlsxColumnMapping
     {
-        [JsonProperty("jsonProperty")]
+        [JsonProperty("jsonProperty", DefaultValueHandling = DefaultValueHandling.Include)]
         public string JSONProperty { get; set; }
 
         [JsonProperty("xlsxColumnType")]
-        public Json2XlsxColumnMappingXLSXColumnTypeType XLSXColumnType { get; set; }
+        public Json2XlsxColumnMappingXLSXColumnTypeType? XLSXColumnType { get; set; }
 
         [JsonProperty("xlsxColumnName")]
         public string XLSXColumnName { get; set; }
@@ -13754,7 +13762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class FlowV1DocumentsJobsJson2CsvPostInput
     {
         [JsonProperty("content")]
-        public string JSONFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent JSONFileContent { get; set; }
 
         [JsonProperty("jsonData")]
         public string JSONData { get; set; }
@@ -14967,7 +14975,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class FlowV1DocumentsJobsExtractArchivePostInput
     {
         [JsonProperty("fileContent")]
-        public string ArchiveFile { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ArchiveFile { get; set; }
 
         [JsonProperty("includeFolders", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IncludeFolders { get; set; } = false;

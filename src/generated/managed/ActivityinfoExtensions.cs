@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
         public string Label { get; set; } = "Power Automate Webhook";
 
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
-        public AddRecordTriggerInputActionType Action { get; set; }
+        public AddRecordTriggerInputActionType Action { get; set; } = new AddRecordTriggerInputActionType();
     }
 
     public class AddRecordTriggerInputActionType
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
         public string Label { get; set; } = "Power Automate Webhook";
 
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
-        public EditRecordTriggerInputActionType Action { get; set; }
+        public EditRecordTriggerInputActionType Action { get; set; } = new EditRecordTriggerInputActionType();
     }
 
     public class EditRecordTriggerInputActionType
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
         public string Label { get; set; } = "Power Automate Webhook";
 
         [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
-        public DeleteRecordTriggerInputActionType Action { get; set; }
+        public DeleteRecordTriggerInputActionType Action { get; set; } = new DeleteRecordTriggerInputActionType();
     }
 
     public class DeleteRecordTriggerInputActionType

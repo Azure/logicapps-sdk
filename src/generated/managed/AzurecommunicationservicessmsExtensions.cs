@@ -78,8 +78,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
 
-        [JsonProperty("smsSendOptions")]
-        public SendSMSv2InputSmsSendOptionsType SmsSendOptions { get; set; }
+        [JsonProperty("smsSendOptions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SendSMSv2InputSmsSendOptionsType SmsSendOptions { get; set; } = new SendSMSv2InputSmsSendOptionsType();
+
+        [JsonProperty("sendSmsOptions", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal SendSMSv2InputSendSmsOptionsType SendSmsOptions { get; set; } = new SendSMSv2InputSendSmsOptionsType();
     }
 
     public class SendSMSv2InputRecipientsTypeItem
@@ -95,6 +98,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
 
         [JsonProperty("tag")]
         public string Tag { get; set; }
+    }
+
+    public class SendSMSv2InputSendSmsOptionsType
+    {
+        [JsonProperty("enableDeliveryReport", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool? EnableDeliveryReport { get; set; } = false;
     }
 }
 
