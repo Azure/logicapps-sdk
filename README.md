@@ -31,8 +31,6 @@ You can also reference the `Microsoft.Azure.Workflows.Sdk` NuGet package from an
 
 A codeful workflow is defined by implementing `IWorkflowProvider` and returning one or more `FlowDefinition`s built from triggers and actions. Register each provider at startup so `WorkflowInitializationService` can discover it:
 
-> **Note:** The examples below include built-in service provider actions (e.g., Azure Queues) to show the SDK's full action surface. Per the [official documentation](https://learn.microsoft.com/en-us/azure/logic-apps/standard-sdk/create-workflows-with-csharp), only Azure-hosted managed connectors are supported end-to-end in code-first workflows during the current preview; service provider actions are planned for a future release.
-
 ```csharp
 var host = new HostBuilder()
     .ConfigureFunctionsWorkerDefaults()
